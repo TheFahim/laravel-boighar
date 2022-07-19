@@ -22,7 +22,7 @@ class SellbookFactory extends Factory
             'price'=>$this->faker->randomNumber(5, false),
             'mobile'=>$this->faker->e164PhoneNumber() ,
             'bookimage'=>$this->faker->imageUrl(640, 480, 'animals', true),
-            'userid'=>1
+            'user_id'=>1
         ];
     }
 }

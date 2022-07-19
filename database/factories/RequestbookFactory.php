@@ -19,7 +19,6 @@ class RequestbookFactory extends Factory
              'bookauthor'=>$this->faker->word(),
              'bookedition'=>$this->faker->word(),
              'bookquantity'=>$this->faker->randomDigitNot(2),
-             'price'=>$this->faker->randomNumber(5, false),
              'mobile'=>$this->faker->e164PhoneNumber() ,
              'address'=>$this->faker->address(),
              'bookimage'=>$this->faker->imageUrl(640, 480, 'animals', true)
