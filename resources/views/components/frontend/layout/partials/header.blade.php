@@ -108,11 +108,20 @@
                  </li>
            </li>
            <li>
-             <a href="cart.php"> <i class="fa-solid fa-cart-plus" style="margin-top:15px;color: #000000;"></i></a>
-          </li>
-           <li>
-              <a href=""><i class="fa-solid fa-user" style="margin-top:15px; margin-left: 20px;color: #000000;"></i></a>
-          </li>
+            <a href="cart.php"> <i class="fa-solid fa-cart-plus" style="margin-top:15px;color: #000000;"></i></a>
+         </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link" href="{{ route('homepage') }}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p class=" fas fa-user fa-fw"></p></a>
+             <ul class="dropdown-menu" aria-labelledby="dropdown03">
+
+                 <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                 <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
+                 <li><a class="dropdown-item" href="{{ route('contactus') }}">Profile Setting</a></li>
+            
+                  
+                  
+             </ul>
+           </li>
 
               
               

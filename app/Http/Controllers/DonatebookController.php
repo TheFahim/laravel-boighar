@@ -41,10 +41,8 @@ class DonatebookController extends Controller
     public function index()
     {
       
-        $donatebooklist=donatebook::all();
-        return view('backend.admindonatebook.donatebooklist',[
-            'donatebooklist'=>$donatebooklist
-        ]);
+        $donatebooks=donatebook::all();
+        return view('backend.admindonatebook.index',compact('donatebooks'));
     }
     
     

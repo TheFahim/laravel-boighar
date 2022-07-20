@@ -27,9 +27,9 @@ use App\Http\Controllers\CarouselController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -40,7 +40,7 @@ require __DIR__.'/auth.php';
 
 //This is frontend route
 Route::controller(PublicController::class)->group(function(){
-    Route::get('/home','home')->name('homepage');
+    Route::get('/','home')->name('homepage');
 
 });
 
@@ -54,7 +54,7 @@ Route::controller(PublicProductController::class)->group(function(){
 });
 
 
-Route::controller(PublicPageController::class)->group(function(){
+Route::middleware('auth')->controller(PublicPageController::class)->group(function(){
     Route::get('/aboutus','aboutus')->name('aboutus'); 
     Route::get('/contactus','contactus')->name('contactus'); 
     Route::get('/faq','faq')->name('faq'); 
@@ -63,15 +63,15 @@ Route::controller(PublicPageController::class)->group(function(){
 });
 
 
-Route::controller(PublicProductDetailsController::class)->group(function(){
-    Route::get('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails'); 
+Route::middleware('auth')->controller(PublicProductDetailsController::class)->group(function(){
+    Route::post('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails'); 
     Route::get('/cart/{cart}','cart')->name('cart'); 
     Route::get('/payment/{pay}','payment')->name('payment'); 
   
 
 });
 
-
+Route::middleware('auth')->group(function(){
     Route::resource('sellbooks', SellbookController::class);
     Route::resource('donatebooks', DonatebookController::class);
     Route::resource('requestbooks', RequestbookController::class);
@@ -80,7 +80,7 @@ Route::controller(PublicProductDetailsController::class)->group(function(){
 
     Route::get('/user',[UserController::class,'user'])->name('user.register'); 
 
- 
+});
  
     Route::middleware('auth')->controller(AdminController::class)->prefix('admin')->group(function(){
         Route::get('/dashboard','dashboard')->name('admin.dashboard');

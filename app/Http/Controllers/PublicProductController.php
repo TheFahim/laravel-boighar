@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\sellbook;
 use App\Models\requestbook;
+use App\Models\donatebook;
 class PublicProductController extends Controller
 {
    public function bestbook(){
@@ -18,7 +19,8 @@ class PublicProductController extends Controller
        return view('frontend.product_page.oldbook',compact('sellbooks'));
    }
    public function getdonate(){
-       return view('frontend.product_page.getdonate');
+       $donatebooks=donatebook::all();
+       return view('frontend.product_page.getdonate',compact('donatebooks'));
    }
    public function earnpoint(){
        $requestbooks=requestbook::all();

@@ -42,10 +42,8 @@ public function index()
   
 
     $this->authorize('sellbook');
-    $sellbooklist=sellbook::all();
-    return view('backend.adminsellbook.sellbooklist',[
-        'sellbooklist'=>$sellbooklist
-    ]);
+    $sellbooks=sellbook::all();
+    return view('backend.adminsellbook.index',compact('sellbooks'));
 }
 
 
@@ -62,21 +60,27 @@ public function index()
  
     public function edit($sellbook)
 {
-    $this->authorize('sellbook_update');
+    //    $this->authorize('sellbook_update');
       $sellbookedit=sellbook::findOrFail($sellbook);
       return view('backend.adminsellbook.edit',compact('sellbookedit'));  
 }
  
     public function update(SellbookRequest $request,$sellbook)
 {
+    if($file=$request->file('bookimage')){
+        $filename=date('dmY').time().'.'.$file->getClientOriginalExtension();
+        $file->move(storage_path('app/public/sellbooks'),$filename);
+    }  
       $sellbookupdate=sellbook::findOrFail($sellbook);
       $sellbookupdate->update([
+         
         'booktitle'=>$request->booktitle,
         'bookauthor'=>$request->bookauthor,
         'bookedition'=>$request->bookedition,
         'bookquantity'=>$request->bookquantity,
         'price'=>$request->price,
-        'mobile'=>$request->mobile
+        'mobile'=>$request->mobile,
+        'bookimage'=>$filename??'',
        ]
        );
        return redirect()->route('sellbooks.index')->withMessage('Successfully updated');

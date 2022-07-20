@@ -1,29 +1,57 @@
  
     <x-backend.layout.master>
         @slot('title')
-        Book Details
+        Sell Book Details
         @endslot
     <div class="card mb-4">
         @slot('bottomheader')
-       Book Details
+       Sell Book Details
         @endslot
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            Book Details
-           <a href=""> <button class="btn btn-sm btn-info">ADD BOOK</button></a>
+            Sell Book Details
+           <a href="{{ route('sellbooks.index') }}"> <button class="btn btn-sm btn-info">Back</button></a>
         </div>
       
         <div class="card w-50 mx-auto mt-4">
             <div class="card-header text-center">
-              <b> Book Details</b>
+              <b> Sell Book Details</b>
             </div>
-            <address class="m-5">
-              Book Title :{{ $sellbookshow->booktitle }} <br>
-              Book Author: {{ $sellbookshow->bookauthor }} <br>
-              Book Edition: {{ $sellbookshow->bookedition }} <br>
-              Book Price: {{ $sellbookshow->price }} <br>
-              Mobile: {{ $sellbookshow->mobile }} <br>
-            </address>
+            <td><img src="{{asset('/storage/sellbooks/'.$sellbookshow->bookimage)}}" alt="" style="width:300px;height:200px" class="mx-auto m-2"></td>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th> Book Title :</th>
+                  <td>{{ $sellbookshow->booktitle }}</td>
+                 
+                </tr>
+                <tr>
+                  <th> Book Author:</th>
+                  <td>{{ $sellbookshow->bookauthor }}</td>
+                 
+                </tr>
+                <tr>
+                  <th> Book Edition:</th>
+                  <td>{{ $sellbookshow->bookedition }}</td>
+                 
+                </tr>
+                <tr>
+                  <th> Book Price: </th>
+                  <td>{{ $sellbookshow->price }}</td>
+                 
+                </tr>
+                <tr>
+                  <th> Mobile: </th>
+                  <td>{{ $sellbookshow->mobile }}</td>
+                 
+                </tr>
+                
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+
+            
           </div>
     </div>
      

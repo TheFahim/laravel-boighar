@@ -39,19 +39,19 @@
                 </tr>
             </tfoot> --}}
             <tbody>
-                @foreach ($donatebooklist as $donatebooklist)
+                @foreach ($donatebooks as $donatebook)
                     
                
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $donatebooklist->fullname }}</td>
-                    <td>{{ $donatebooklist->email }}</td>
-                    <td>{{ $donatebooklist->address }}</td>
-                    <td>{{ $donatebooklist->mobile }}</td>
-                    <td>{{ $donatebooklist->booktitle }}</td>
-                    <td>{{ $donatebooklist->bookauthor }}</td>
-                    <td>{{ $donatebooklist->bookedition }}</td>
-                    <td><img src="{{asset('/storage/donatebook/'.$donatebooklist->bookimage)}}" alt="" style="width:50px;height:50px"></td>
+                    <td>{{ $donatebook->fullname }}</td>
+                    <td>{{ $donatebook->email }}</td>
+                    <td>{{ $donatebook->address }}</td>
+                    <td>{{ $donatebook->mobile }}</td>
+                    <td>{{ $donatebook->booktitle }}</td>
+                    <td>{{ $donatebook->bookauthor }}</td>
+                    <td>{{ $donatebook->bookedition }}</td>
+                    <td><img src="{{asset('/storage/donatebook/'.$donatebook->bookimage)}}" alt="" style="width:50px;height:50px"></td>
                      
                     <td>
                         <div class="d-flex">
@@ -59,9 +59,9 @@
                             <x-backend.buttonlink.editlink root="donatebook.edit" id="{{ $donatebooklist->id }}" idname="donatebook"/>
                             <x-backend.buttonlink.deletelink root="donatebook.destroy" id="{{ $donatebooklist->id }}" idname="donatebook"/> --}}
                              
-                            <x-backend.buttonlink.viewlink href="{{ route('donatebooks.show',['donatebook'=>$donatebooklist->id ])}}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('donatebooks.edit',['donatebook'=>$donatebooklist->id ])}}"/>
-                            <x-backend.buttonlink.deletelink action="{{ route('donatebooks.destroy',['donatebook'=>$donatebooklist->id ])}}"/>
+                            <x-backend.buttonlink.viewlink href="{{ route('donatebooks.show',['donatebook'=>$donatebook->id ])}}"/>
+                            <x-backend.buttonlink.editlink href="{{ route('donatebooks.edit',['donatebook'=>$donatebook->id ])}}"/>
+                            <x-backend.buttonlink.deletelink action="{{ route('donatebooks.destroy',['donatebook'=>$donatebook->id ])}}"/>
                         </div>
   
                          {{-- <a href="{{ route('sellbook.show',[

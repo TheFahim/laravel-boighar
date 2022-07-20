@@ -23,6 +23,7 @@
                     <th>Book Quantity</th>
                     <th>Price</th>
                     <th>Mobile</th>
+                    <th>Book Image</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -38,24 +39,24 @@
                 </tr>
             </tfoot> --}}
             <tbody>
-                @foreach ($sellbooklist as $sellbooklist)
+                @foreach ($sellbooks as $sellbook)
                     
                
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $sellbooklist->booktitle }}</td>
-                    <td>{{ $sellbooklist->bookauthor }}</td>
-                    <td>{{ $sellbooklist->bookedition }}</td>
-                    <td>{{ $sellbooklist->bookquantity }}</td>
-                    <td>{{ $sellbooklist->price }}</td>
-                    <td>{{ $sellbooklist->mobile }}</td>
-                    <td><img src="{{asset('/storage/sellbooks/'.$sellbooklist->bookimage)}}" alt="" style="width:50px;height:50px"></td>
+                    <td>{{ $sellbook->booktitle }}</td>
+                    <td>{{ $sellbook->bookauthor }}</td>
+                    <td>{{ $sellbook->bookedition }}</td>
+                    <td>{{ $sellbook->bookquantity }}</td>
+                    <td>{{ $sellbook->price }}</td>
+                    <td>{{ $sellbook->mobile }}</td>
+                    <td class="text-center"><img src="{{asset('/storage/sellbooks/'.$sellbook->bookimage)}}" alt="" style="width:50px;height:50px"></td>
                     <td>
                         <div class="d-flex">
-                            <x-backend.buttonlink.viewlink  href="{{ route('sellbooks.show',['sellbook'=>$sellbooklist->id ])}}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('sellbooks.edit',['sellbook'=>$sellbooklist->id ])}}"/>
+                            <x-backend.buttonlink.viewlink  href="{{ route('sellbooks.show',['sellbook'=>$sellbook->id ])}}"/>
+                            <x-backend.buttonlink.editlink href="{{ route('sellbooks.edit',['sellbook'=>$sellbook->id ])}}"/>
                            
-                                <x-backend.buttonlink.deletelink action="{{ route('sellbooks.destroy',['sellbook'=>$sellbooklist->id ])}}"/>
+                                <x-backend.buttonlink.deletelink action="{{ route('sellbooks.destroy',['sellbook'=>$sellbook->id ])}}"/>
                         </div>
                         
                 
