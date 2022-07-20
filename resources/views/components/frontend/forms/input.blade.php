@@ -2,7 +2,7 @@
 
 <div class="mb-3">
 
-<x-frontend.forms.label for="{{$name}}Input" text="{{ ucfirst($name) }}"/>     
+<x-frontend.forms.label for="{{ $name.'Input' }}" text="{{ ucwords(str_replace('_',' ',$name)) }}"/>  
 
 <input name="{{ $name }}" id="{{ $name.'Input' }}"
 {{ $attributes->merge([
