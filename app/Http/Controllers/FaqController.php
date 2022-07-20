@@ -69,9 +69,9 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Faq $faq)
     {
-        //
+        return view('backend.faqs.edit',compact('faq'));
     }
 
     /**
@@ -81,9 +81,20 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FaqRequest $request,Faq $faq)
     {
-        //
+        try {
+
+            $faq->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'comment' => $request->comment
+            ]);
+
+            return redirect()->route('faqs.index')->withMessage('Successfully Updated');
+        } catch (QueryException $e) {
+            return redirect()->back()->withInput()->withErrors($e->getMessage());
+        }
     }
 
     /**
@@ -92,8 +103,9 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Faq $faq)
     {
-        //
+        $faq->delete();
+        return redirect()->route('faqs.index')->withMessage('Comment Deleted');
     }
 }

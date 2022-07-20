@@ -1,11 +1,12 @@
 <x-backend.layout.master>
     @slot('title')
-    Faq
+    Faq backend
     @endslot
     @slot('bottomheader')
     Users Questions
     @endslot
 
+    <x-backend.alertmessage.alertmessage type="success" :message="session('message')" />
     {{-- @dd($faqs) --}}
     <table class="table">
         <thead>
@@ -25,8 +26,14 @@
             <td>{{$faq->email}}</td>
             <td>{{$faq->comment}}</td>
             <td>
-                <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+
+              <a class="btn btn-primary" href="{{route('faqs.edit',['faq'=>$faq->id])}}"> Edit</a>
+                
+                <form class="d-inline" method="POST" action="{{route('faqs.destroy',['faq'=>$faq->id])}}">
+                  @csrf
+                  @method('delete')
+                      <button class="btn btn-danger"> Delete</button>
+                  </form>
             </td>
           </tr>
           @endforeach
