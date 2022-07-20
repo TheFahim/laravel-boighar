@@ -80,16 +80,15 @@ Route::controller(PublicProductDetailsController::class)->group(function(){
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
 
+    Route::resource('faqs',FaqController::class);    
+
     Route::get('/user',[UserController::class,'user'])->name('user.register'); 
 
- 
- 
     Route::middleware('auth')->controller(AdminController::class)->prefix('admin')->group(function(){
         Route::get('/dashboard','dashboard')->name('admin.dashboard');
         Route::get('/productlist','productlist')->name('admin.productlist'); 
     });
 
-    Route::post('/faq',[FaqController::class,'store'])->name('faq.store');    
 
 
  

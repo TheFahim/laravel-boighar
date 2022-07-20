@@ -111,7 +111,7 @@
 
     <x-backend.alertmessage.alertmessage type="success" :message="session('message')" />
 
-                <form class="row g-3" method="POST" action="{{route('faq.store')}}">
+                <form class="row g-3" method="POST" action="{{route('faqs.store')}}">
                     @csrf
                     <div class="col-md-6">
                         <x-frontend.forms.input name="name" type="text" id="name" :value="old('name')"/>
