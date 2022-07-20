@@ -2,21 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
- 
-use App\Http\Controllers\PublicController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PublicProductController;
-use App\Http\Controllers\PublicPageController;
-use App\Http\Controllers\PublicProductDetailsController;
-use App\Http\Controllers\PublicAuthController;
-use App\Http\Controllers\AdminAuthController;
-use App\Http\Controllers\SellbookController;
-use App\Http\Controllers\RequestbookController;
-use App\Http\Controllers\DonatebookController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CarouselController;
+
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\SellbookController;
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\DonatebookController;
+use App\Http\Controllers\PublicAuthController;
+use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\RequestbookController;
+use App\Http\Controllers\PublicProductController;
+use App\Http\Controllers\PublicProductDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +53,9 @@ Route::controller(PublicController::class)->group(function(){
 });
 
 Route::controller(PublicProductController::class)->group(function(){
-         
-    Route::get('/bestbook','bestbook')->name('bestbook'); 
-    Route::get('/newcollection','newcollection')->name('newcollection'); 
+
+    Route::get('/bestbook','bestbook')->name('bestbook');
+    Route::get('/newcollection','newcollection')->name('newcollection');
     Route::get('/oldbook','oldbook')->name('oldbook');
     Route::get('/getdonate','getdonate')->name('getdonate');
     Route::get('/earnpoint','earnpoint')->name('earnpoint');
@@ -62,19 +63,19 @@ Route::controller(PublicProductController::class)->group(function(){
 
 
 Route::middleware('auth')->controller(PublicPageController::class)->group(function(){
-    Route::get('/aboutus','aboutus')->name('aboutus'); 
-    Route::get('/contactus','contactus')->name('contactus'); 
-    Route::get('/faq','faq')->name('faq'); 
-    Route::get('/events','events')->name('events'); 
+    Route::get('/aboutus','aboutus')->name('aboutus');
+    Route::get('/contactus','contactus')->name('contactus');
+    Route::get('/faq','faq')->name('faq');
+    Route::get('/events','events')->name('events');
 
 });
 
 
 Route::middleware('auth')->controller(PublicProductDetailsController::class)->group(function(){
-    Route::post('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails'); 
-    Route::get('/cart/{cart}','cart')->name('cart'); 
-    Route::get('/payment/{pay}','payment')->name('payment'); 
-  
+    Route::post('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
+    Route::get('/cart/{cart}','cart')->name('cart');
+    Route::get('/payment/{pay}','payment')->name('payment');
+
 
 });
 
@@ -85,19 +86,25 @@ Route::middleware('auth')->group(function(){
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
  
+ 
     Route::get('/user',[UserController::class,'user'])->name('user.register'); 
 
-});
+    Route::resource('banners', BannerController::class);
+
+    Route::get('/user',[UserController::class,'user'])->name('user.register');
  
+
+});
+
     Route::middleware('auth')->controller(AdminController::class)->prefix('admin')->group(function(){
         Route::get('/dashboard','dashboard')->name('admin.dashboard');
-        Route::get('/productlist','productlist')->name('admin.productlist'); 
+        Route::get('/productlist','productlist')->name('admin.productlist');
     });
 
-    Route::post('/faq',[FaqController::class,'store'])->name('faq.store');    
+    Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
 
 
- 
 
- 
+
+
 

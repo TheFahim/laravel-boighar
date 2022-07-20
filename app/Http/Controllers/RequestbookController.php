@@ -1,23 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\RequestbookRequest;
-use Illuminate\Http\Request;
+use App\Models\Banner;
 use App\Models\requestbook;
+use Illuminate\Http\Request;
+use App\Http\Requests\RequestbookRequest;
 use Illuminate\Support\Facades\Validator;
+
 class RequestbookController extends Controller
 {
-  
+
 public function create(){
-    return view('frontend.book_form.requestbook');
+    $banner=Banner::where('is_active',true)->where('option','Request book')->latest()->first();
+    return view('frontend.book_form.requestbook',compact('banner'));
 }
 
 public function store(RequestbookRequest $request){
     if($file=$request->file('bookimage')){
         $filename=date('dmY').time().'.'.$file->getClientOriginalExtension();
         $file->move(storage_path('app/public/requestbooks'),$filename);
-    }    
-    
+    }
+
    requestbook::create([
           'booktitle'=>$request->booktitle,
           'bookauthor'=>$request->bookauthor,
@@ -27,7 +30,7 @@ public function store(RequestbookRequest $request){
           'mobile'=>$request->mobile,
           'address'=>$request->address,
           'bookimage'=>$filename??'',
-         
+
    ]
    );
    return redirect()->route('requestbooks.create')->withMessage('Successfully submitted');
@@ -40,32 +43,32 @@ public function store(RequestbookRequest $request){
 
 public function index()
 {
-  
 
-   
+
+
     $requestbooklist=requestbook::paginate(2);
     return view('backend.adminrequestbook.requestbooklist',compact('requestbooklist'));
-  
+
 }
 
 
     public function show($requestbook)
     {
- 
-      
+
+
      $requestbookshow=requestbook::findOrFail($requestbook);
      return view('backend.adminrequestbook.show',compact('requestbookshow'));
-         
+
      }
 
 
- 
+
     public function edit($requestbook)
 {
       $requestbookedit=requestbook::findOrFail($requestbook);
-      return view('backend.adminrequestbook.edit',compact('requestbookedit'));  
+      return view('backend.adminrequestbook.edit',compact('requestbookedit'));
 }
- 
+
     public function update(RequestbookRequest $request,$requestbook)
 {
       $requestbookupdate=requestbook::findOrFail($requestbook);
@@ -80,14 +83,14 @@ public function index()
        ]
        );
        return redirect()->route('requestbooks.index')->withMessage('Successfully updated');
-       
+
 }
 
 public function destroy($requestbook)
 {
       $requestbookshow=requestbook::findOrFail($requestbook)->delete();
-      return redirect()->route('requestbooks.index')->withMessage('Successfully Data Deleted');       
+      return redirect()->route('requestbooks.index')->withMessage('Successfully Data Deleted');
 }
-     
+
 
 }
