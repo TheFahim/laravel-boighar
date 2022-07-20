@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\sellbook;
 use Illuminate\Support\Facades\Validator;
 class SellbookController extends Controller
-{ 
-    
+{  
     public function create(){
     return view('frontend.book_form.sellbook');
 }
-
 public function store(SellbookRequest $request){
            
     if($file=$request->file('bookimage')){
@@ -49,11 +47,8 @@ public function index()
 
     public function show($sellbook)
     {
- 
-      
      $sellbookshow=sellbook::findOrFail($sellbook);
-     return view('backend.adminsellbook.show',compact('sellbookshow'));
-         
+     return view('backend.adminsellbook.show',compact('sellbookshow'));    
      }
 
 

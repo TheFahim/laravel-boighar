@@ -33,6 +33,11 @@ use App\Http\Controllers\FaqController;
 //     return view('welcome');
 // });
 
+
+
+
+
+//this is user authentication
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -79,7 +84,7 @@ Route::middleware('auth')->group(function(){
     Route::resource('requestbooks', RequestbookController::class);
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
-
+ 
     Route::get('/user',[UserController::class,'user'])->name('user.register'); 
 
 });
