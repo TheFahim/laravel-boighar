@@ -13,8 +13,8 @@ class FaqController extends Controller
     {
         try {
 
-            $faq->update([
-                'title' => $request->name,
+            $faq->create([
+                'name' => $request->name,
                 'email' => $request->email,
                 'comment' => $request->comment
             ]);
