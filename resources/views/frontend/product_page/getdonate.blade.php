@@ -9,7 +9,7 @@
     @slot('title')
    Get DonateBook
     @endslot
-<x-frontend.productpage.products :data="$donatebooks" title="Donate Books" imagefile="donatebook"/>
+<x-frontend.productpage.getdonate :data="$donatebooks" title="Donate Books" imagefile="donatebook"/>
 				 
 			 
 			 
