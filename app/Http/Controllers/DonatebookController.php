@@ -9,8 +9,8 @@ use App\Http\Requests\DonatebookRequest;
 class DonatebookController extends Controller
 {
     public function create(){
-        $banner=Banner::where('is_active',true)->where('option','Request book')->latest()->first();
-        return view('frontend.book_form.requestbook',compact('banner'));
+        $banner=Banner::where('is_active',true)->where('option','Donate book')->latest()->first();
+        return view('frontend.book_form.donatebook',compact('banner'));
     }
 
     public function store(DonatebookRequest $request){
