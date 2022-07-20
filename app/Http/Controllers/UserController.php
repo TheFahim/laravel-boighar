@@ -35,15 +35,15 @@ public function edit($user)
       return view('backend.user.edit',compact('useredit'));  
 }
  
-  public function update(Request $request,$user)
+  public function update(Request $request,User $user)
  {
-       $userupdate=User::findOrFail($user);
-       $userupdate->update([
+      // dd($request);
+
+       $user->update([
          'name'=>$request->name,
          'email'=>$request->email,
-         
-        ]
-        );
+         'role_id'=>$request->role_id
+         ]);
         return redirect()->route('users.index')->withMessage('Successfully updated');
        
  }
