@@ -1,24 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\SellbookRequest;
-use Illuminate\Http\Request;
+use App\Models\Banner;
 use App\Models\sellbook;
+use Illuminate\Http\Request;
+use App\Http\Requests\SellbookRequest;
 use Illuminate\Support\Facades\Validator;
+
 class SellbookController extends Controller
-{ 
-    
+{
+
     public function create(){
-    return view('frontend.book_form.sellbook');
+        $banner=Banner::where('is_active',true)->where('option','sell book')->latest()->first();
+        return view('frontend.book_form.sellbook',compact('banner'));
 }
 
 public function store(SellbookRequest $request){
-           
+
     if($file=$request->file('bookimage')){
         $filename=date('dmY').time().'.'.$file->getClientOriginalExtension();
         $file->move(storage_path('app/public/sellbooks'),$filename);
-    }     
-    
+    }
+
    sellbook::create([
     'booktitle'=>$request->booktitle,
     'bookauthor'=>$request->bookauthor,
@@ -39,7 +42,7 @@ public function store(SellbookRequest $request){
 
 public function index()
 {
-  
+
 
     $this->authorize('sellbook');
     $sellbooks=sellbook::all();
@@ -49,31 +52,31 @@ public function index()
 
     public function show($sellbook)
     {
- 
-      
+
+
      $sellbookshow=sellbook::findOrFail($sellbook);
      return view('backend.adminsellbook.show',compact('sellbookshow'));
-         
+
      }
 
 
- 
+
     public function edit($sellbook)
 {
     //    $this->authorize('sellbook_update');
       $sellbookedit=sellbook::findOrFail($sellbook);
-      return view('backend.adminsellbook.edit',compact('sellbookedit'));  
+      return view('backend.adminsellbook.edit',compact('sellbookedit'));
 }
- 
+
     public function update(SellbookRequest $request,$sellbook)
 {
     if($file=$request->file('bookimage')){
         $filename=date('dmY').time().'.'.$file->getClientOriginalExtension();
         $file->move(storage_path('app/public/sellbooks'),$filename);
-    }  
+    }
       $sellbookupdate=sellbook::findOrFail($sellbook);
       $sellbookupdate->update([
-         
+
         'booktitle'=>$request->booktitle,
         'bookauthor'=>$request->bookauthor,
         'bookedition'=>$request->bookedition,
@@ -84,14 +87,14 @@ public function index()
        ]
        );
        return redirect()->route('sellbooks.index')->withMessage('Successfully updated');
-       
+
 }
 
 public function destroy($sellbook)
 {
       $sellbookshow=sellbook::findOrFail($sellbook)->delete();
-      return redirect()->route('sellbooks.index')->withMessage('Successfully Data Deleted');       
+      return redirect()->route('sellbooks.index')->withMessage('Successfully Data Deleted');
 }
-     
+
 
 }
