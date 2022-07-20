@@ -109,21 +109,20 @@
 <br>
 <br>
 
-                <form class="row g-3">
-                    
+    <x-backend.alertmessage.alertmessage type="success" :message="session('message')" />
+
+                <form class="row g-3" method="POST" action="{{route('faq.store')}}">
+                    @csrf
                     <div class="col-md-6">
-                      <label for="inputEmail4" class="form-label">Name</label>
-                      <input type="name" class="form-control" id="inputEmail4">
+                        <x-frontend.forms.input name="name" type="text" id="name" :value="old('name')"/>
                     </div>
                     <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">Email</label>
-                      <input type="name" class="form-control" id="inputPassword4">
+                        <x-frontend.forms.input name="email" type="email" id="email" :value="old('email')"/>
                       <br>
                       
                     </div>
                     <div class="col-12">
-                      <label for="inputAddress" class="form-label">Comment</label>
-                      <input type="text" class="form-control" id="inputAddress" style="height: 200px;">
+                        <x-frontend.forms.textarea name="comment" type="text" id="comment" :value="old('comment')"/>
                     </div>
                       </select>
                     </div>

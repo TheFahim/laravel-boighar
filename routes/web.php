@@ -16,6 +16,8 @@ use App\Http\Controllers\DonatebookController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\FaqController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,10 +87,11 @@ Route::middleware('auth')->group(function(){
     Route::middleware('auth')->controller(AdminController::class)->prefix('admin')->group(function(){
         Route::get('/dashboard','dashboard')->name('admin.dashboard');
         Route::get('/productlist','productlist')->name('admin.productlist'); 
-        
-    
-}
-);
+    });
+
+    Route::post('/faq',[FaqController::class,'store'])->name('faq.store');    
+
+
  
 
  
