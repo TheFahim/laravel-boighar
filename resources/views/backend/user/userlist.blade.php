@@ -18,6 +18,7 @@
                 <tr>
                     <th>SL No</th>
                     <th>Name</th>
+                    <th>Role</th>
                     <th>Email</th>
                    
                     <th>Created_at</th>
@@ -34,6 +35,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $user->name }}</td>
+                    <td>{{ $user->roles->role}}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>

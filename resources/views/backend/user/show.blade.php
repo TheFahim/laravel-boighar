@@ -10,7 +10,7 @@
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
            Usert Details
-           <a href="{{ route('sellbook') }}"> <button class="btn btn-sm btn-info">ADD BOOK</button></a>
+           <a href="{{ route('sellbooks.index') }}"> <button class="btn btn-sm btn-info">ADD BOOK</button></a>
         </div>
       
         <div class="card w-50 mx-auto mt-4">

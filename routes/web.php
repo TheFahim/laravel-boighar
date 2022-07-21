@@ -91,7 +91,6 @@ Route::middleware('auth')->group(function(){
 
     Route::resource('banners', BannerController::class);
 
-    Route::get('/user',[UserController::class,'user'])->name('user.register');
  
 
 });
