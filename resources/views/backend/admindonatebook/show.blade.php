@@ -1,4 +1,4 @@
- 
+
     <x-backend.layout.master>
         @slot('title')
         Book Details
@@ -12,7 +12,7 @@
             Book Details
            <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-sm btn-info">ADD BOOK</button></a>
         </div>
-      
+
         <div class="card w-50 mx-auto mt-4">
             <div class="card-header text-center">
               <b> Book Details</b>
@@ -22,13 +22,12 @@
               Book Title :{{ $donatebookshow->booktitle }} <br>
               Book Author: {{ $donatebookshow->bookauthor }} <br>
               Book Edition: {{ $donatebookshow->bookedition }} <br>
-              Book Price: {{ $donatebookshow->price }} <br>
-              Mobile: {{ $donatebookshow->mobile }} <br>
+              Donar Name: {{ $donatebookshow->fullname }} <br>
+              Donar Mobile: {{ $donatebookshow->mobile }} <br>
             </address>
           </div>
     </div>
-     
+
     </x-backend.layout.master>
- 
- 
- 
+
+

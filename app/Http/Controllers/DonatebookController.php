@@ -28,7 +28,7 @@ class DonatebookController extends Controller
         'booktitle'=>$request->booktitle ,
         'bookauthor'=> $request->bookauthor,
         'bookedition'=>$request->bookedition ,
-        'bookquantity'=>$request->bookquntity ,
+        'bookquantity'=>$request->bookquantity,
         'bookimage'=>$filename,
        ]
        );
@@ -44,6 +44,7 @@ class DonatebookController extends Controller
     {
 
         $donatebooks=donatebook::all();
+        
         return view('backend.admindonatebook.index',compact('donatebooks'));
     }
 

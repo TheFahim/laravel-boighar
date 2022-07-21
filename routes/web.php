@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DonetController;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\Getdonatecontoller;
 use App\Http\Controllers\SellbookController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\DonatebookController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,9 @@ Route::middleware('auth')->controller(PublicPageController::class)->group(functi
 
 Route::middleware('auth')->controller(PublicProductDetailsController::class)->group(function(){
     Route::post('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
+    Route::post('/donetbookdetails/{donetbookdetails}','donetbookdetails')->name('donetbookdetails');
+
+
     Route::get('/cart/{cart}','cart')->name('cart');
     Route::get('/payment/{pay}','payment')->name('payment');
 
@@ -85,14 +90,16 @@ Route::middleware('auth')->group(function(){
     Route::resource('requestbooks', RequestbookController::class);
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
- 
- 
-    Route::get('/user',[UserController::class,'user'])->name('user.register'); 
+    Route::resource('getdonates', Getdonatecontoller::class);
 
-    Route::resource('banners', BannerController::class);
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
- 
+
+    Route::resource('banners', BannerController::class);
+    Route::get('/user',[UserController::class,'user'])->name('user.register');
+
+
+
 
 });
 
@@ -103,6 +110,7 @@ Route::middleware('auth')->group(function(){
 
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
 
+ Route::get('donets/{donet}',[DonetController::class,'Drequest'])->name('donets.create');
 
 
 
