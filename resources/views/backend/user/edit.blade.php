@@ -1,8 +1,8 @@
 
 <x-backend.layout.master title="user" bottomheader="Update user">
-  @if ($errors->any())
+
   <x-backend.alertmessage.alertmessage />
-  @endif
+  
     <div class="container card w-50 ">
         <form class="form-horizontal" role="form" action="{{ route('users.update',['user'=>$useredit->id]) }}" method="post" enctype="multipart/form-data">
            @csrf

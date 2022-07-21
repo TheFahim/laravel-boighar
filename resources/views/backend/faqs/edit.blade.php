@@ -6,9 +6,7 @@
     Edit Questions
     @endslot
 
-    @if ($errors->any())
     <x-backend.alertmessage.alertmessage />
-    @endif
 
     <form class="container row g-3" method="POST" action="{{route('faqs.update',['faq'=>$faq->id])}}">
         @csrf

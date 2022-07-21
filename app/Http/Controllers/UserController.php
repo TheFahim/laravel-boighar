@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\user;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
@@ -39,12 +40,18 @@ public function edit($user)
  {
       // dd($request);
 
-       $user->update([
-         'name'=>$request->name,
-         'email'=>$request->email,
-         'role_id'=>$request->role_id
-         ]);
-        return redirect()->route('users.index')->withMessage('Successfully updated');
+      try {
+
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'role_id' => $request->role_id
+            ]);
+
+            return redirect()->route('users.index')->withMessage('Successfully Updated');
+        } catch (QueryException $e) {
+            return redirect()->back()->withInput()->withErrors($e->getMessage());
+        }
        
  }
 
