@@ -17,10 +17,8 @@
         <div id="layoutSidenav">
             <x-backend.layout.partials.sidebar/>
             <div id="layoutSidenav_content">
-                <h1 class="mt-4 " style="margin-left:20px">{{$bottomheader}}</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active"style="margin-left:20px">{{$bottomheader}}</li>
-                </ol>
+ 
+               
                {{ $slot }}
                
                 <x-backend.layout.partials.footer/>

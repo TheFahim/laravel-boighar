@@ -72,7 +72,7 @@ Route::middleware('auth')->controller(PublicPageController::class)->group(functi
 
 
 Route::middleware('auth')->controller(PublicProductDetailsController::class)->group(function(){
-    Route::post('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
+    Route::get('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
     Route::get('/cart/{cart}','cart')->name('cart');
     Route::get('/payment/{pay}','payment')->name('payment');
 

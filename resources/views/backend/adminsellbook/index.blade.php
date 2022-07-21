@@ -2,14 +2,11 @@
     @slot('title')
     Sellbook
     @endslot
-<div class="card mb-4">
-    @slot('bottomheader')
-   Sell Book
-    @endslot
-    <div class="card-header">
+<div class="card mb-4 mt-3">
+    <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Sell Book
-       <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-info">Add Product</button></a>
+       <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">
@@ -27,17 +24,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            {{-- <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                    
-                </tr>
-            </tfoot> --}}
+         
             <tbody>
                 @foreach ($sellbooks as $sellbook)
                     
@@ -52,16 +39,11 @@
                     <td>{{ $sellbook->mobile }}</td>
                     <td class="text-center"><img src="{{asset('/storage/sellbooks/'.$sellbook->bookimage)}}" alt="" style="width:50px;height:50px"></td>
                     <td>
-                        <div class="d-flex">
+                        <div class="d-flex ">
                             <x-backend.buttonlink.viewlink  href="{{ route('sellbooks.show',['sellbook'=>$sellbook->id ])}}"/>
                             <x-backend.buttonlink.editlink href="{{ route('sellbooks.edit',['sellbook'=>$sellbook->id ])}}"/>
-                           
-                                <x-backend.buttonlink.deletelink action="{{ route('sellbooks.destroy',['sellbook'=>$sellbook->id ])}}"/>
+                            <x-backend.buttonlink.deletelink action="{{ route('sellbooks.destroy',['sellbook'=>$sellbook->id ])}}"/>
                         </div>
-                        
-                
-                        
-
                     </td>
                 </tr>
                 @endforeach

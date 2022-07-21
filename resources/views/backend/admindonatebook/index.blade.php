@@ -3,14 +3,12 @@
     @slot('title')
     Donate Book
     @endslot
-<div class="card mb-4">
-    @slot('bottomheader')
-  Donate Book
-    @endslot
-    <div class="card-header">
+<div class="card mb-4 mt-3">
+   
+    <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Donate Book
-       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-info">Add Product</button></a>
+       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">

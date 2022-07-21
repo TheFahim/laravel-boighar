@@ -1,17 +1,9 @@
 
 @props(['data','title','imagefile']) 
 <section class="gray-bg ">
-	<section class="section gray-bg ">
+	<section class="section">
 		<h1 class="text-center" style="margin-bottom: 100px;">{{ $title }}</h1>
-        {{-- <div class="input-group w-100 justify-content-center container mb-5">
-            <div class="form-outline">
-              <input id="search-input"  type="search" id="form1" class="form-control" placeholder="Search here" />
-              
-            </div>
-            <button id="search-button" type="button" class="btn btn-primary">
-              <i class="fas fa-search text-white"></i>
-            </button>
-          </div> --}}
+       
          <div class="row">
          @foreach ($data as $sellbook)
          <div class="col-lg-3 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3">

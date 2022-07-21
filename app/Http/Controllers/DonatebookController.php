@@ -73,7 +73,10 @@ class DonatebookController extends Controller
 
         public function update(DonatebookRequest $request,$donatebook)
     {
-
+        if($file=$request->file('bookimage')){
+            $filename=date('dmY').time().'.'.$file->getClientOriginalExtension();
+            $file->move(storage_path('app/public/donatebook'),$filename);
+        }
 
           $donatebookupdate=donatebook::findOrFail($donatebook);
           $donatebookupdate->update([
@@ -84,6 +87,8 @@ class DonatebookController extends Controller
             'booktitle'=>$request->booktitle ,
             'bookauthor'=> $request->bookauthor,
             'bookedition'=>$request->bookedition ,
+            'bookquantity'=>$request->bookquantity ??"" ,
+            'bookimage'=>$filename,
 
            ]
            );

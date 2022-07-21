@@ -2,14 +2,14 @@
     @slot('title')
    Request Book
     @endslot
-<div class="card mb-4">
+<div class="card mb-4 mt-3">
     @slot('bottomheader')
   Request Book
     @endslot
-    <div class="card-header">
+    <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
        Request Book
-       <a href="{{ route('requestbooks.create') }}"> <button class="btn btn-info">Add Product</button></a>
+       <a href="{{ route('requestbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">
@@ -28,17 +28,17 @@
             </thead>
            
             <tbody>
-                @foreach ($requestbooklist as $requestbooklist)
+                @foreach ($requestbooks as $requestbook)
                     
                
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $requestbooklist->booktitle }}</td>
-                    <td>{{ $requestbooklist->bookauthor }}</td>
-                    <td>{{ $requestbooklist->bookedition }}</td>
-                    <td>{{ $requestbooklist->bookquantity}}</td>
-                    <td>{{ $requestbooklist->address }}</td>
-                    <td>{{ $requestbooklist->mobile }}</td>
+                    <td>{{ $requestbook->booktitle }}</td>
+                    <td>{{ $requestbook->bookauthor }}</td>
+                    <td>{{ $requestbook->bookedition }}</td>
+                    <td>{{ $requestbook->bookquantity}}</td>
+                    <td>{{ $requestbook->address }}</td>
+                    <td>{{ $requestbook->mobile }}</td>
                      
                   
                      
@@ -48,9 +48,9 @@
                             <x-backend.buttonlink.editlink root="donatebook.edit" id="{{ $donatebooklist->id }}" idname="donatebook"/>
                             <x-backend.buttonlink.deletelink root="donatebook.destroy" id="{{ $donatebooklist->id }}" idname="donatebook"/> --}}
                              
-                            <x-backend.buttonlink.viewlink href="{{ route('requestbooks.show',['requestbook'=>$requestbooklist->id ])}}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('requestbooks.edit',['requestbook'=>$requestbooklist->id ])}}"/>
-                            <x-backend.buttonlink.deletelink action="{{ route('requestbooks.destroy',['requestbook'=>$requestbooklist->id ])}}"/>
+                            <x-backend.buttonlink.viewlink href="{{ route('requestbooks.show',['requestbook'=>$requestbook->id ])}}"/>
+                            <x-backend.buttonlink.editlink href="{{ route('requestbooks.edit',['requestbook'=>$requestbook->id ])}}"/>
+                            <x-backend.buttonlink.deletelink action="{{ route('requestbooks.destroy',['requestbook'=>$requestbook->id ])}}"/>
                         </div>
   
                          {{-- <a href="{{ route('sellbook.show',[

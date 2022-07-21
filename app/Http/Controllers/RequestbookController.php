@@ -25,11 +25,11 @@ public function store(RequestbookRequest $request){
           'booktitle'=>$request->booktitle,
           'bookauthor'=>$request->bookauthor,
           'bookedition'=>$request->bookedition,
-          'bookquantity'=>$request->bookquantity,
+          'bookquantity'=>$request->bookquantity??1,
           'price'=>$request->price,
           'mobile'=>$request->mobile,
           'address'=>$request->address,
-          'bookimage'=>$filename??'',
+          'bookimage'=>$filename??"",
 
    ]
    );
@@ -46,8 +46,8 @@ public function index()
 
 
 
-    $requestbooklist=requestbook::paginate(2);
-    return view('backend.adminrequestbook.requestbooklist',compact('requestbooklist'));
+    $requestbooks=requestbook::paginate(2);
+    return view('backend.adminrequestbook.index',compact('requestbooks'));
 
 }
 

@@ -1,3 +1,3 @@
  
 
-<a {{ $attributes }}><button class="btn text-primary d-flex"><i class="fa-solid fa-pencil"></i></button></a>
+<a {{ $attributes }}><button class="btn btn btn-outline-primary d-flex btn-sm"><i class="fa-solid fa-pencil"></i></button></a>
