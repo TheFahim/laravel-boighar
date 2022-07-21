@@ -67,9 +67,8 @@
                                 <a class="nav-link" href="500.html">500 Page</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="pagesCollapseError">
+                        <a class="nav-link" href="{{route('faqs.index')}}">
                             FAQ
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                     </nav>
                 </div>
