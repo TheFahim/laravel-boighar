@@ -1,5 +1,5 @@
 <x-backend.layout.master>
-    
+
     @slot('title')
     Donate Book
     @endslot
@@ -8,7 +8,11 @@
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Donate Book
+ 
        <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
+ 
+       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-info">Add Book</button></a>
+ 
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">
@@ -23,21 +27,14 @@
                     <th>Book Title</th>
                     <th>Book Author</th>
                     <th>Book Edition</th>
+                    <th>Quantity</th>bookquantity
                     <th>Book Image</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
-            {{-- <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
 
-                </tr>
-            </tfoot> --}}
             <tbody>
+                
                 @foreach ($donatebooks as $donatebook)
 
 
@@ -50,6 +47,7 @@
                     <td>{{ $donatebook->booktitle }}</td>
                     <td>{{ $donatebook->bookauthor }}</td>
                     <td>{{ $donatebook->bookedition }}</td>
+                    <td>{{ $donatebook->bookquantity }}</td>
                     <td><img src="{{asset('/storage/donatebook/'.$donatebook->bookimage)}}" alt="" style="width:50px;height:50px"></td>
 
                     <td>

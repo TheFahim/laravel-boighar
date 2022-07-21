@@ -56,29 +56,17 @@
 
         <x-frontend.form.input name="bookimage" text="Book Image" type="file" />
 
-
-
         <div class="form-group" style="padding-left: 20px; color: gray;">
             <button type="submit"class="btn btn-info" name="submit">Submit</button>
           </div>
-
-
-
-
         </div>
-
-
-
-    </form>  <!-- /form -->
+    </form>
 </div>
 
 
 </x-frontend.layout.master>
 
-
-    <!--
-    Essential Scripts
-    =====================================-->
+ 
 
 
 

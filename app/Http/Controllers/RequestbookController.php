@@ -46,7 +46,7 @@ public function index()
 
 
 
-    $requestbooks=requestbook::paginate(2);
+    $requestbooks=requestbook::all();
     return view('backend.adminrequestbook.index',compact('requestbooks'));
 
 }

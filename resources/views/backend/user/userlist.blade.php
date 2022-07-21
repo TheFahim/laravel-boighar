@@ -20,7 +20,6 @@
                     <th>Name</th>
                     <th>Role</th>
                     <th>Email</th>
-                   
                     <th>Created_at</th>
                     <th>Updated_at</th>
                     <th>Action</th>

@@ -1,13 +1,13 @@
-
-@props(['data','title','imagefile']) 
+@props(['data', 'title', 'imagefile'])
 <section class="gray-bg ">
+ 
 	<section class="section">
 		<h1 class="text-center" style="margin-bottom: 100px;">{{ $title }}</h1>
        
          <div class="row">
          @foreach ($data as $sellbook)
          <div class="col-lg-3 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3">
-          <form method="post" action="{{ route('bookdetails',['bookdetail'=>$sellbook->id]) }}" enctype="multipart/form-data">
+          <form method="post" action="{{ route('donetbookdetails',['donetbookdetail'=>$sellbook->id]) }}" enctype="multipart/form-data">
             @csrf
           <div class="card">
             <a href="{{ route('bookdetails',['bookdetail'=>$sellbook->id]) }}">
@@ -41,14 +41,4 @@
 			 
 			 
   
- 	
- 
-
-
- 
-  
-  
-  
-  
- 
-   
+ 	 
