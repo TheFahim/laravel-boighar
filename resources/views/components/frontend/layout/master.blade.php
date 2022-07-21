@@ -29,7 +29,7 @@
 </head>
 <body>
  
-<x-frontend.layout.partials.header/> 
+<x-frontend.layout.partials.header /> 
  
 
 

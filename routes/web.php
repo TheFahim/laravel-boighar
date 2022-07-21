@@ -19,6 +19,7 @@ use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
+use App\Http\Controllers\CategoryController;
 
 
 /*
@@ -93,6 +94,7 @@ Route::middleware('auth')->group(function(){
     Route::resource('requestbooks', RequestbookController::class);
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
+    Route::resource('categories', CategoryController::class);
     Route::resource('getdonates', Getdonatecontoller::class);
 
 
