@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\user;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
@@ -35,16 +36,22 @@ public function edit($user)
       return view('backend.user.edit',compact('useredit'));  
 }
  
-  public function update(Request $request,$user)
+  public function update(Request $request,User $user)
  {
-       $userupdate=User::findOrFail($user);
-       $userupdate->update([
-         'name'=>$request->name,
-         'email'=>$request->email,
-         
-        ]
-        );
-        return redirect()->route('users.index')->withMessage('Successfully updated');
+      // dd($request);
+
+      try {
+
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'role_id' => $request->role_id
+            ]);
+
+            return redirect()->route('users.index')->withMessage('Successfully Updated');
+        } catch (QueryException $e) {
+            return redirect()->back()->withInput()->withErrors($e->getMessage());
+        }
        
  }
 
