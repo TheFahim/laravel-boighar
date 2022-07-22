@@ -15,7 +15,7 @@ class PublicProductController extends Controller
        return view('frontend.product_page.new_collectionbook');
    }
    public function oldbook(){
-       $sellbooks=sellbook::all();
+       $sellbooks=sellbook::where('status','Approved')->get();
        return view('frontend.product_page.oldbook',compact('sellbooks'));
    }
    public function getdonate(){

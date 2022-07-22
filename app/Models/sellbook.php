@@ -10,5 +10,5 @@ class sellbook extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table='sellbook';
-    protected $fillable=['booktitle','bookauthor','bookedition','bookquantity','mobile','price','bookimage'];
+    protected $fillable=['status','booktitle','bookauthor','bookedition','bookquantity','mobile','price','bookimage'];
 }

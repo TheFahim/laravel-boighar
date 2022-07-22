@@ -10,5 +10,5 @@ class requestbook extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table='requestbook';
-    protected $fillable=['booktitle','bookauthor','bookedition','bookquantity','mobile','address','bookimage'];
+    protected $fillable=['status','booktitle','bookauthor','bookedition','bookquantity','mobile','address','bookimage'];
 }

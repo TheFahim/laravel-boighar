@@ -22,6 +22,7 @@ class CreateSellbookTable extends Migration
             $table->integer('bookquantity');
             $table->string('mobile');
             $table->integer('price');
+            $table->string('status');
             $table->string('bookimage',100)->nullable();
             $table->timestamps();
             $table->softDeletes();

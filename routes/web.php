@@ -89,8 +89,8 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 });
 
 Route::middleware('auth')->group(function(){
-    
-    
+
+
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
 
@@ -101,15 +101,19 @@ Route::middleware('auth')->group(function(){
     Route::delete('/categories/trash/{id}', [CategoryController::class,'delete'])->name('categories.delete');
     Route::resource('categories', CategoryController::class);
     //requestbook route
+    Route::get('/reqapproved/{id}',[RequestbookController::class,'approved'])->name('reqapproved');
+    Route::get('/reqcancle/{id}',[RequestbookController::class,'cancle'])->name('reqcancle');
     Route::get('/requestbooks/trash', [RequestbookController::class,'trash'])->name('requestbooks.trash');
     Route::patch('/requestbooks/trash/{id}', [RequestbookController::class,'restore'])->name('requestbooks.restore');
     Route::delete('/requestbooks/trash/{id}', [RequestbookController::class,'delete'])->name('requestbooks.delete');
     Route::resource('requestbooks', RequestbookController::class);
     //sellbook route
+    Route::get('/sellapproved/{id}',[SellbookController::class,'approved'])->name('sellapproved');
+    Route::get('/sellcancle/{id}',[SellbookController::class,'cancle'])->name('sellcancle');
     Route::get('/sellbooks/trash', [SellbookController::class,'trash'])->name('sellbooks.trash');
     Route::patch('/sellbooks/trash/{id}', [SellbookController::class,'restore'])->name('sellbooks.restore');
     Route::delete('/sellbooks/trash/{id}', [SellbookController::class,'delete'])->name('sellbooks.delete');
-    Route::resource('sellbooks', SellbookController::class); 
+    Route::resource('sellbooks', SellbookController::class);
 
     //Donate-book route
     Route::get('/donatebooks/trash', [DonatebookController::class,'trash'])->name('donatebooks.trash');
@@ -125,7 +129,7 @@ Route::middleware('auth')->group(function(){
 
 });
 
-
+    Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
     Route::resource('faqs',FaqController::class);
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
@@ -136,7 +140,7 @@ Route::middleware('auth')->group(function(){
     });
 
 
-    Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
+
 
  Route::get('donets/{donet}',[DonetController::class,'Drequest'])->name('donets.create');
  Route::get('/approved/{id}',[DonetController::class,'approved'])->name('approved');
