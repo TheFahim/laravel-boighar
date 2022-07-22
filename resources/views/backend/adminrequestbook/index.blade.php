@@ -2,7 +2,7 @@
     @slot('title')
    Request Book
     @endslot
-<div class="card mb-4 mt-3">
+<div class="card mb-4">
     @slot('bottomheader')
   Request Book
     @endslot

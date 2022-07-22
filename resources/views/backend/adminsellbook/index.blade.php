@@ -2,7 +2,7 @@
     @slot('title')
     Sellbook
     @endslot
-<div class="card mb-4 mt-3">
+<div class="card mb-4">
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Sell Book
