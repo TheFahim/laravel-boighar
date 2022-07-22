@@ -9,5 +9,5 @@ class getdonate extends Model
 {
     use HasFactory;
     protected $table='getdonate';
-    protected $fillable=['fullname','email','address','mobile','booktitle','bookauthor','bookedition'];
+    protected $fillable=['fullname','email','address','mobile','booktitle','bookauthor','bookedition','describe'];
 }

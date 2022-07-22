@@ -30,6 +30,7 @@ class DonatebookController extends Controller
         'bookedition'=>$request->bookedition ,
         'bookquantity'=>$request->bookquantity,
         'bookimage'=>$filename,
+        'status'=>'In progres'
        ]
        );
        return redirect()->route('donatebooks.create')->withMessage('Successfully submitted');
@@ -44,7 +45,7 @@ class DonatebookController extends Controller
     {
 
         $donatebooks=donatebook::all();
-        
+
         return view('backend.admindonatebook.index',compact('donatebooks'));
     }
 

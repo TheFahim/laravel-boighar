@@ -19,7 +19,7 @@ class PublicProductController extends Controller
        return view('frontend.product_page.oldbook',compact('sellbooks'));
    }
    public function getdonate(){
-       $donatebooks=donatebook::all();
+       $donatebooks=donatebook::where('status','Approved')->get();
        return view('frontend.product_page.getdonate',compact('donatebooks'));
    }
    public function earnpoint(){

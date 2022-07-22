@@ -1,72 +1,86 @@
 <x-backend.layout.master>
 
     @slot('title')
-    Donate Book
-    @endslot
-<div class="card mb-4 mt-3">
-   
-    <div class="card-header" style="background-color: #defffe">
-        <i class="fas fa-table me-1"></i>
         Donate Book
- 
-       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
- 
-       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-info">Add Book</button></a>
- 
-    </div>
-   <x-backend.alertmessage.alertmessage type="success"/>
-    <div class="card-body">
-        <table id="datatablesSimple">
-            <thead>
-                <tr>
-                    <th>SL No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Mobile</th>
-                    <th>Book Title</th>
-                    <th>Book Author</th>
-                    <th>Book Edition</th>
-                    <th>Quantity</th>bookquantity
-                    <th>Book Image</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
+    @endslot
+    <div class="card mb-4 mt-3">
 
-            <tbody>
-                
-                @foreach ($donatebooks as $donatebook)
+        <div class="card-header" style="background-color: #defffe">
+            <i class="fas fa-table me-1"></i>
+            Donate Book
 
+            <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add
+                    Product</button></a>
 
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $donatebook->fullname }}</td>
-                    <td>{{ $donatebook->email }}</td>
-                    <td>{{ $donatebook->address }}</td>
-                    <td>{{ $donatebook->mobile }}</td>
-                    <td>{{ $donatebook->booktitle }}</td>
-                    <td>{{ $donatebook->bookauthor }}</td>
-                    <td>{{ $donatebook->bookedition }}</td>
-                    <td>{{ $donatebook->bookquantity }}</td>
-                    <td><img src="{{asset('/storage/donatebook/'.$donatebook->bookimage)}}" alt="" style="width:50px;height:50px"></td>
+            <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-info">Add Book</button></a>
 
-                    <td>
-                        <div class="d-flex">
-                            {{-- <x-backend.buttonlink.viewlink root="donatebook.show" id="{{ $donatebooklist->id }}" idname="donatebook"/>
+        </div>
+        <x-backend.alertmessage.alertmessage type="success" />
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>SL No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Mobile</th>
+                        <th>Book Title</th>
+                        <th>Book Author</th>
+                        <th>Book Edition</th>
+                        <th>Quantity</th>bookquantity
+                        <th>Book Image</th>
+                        <th>Status</th>
+                        <th>Approve</th>
+                        <th>Cancled</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach ($donatebooks as $donatebook)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $donatebook->fullname }}</td>
+                            <td>{{ $donatebook->email }}</td>
+                            <td>{{ $donatebook->address }}</td>
+                            <td>{{ $donatebook->mobile }}</td>
+                            <td>{{ $donatebook->booktitle }}</td>
+                            <td>{{ $donatebook->bookauthor }}</td>
+                            <td>{{ $donatebook->bookedition }}</td>
+                            <td>{{ $donatebook->bookquantity }}</td>
+                            <td><img src="{{ asset('/storage/donatebook/' . $donatebook->bookimage) }}" alt=""
+                                    style="width:50px;height:50px"></td>
+                            <td>{{ $donatebook->status }}</td>
+                            <td>
+                                <a  class="btn  d-flex btn btn-outline-success btn-sm "href="{{route('approved',$donatebook->id)}}"><i class="fa-regular fa-circle-check"></i></a>
+                            </td>
+
+                            <td>
+                                <a class="btn  d-flex btn btn-outline-danger btn-sm"href="{{route('cancle',$donatebook->id)}}"><i class="fa-solid fa-xmark"></i></a>
+                            </td>
+
+                            <td>
+                                <div class="d-flex">
+                                    {{-- <x-backend.buttonlink.viewlink root="donatebook.show" id="{{ $donatebooklist->id }}" idname="donatebook"/>
                             <x-backend.buttonlink.editlink root="donatebook.edit" id="{{ $donatebooklist->id }}" idname="donatebook"/>
                             <x-backend.buttonlink.deletelink root="donatebook.destroy" id="{{ $donatebooklist->id }}" idname="donatebook"/> --}}
 
-                            <x-backend.buttonlink.viewlink href="{{ route('donatebooks.show',['donatebook'=>$donatebook->id ])}}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('donatebooks.edit',['donatebook'=>$donatebook->id ])}}"/>
-                            <x-backend.buttonlink.deletelink action="{{ route('donatebooks.destroy',['donatebook'=>$donatebook->id ])}}"/>
-                        </div>
+                                    <x-backend.buttonlink.viewlink
+                                        href="{{ route('donatebooks.show', ['donatebook' => $donatebook->id]) }}" />
+                                    <x-backend.buttonlink.editlink
+                                        href="{{ route('donatebooks.edit', ['donatebook' => $donatebook->id]) }}" />
+                                    <x-backend.buttonlink.deletelink
+                                        action="{{ route('donatebooks.destroy', ['donatebook' => $donatebook->id]) }}" />
+                                </div>
 
-                         {{-- <a href="{{ route('sellbook.show',[
+                                {{-- <a href="{{ route('sellbook.show',[
                             'sellbook'=>$sellbooklist->id
                          ]) }}">
                             <i class="fa-solid fa-pencil text-success"style="margin-left:20px"></i>
                         </a> --}}
-                     {{-- <form action="{{ route('sellbook.destroy',['sellbook'=>$sellbooklist->id] )}}" method="POST">
+                                {{-- <form action="{{ route('sellbook.destroy',['sellbook'=>$sellbooklist->id] )}}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn text-danger d-inline" onclick="confirm('Are you Sure?')"><i class="fa-solid fa-trash-can"></i></button>
@@ -75,12 +89,12 @@
                      </form> --}}
 
 
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 </x-backend.layout.master>

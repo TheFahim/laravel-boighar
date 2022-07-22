@@ -75,13 +75,13 @@ Route::middleware('auth')->controller(PublicPageController::class)->group(functi
 
 
 Route::middleware('auth')->controller(PublicProductDetailsController::class)->group(function(){
- 
+
     Route::get('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
-    
+
     Route::post('/donetbookdetails/{donetbookdetail}','donetbookdetails')->name('donetbookdetails');
 
 
- 
+
     Route::get('/cart/{cart}','cart')->name('cart');
     Route::get('/payment/{pay}','payment')->name('payment');
 
@@ -94,7 +94,7 @@ Route::middleware('auth')->group(function(){
     Route::resource('requestbooks', RequestbookController::class);
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
-    
+
     Route::resource('getdonates', Getdonatecontoller::class);
     Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
     Route::patch('/categories/trash/{id}', [CategoryController::class,'restore'])->name('categories.restore');
@@ -106,23 +106,24 @@ Route::middleware('auth')->group(function(){
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
 });
-    
 
-    Route::resource('faqs',FaqController::class);    
 
-    Route::get('/user',[UserController::class,'user'])->name('user.register'); 
+    Route::resource('faqs',FaqController::class);
+
+    Route::get('/user',[UserController::class,'user'])->name('user.register');
 
     Route::middleware('auth')->controller(AdminController::class)->prefix('admin')->group(function(){
         Route::get('/dashboard','dashboard')->name('admin.dashboard');
         Route::get('/productlist','productlist')->name('admin.productlist');
     });
 
- 
+
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
 
  Route::get('donets/{donet}',[DonetController::class,'Drequest'])->name('donets.create');
+ Route::get('/approved/{id}',[DonetController::class,'approved'])->name('approved');
+ Route::get('/cancle/{id}',[DonetController::class,'cancle'])->name('cancle');
 
- 
 
 
 
