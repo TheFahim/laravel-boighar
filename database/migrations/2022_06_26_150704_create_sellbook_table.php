@@ -24,6 +24,7 @@ class CreateSellbookTable extends Migration
             $table->integer('price');
             $table->string('bookimage',100)->nullable();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

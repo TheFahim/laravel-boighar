@@ -104,5 +104,43 @@ public function destroy($sellbook)
       return redirect()->route('sellbooks.index')->withMessage('Successfully Data Deleted');
 }
 
+public function trash()
+{
+    $sellbooks= sellbook::onlyTrashed()->paginate(2);
+    return view('backend.adminsellbook.trash', compact('sellbooks'));
+
+}
+
+public function restore( $id)
+{
+    try {
+        $sellbook= sellbook::onlyTrashed()->whereId($id)->firstOrFail();
+        $sellbook->restore();
+        return redirect()->back()->withMessage('Successfully Restored!');
+        
+    } catch (QueryException $e) {
+        Log::error($e->getMessage());
+        return redirect()->back()->withErrors($e->getMessage());
+        
+    }
+}
+public function delete($id)
+{
+      
+    try {
+
+        $sellbook = sellbook::onlyTrashed()->whereId($id)->firstOrFail();
+        $sellbook->forceDelete();
+        return redirect()->route('sellbooks.index')->withMessage('Successfully Deleted!');
+    } catch (QueryException $e) {
+        Log::error($e->getMessage());
+        return redirect()->back()->withErrors($e->getMessage());
+   
+        
+
+    }
+}
+
+
 
 }
