@@ -52,21 +52,6 @@
                             <x-backend.buttonlink.editlink href="{{ route('requestbooks.edit',['requestbook'=>$requestbook->id ])}}"/>
                             <x-backend.buttonlink.deletelink action="{{ route('requestbooks.destroy',['requestbook'=>$requestbook->id ])}}"/>
                         </div>
-  
-                         {{-- <a href="{{ route('sellbook.show',[
-                            'sellbook'=>$sellbooklist->id
-                         ]) }}">
-                            <i class="fa-solid fa-pencil text-success"style="margin-left:20px"></i>
-                        </a> --}}
-                     {{-- <form action="{{ route('sellbook.destroy',['sellbook'=>$sellbooklist->id] )}}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn text-danger d-inline" onclick="confirm('Are you Sure?')"><i class="fa-solid fa-trash-can"></i></button>
-                       
-
-                     </form> --}}
-                        
-
                     </td>
                 </tr>
                 @endforeach

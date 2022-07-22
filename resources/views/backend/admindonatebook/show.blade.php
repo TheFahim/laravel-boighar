@@ -10,8 +10,7 @@
             Requested Book Details
            <a href="{{ route('donatebooks.index') }}"> <button class=" btn-sm btn btn-outline-primary"><i class="fa-solid fa-backward"></i></button></a>
         </div>
-<<<<<<< HEAD
-      
+     
         <div class="card w-75 mx-auto mt-4 mb-4" style="background-color: #f3fcf2">
             <div class="card-header text-center shadow-sm" style="background-color: #58ed85">
              <h4> <b>  Requested Book Details</b></h4>
@@ -67,22 +66,6 @@
 
           <div class="cart-footer bg-info">
           
-          </div>
-=======
-
-        <div class="card w-50 mx-auto mt-4">
-            <div class="card-header text-center">
-              <b> Book Details</b>
-            </div>
-            <img src="{{asset('/storage/donatebook/'.$donatebookshow->bookimage)}}" alt="" style="width:200px;height:200px" class="mx-auto">
-            <address class="m-5 mx-auto">
-              Book Title :{{ $donatebookshow->booktitle }} <br>
-              Book Author: {{ $donatebookshow->bookauthor }} <br>
-              Book Edition: {{ $donatebookshow->bookedition }} <br>
-              Donar Name: {{ $donatebookshow->fullname }} <br>
-              Donar Mobile: {{ $donatebookshow->mobile }} <br>
-            </address>
->>>>>>> e93ab5cd3b356cd01d483e22d97a530966ff2f22
           </div>
     </div>
 
