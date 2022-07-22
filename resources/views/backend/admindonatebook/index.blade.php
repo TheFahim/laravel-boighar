@@ -15,7 +15,6 @@
                 <tr>
                     <th>SL No</th>
                     <th>Name</th>
-                    <th>Email</th>
                     <th>Address</th>
                     <th>Mobile</th>
                     <th>Book Title</th>
@@ -35,7 +34,6 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $donatebook->fullname }}</td>
-                    <td>{{ $donatebook->email }}</td>
                     <td>{{ $donatebook->address }}</td>
                     <td>{{ $donatebook->mobile }}</td>
                     <td>{{ $donatebook->booktitle }}</td>

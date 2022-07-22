@@ -60,7 +60,9 @@ class FaqController extends Controller
      */
     public function show($id)
     {
-        //
+        
+     $faq=Faq::findOrFail($id);
+     return view('backend.faqs.replay',compact('faq'));  
     }
 
     /**

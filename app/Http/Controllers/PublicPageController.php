@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
 class PublicPageController extends Controller
@@ -17,7 +17,8 @@ class PublicPageController extends Controller
     }
     public function faq()
     {
-        return view('frontend.more_page.faq');
+        $faqs=Faq::all();
+        return view('frontend.more_page.faq',compact('faqs'));
     }
     public function events()
     {

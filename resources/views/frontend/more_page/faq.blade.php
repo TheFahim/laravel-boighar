@@ -13,12 +13,12 @@
 
  <div class="card w-75 mx-auto mb-5">
     <div class="accordion accordion-flush" id="accordionFlushExample">
-        @foreach (fqas as fqa)
+        @foreach ($faqs as $faq)
 
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingOne">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              {{ $faq->comment }}
+             {{ $faq->comment }}
             </button>
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -33,6 +33,7 @@
     <div class="card-body">
     <form class="row g-3" method="POST" action="{{route('faqs.store')}}">
                     @csrf
+                    <x-backend.alertmessage.alertmessage type="success"/>
                     <div class="col-md-6">
                         <x-frontend.forms.input name="name" type="text" id="name" :value="old('name')"/>
                     </div>
@@ -41,7 +42,7 @@
                     </div>
                     <br>
                     <div class="col-12">
-                        <x-frontend.forms.textarea name="comment" type="text" id="comment" :value="old('comment')"/>
+                        <x-frontend.forms.textarea name="question" type="text" id="comment" :value="old('comment')"/>
                     </div>
                    
                     </div>

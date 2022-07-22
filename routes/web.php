@@ -94,26 +94,21 @@ Route::middleware('auth')->group(function(){
     Route::resource('requestbooks', RequestbookController::class);
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
-    Route::resource('categories', CategoryController::class);
+    
     Route::resource('getdonates', Getdonatecontoller::class);
-
-
- 
+    Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
+    Route::patch('/categories/trash/{id}', [CategoryController::class,'restore'])->name('categories.restore');
+    Route::delete('/categories/trash/{id}', [CategoryController::class,'delete'])->name('categories.delete');
+    Route::resource('categories', CategoryController::class);
     Route::get('/user',[UserController::class,'user'])->name('user.register');
-
+    Route::resource('faqs',FaqController::class);  
     Route::resource('banners', BannerController::class);
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
-
-
- 
- 
- 
-
 });
+    
 
-
-    Route::resource('faqs',FaqController::class);    
+   
 
     Route::get('/user',[UserController::class,'user'])->name('user.register'); 
 
