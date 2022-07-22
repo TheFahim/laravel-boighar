@@ -11,7 +11,7 @@
  
        <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
  
-       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-info">Add Book</button></a>
+       <a href="{{ route('donatebooks.trash') }}"> <button class="btn btn-outline-info btn-sm text-black">Trash</button></a>
  
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
@@ -36,7 +36,6 @@
             <tbody>
                 
                 @foreach ($donatebooks as $donatebook)
-
 
                 <tr>
                     <td>{{ $loop->iteration }}</td>

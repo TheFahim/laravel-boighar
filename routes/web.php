@@ -90,7 +90,7 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 
 Route::middleware('auth')->group(function(){
     
-    Route::resource('donatebooks', DonatebookController::class);
+    
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
     
@@ -110,6 +110,13 @@ Route::middleware('auth')->group(function(){
     Route::patch('/sellbooks/trash/{id}', [SellbookController::class,'restore'])->name('sellbooks.restore');
     Route::delete('/sellbooks/trash/{id}', [SellbookController::class,'delete'])->name('sellbooks.delete');
     Route::resource('sellbooks', SellbookController::class); 
+
+    //Donate-book route
+    Route::get('/donatebooks/trash', [DonatebookController::class,'trash'])->name('donatebooks.trash');
+    Route::patch('/donatebooks/trash/{id}', [DonatebookController::class,'restore'])->name('donatebooks.restore');
+    Route::delete('/donatebooks/trash/{id}', [DonatebookController::class,'delete'])->name('donatebooks.delete');
+    Route::resource('donatebooks', DonatebookController::class);
+
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
