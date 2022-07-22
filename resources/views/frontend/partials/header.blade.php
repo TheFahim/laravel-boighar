@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
-    
+
 
 
 <!-- Favicon -->
@@ -37,25 +37,25 @@
                        <li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@uboighar.com</a></li>
                        <li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address DHAKA Bangladesh </li>
                    </ul>
-                
+
                </div>
                <div class="col-lg-6">
                    <div class="text-lg-right top-right-bar mt-2 mt-lg-0">
-                    
-                            
+
+
                            <ul class="d-flex justify-content-end mt-2">
-                                
-                            
+
+
                                    <i class="fa-brands fa-facebook" style="margin-right: 20px"></i>
                                    <i class="fa-brands fa-twitter" style="margin-right: 20px;"></i>
                                    <i class="fa-brands fa-linkedin" style="margin-right: 20px;"></i>
                                    <i class="fa-brands fa-instagram" style="margin-right: 20px;"></i>
-                                    
-                               
-                                
-                                   
-                            
-                                
+
+
+
+
+
+
                            </ul>
                        </a>
                    </div>
@@ -72,10 +72,10 @@
              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
            <span class="icofont-navigation-menu"></span>
          </button>
-     
+
          <div class="collapse navbar-collapse" id="navbarmain">
            <ul class="navbar-nav ml-auto">
-              
+
              <li class="nav-item dropdown">
                <a class="nav-link" href="home.php" id="dropdown02" data-toggle="">BUY BOOK <i class="icofont-thin-down"></i></a>
                <ul class="dropdown-menu">
@@ -90,7 +90,7 @@
                <li class="nav-item"><a class="nav-link" href="{{ route('donatebook') }}">DONATE  BOOK</a></li>
                <li class="nav-item"><a class="nav-link" href="http://localhost/Book_Store_Demo/include/product_page/earnmoney.php">EARN POINT</a></li>
 
-               
+
 
                  <li class="nav-item dropdown">
                    <a class="nav-link  " href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PAGE <i class="icofont-thin-down"></i></a>
@@ -101,7 +101,7 @@
                        <li><a class="dropdown-item" href="http://localhost/Book_Store_Demo/include/book_form/donatebook.php">DONATE BOOKS</a></li>
                        <li><a class="dropdown-item" href="http://localhost/Book_Store_Demo/include/more_page/events.php">EVENTS</a></li>
                        <li><a class="dropdown-item" href="http://localhost/Book_Store_Demo/include/more_page/FAQ.php">FAQ</a></li>
-                        
+
                    </ul>
                  </li>
            </li>
@@ -112,8 +112,8 @@
               <a href="login.php"><i class="fa-solid fa-user" style="margin-top:15px; margin-left: 20px;color: #000000;"></i></a>
           </li>
 
-              
-              
+
+
            </ul>
          </div>
        </div>

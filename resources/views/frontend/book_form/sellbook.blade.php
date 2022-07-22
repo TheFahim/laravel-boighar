@@ -1,9 +1,11 @@
 <x-frontend.layout.master>
     <x-slot name="title">SellBook_Form</x-slot>
     <div class="container d-flex justify-content-center">
+        @if(isset($banner->image))
         <div class="card ">
-            <img src="{{ asset('/storage/banner/' . $banner->image) }}" alt="Banner"style="width:800px">
+            <img src="{{ asset('/storage/banner/' . $banner->image ) }}" alt="Banner"style="width:800px">
         </div>
+        @endif
     </div>
 <section class="" style="">
 
