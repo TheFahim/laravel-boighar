@@ -2,13 +2,14 @@
     @slot('title')
     Faq backend
     @endslot
-    @slot('bottomheader')
-    Users Questions
-    @endslot
-
-    <x-backend.alertmessage.alertmessage type="success" :message="session('message')" />
-    {{-- @dd($faqs) --}}
-    <table class="table">
+<div class="card mb-4">
+    <div class="card-header" style="background-color: #defffe">
+        <i class="fas fa-table me-1"></i>
+        Users Questions
+    </div>
+   <x-backend.alertmessage.alertmessage type="success"/>
+    <div class="card-body">
+      <table id="datatablesSimple">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -39,5 +40,8 @@
           @endforeach
         </tbody>
       </table>
-
+       
+    </div>
+</div>
+ 
 </x-backend.layout.master>

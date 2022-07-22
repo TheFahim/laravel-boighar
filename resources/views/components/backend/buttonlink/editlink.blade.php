@@ -1,3 +1,5 @@
- 
 
-<a {{ $attributes }}><button class="btn btn btn-outline-primary d-flex btn-sm"><i class="fa-solid fa-pencil"></i></button></a>
+<form method="GET" {{ $attributes }}>
+    @csrf
+    <button type="submit" class="btn d-flex btn btn-outline-success btn-sm" onclick="return confirm('Are you Sure?')">Edit</button>
+</form> 

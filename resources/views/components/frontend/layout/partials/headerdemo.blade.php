@@ -1,6 +1,5 @@
  
- <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
@@ -29,7 +28,6 @@
 <script src="https://kit.fontawesome.com/496c26838e.js" crossorigin="anonymous"></script>
 </head>
 <body>
- 
 <header>
    <div class="header-top-bar">
        <div class="container">
@@ -81,13 +79,8 @@
              <li class="nav-item dropdown">
                <a class="nav-link" href="home.php" id="dropdown02" data-toggle="">BUY BOOK <i class="icofont-thin-down"></i></a>
                <ul class="dropdown-menu">
-                {{-- @foreach ($options as $option)
-                <li><a class="dropdown-item" href="">{{ $option->title }}</a></li>
-                @endforeach --}}
-                 
-                   
-                       <li><a class="dropdown-item" href="{{ route('bestbook') }}">BEST SELL BOOK</a></li>
-                    <li><a class="dropdown-item" href="{{ route('newcollection') }}">NEW COLLECTION</a></li>
+                   <li><a class="dropdown-item" href="{{ route('bestbook') }}">BEST SELL BOOK</a></li>
+                   <li><a class="dropdown-item" href="{{ route('newcollection') }}">NEW COLLECTION</a></li>
                    <li><a class="dropdown-item" href="{{ route('oldbook') }}">OLD BOOK</a></li>
                    <li><a class="dropdown-item" href="{{ route('getdonate') }}">GET DONATE BOOK</a></li>
                </ul>
@@ -137,7 +130,5 @@
        </div>
    </nav>
 </header>
- 
-
 </body>
 </html>

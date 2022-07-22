@@ -11,13 +11,12 @@
         <div class="container d-flex justify-content-center">
             @if(isset($banner->image))
             <div class="card ">
-                <img src="{{ asset('/storage/banner/' . $banner->image) }}" alt="Banner"style="width:800px">
+                <img src="{{ asset('/storage/banner/' . $banner->image) }}" alt="Banner"style="width:100%">
             </div>
             @endif
         </div>
 
-
-
+<section class="gray-bg">
 <div class="container mt-2 ">
     <div class="row justify-content-center">
         <div class="col-lg-7">
@@ -43,29 +42,28 @@
 </div>
 
 
-<div class="container card w-50">
-<form class="form-horizontal" role="form" action="{{ route('donatebooks.store') }}" method="post" enctype="multipart/form-data">
-    @csrf
-   <div class="bg-info">
-    <h2 class="text-center">Donate Book</h2>
-   </div>
-        <br> <br><br>
-        <x-backend.alertmessage.alertmessage type="success"/>
-        {{-- use components --}}
-        <x-frontend.form.input name="fullname" text="Full Name" type="text" :value=" old('fullname')" />
-        <x-frontend.form.input name="email" text="Email" type="text" :value="old('email')"/>
-        <x-frontend.form.input name="address" text="Address" type="text" :value="old('address')"/>
-        <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
-        <x-frontend.form.input name="booktitle" text="Book Title" type="text" :value="old('booktitle')"/>
-        <x-frontend.form.input name="bookauthor" text="Book Author" type="text" :value="old('bookauthor')"/>
-        <x-frontend.form.input name="bookedition" text="Book Edition" type="text" :value="old('bookedition')"/>
-        <x-frontend.form.input name="bookquantity" text="Book Quantity" type="number" :value="old('bookquantity')"/>
-        <x-frontend.form.input name="bookimage" text="Book Image" type="file"/>
-
-          <div class="form-group" style="padding-left: 20px; color: gray;">
-              <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-          </div>
-
-    </form>  <!-- /form -->
+<div class="card w-50 mx-auto mb-3">
+<x-frontend.form.card_header text="Donate Your Book"/> 
+ <div class="card-body">
+    <form class="form-horizontal" role="form" action="{{ route('donatebooks.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
+            <x-backend.alertmessage.alertmessage type="success"/>
+            <x-frontend.form.input name="fullname" text="Full Name" type="text" :value=" old('fullname')" />
+            <x-frontend.form.input name="email" text="Email" type="text" :value="old('email')"/>
+            <x-frontend.form.input name="address" text="Address" type="text" :value="old('address')"/>
+            <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
+            <x-frontend.form.input name="booktitle" text="Book Title" type="text" :value="old('booktitle')"/>
+            <x-frontend.form.input name="bookauthor" text="Book Author" type="text" :value="old('bookauthor')"/>
+            <x-frontend.form.input name="bookedition" text="Book Edition" type="text" :value="old('bookedition')"/>
+            <x-frontend.form.input name="bookquantity" text="Book Quantity" type="number" :value="old('bookquantity')"/>
+            <x-frontend.form.input name="bookimage" text="Book Image" type="file"/>
+    
+              <div class="form-group" style="padding-left: 20px; color: gray;">
+                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+              </div>
+    
+    </form> 
+ </div>
 </div>
 </x-frontend.layout.master>
+</section>

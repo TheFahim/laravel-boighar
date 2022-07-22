@@ -12,7 +12,7 @@
                             <a href="{{ route('bookdetails', ['bookdetail' => $sellbook->id]) }}"><img name="newbook_img"
                                     class="card-img-top img-fluid"
                                     src="{{ asset('storage/' . $imagefile . '/' . $sellbook->bookimage) }}" alt=""
-                                    class="w-70 mx-auto p-3" style=" height:150px "></a>
+                                    class="w-70 mx-auto" style=" height:150px,width:150px"></a>
 
                             <div class="card-body">
                                 <h6 name="">Name : {{ $sellbook->booktitle }}</h6>

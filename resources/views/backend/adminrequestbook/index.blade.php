@@ -48,8 +48,8 @@
                             <x-backend.buttonlink.editlink root="donatebook.edit" id="{{ $donatebooklist->id }}" idname="donatebook"/>
                             <x-backend.buttonlink.deletelink root="donatebook.destroy" id="{{ $donatebooklist->id }}" idname="donatebook"/> --}}
                              
-                            <x-backend.buttonlink.viewlink href="{{ route('requestbooks.show',['requestbook'=>$requestbook->id ])}}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('requestbooks.edit',['requestbook'=>$requestbook->id ])}}"/>
+                            <x-backend.buttonlink.viewlink action="{{ route('requestbooks.show',['requestbook'=>$requestbook->id ])}}"/>
+                            <x-backend.buttonlink.editlink action="{{ route('requestbooks.edit',['requestbook'=>$requestbook->id ])}}"/>
                             <x-backend.buttonlink.deletelink action="{{ route('requestbooks.destroy',['requestbook'=>$requestbook->id ])}}"/>
                         </div>
                     </td>

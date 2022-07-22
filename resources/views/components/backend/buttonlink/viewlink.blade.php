@@ -1,3 +1,5 @@
- 
 
- <a {{ $attributes }}><button class="btn  d-flex btn btn-outline-success btn-sm "><i class="fa-solid fa-eye"></i></button></a>
+ <form method="GET" {{ $attributes }}>
+    @csrf
+    <button type="submit" class="btn d-flex btn btn-outline-info btn-sm" onclick="return confirm('Are you Sure?')">View</button>
+</form> 

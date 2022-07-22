@@ -2,10 +2,11 @@
     @slot('title')
         BookDetails
     @endslot
+    <section class="section gray-bg ">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <img src="{{ asset('storage/sellbooks/' . $bookdetail->bookimage) }}" alt="">
+                <img src="{{ asset('storage/sellbooks/' . $bookdetail->bookimage) }}" alt="" style="width:300px;height:300px" class="mx-auto">
 
 
             </div>
@@ -110,5 +111,5 @@
             @endforeach
         </div>
     </div>
-
+</section>
 </x-frontend.layout.master>

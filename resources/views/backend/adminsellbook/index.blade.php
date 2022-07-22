@@ -40,8 +40,8 @@
                     <td class="text-center"><img src="{{asset('/storage/sellbooks/'.$sellbook->bookimage)}}" alt="" style="width:50px;height:50px"></td>
                     <td>
                         <div class="d-flex ">
-                            <x-backend.buttonlink.viewlink  href="{{ route('sellbooks.show',['sellbook'=>$sellbook->id ])}}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('sellbooks.edit',['sellbook'=>$sellbook->id ])}}"/>
+                            <x-backend.buttonlink.viewlink  action="{{ route('sellbooks.show',['sellbook'=>$sellbook->id ])}}"/>
+                            <x-backend.buttonlink.editlink action="{{ route('sellbooks.edit',['sellbook'=>$sellbook->id ])}}"/>
                             <x-backend.buttonlink.deletelink action="{{ route('sellbooks.destroy',['sellbook'=>$sellbook->id ])}}"/>
                         </div>
                     </td>

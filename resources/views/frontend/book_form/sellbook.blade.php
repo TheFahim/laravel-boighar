@@ -3,11 +3,11 @@
     <div class="container d-flex justify-content-center">
         @if(isset($banner->image))
         <div class="card ">
-            <img src="{{ asset('/storage/banner/' . $banner->image ) }}" alt="Banner"style="width:800px">
+            <img src="{{ asset('/storage/banner/' . $banner->image ) }}" alt="Banner"style="width:100%">
         </div>
         @endif
     </div>
-<section class="" style="">
+<section class="gray-bg" style="">
 
 
 <div class="container mt-2 ">
@@ -35,14 +35,14 @@
 </div>
 
 
-<div class="container card w-50">
+<div class="mx-auto card w-50  rounded mb-3">
+   <x-frontend.form.card_header text="Sell your book"/>
+   <div class="card-body">
     <form class="form-horizontal" role="form" action="{{ route('sellbooks.store') }}" method="post" enctype="multipart/form-data">
 
         @csrf
         @method('post')
-            <div class="bg-info">
-                <h2 class="text-center">Sell Your Book</h2>
-            </div>
+            
             <br>
             <x-backend.alertmessage.alertmessage type="success"/>
 
@@ -66,19 +66,12 @@
                 <button type="submit"class="btn btn-info" name="submit">Submit</button>
               </div>
 
-
-
-
             </div>
+        </form>   
+   </div>
+    
+</div>
 
-
-
-        </form>  <!-- /form -->
-    </div>
-
-
-
-
-
-</section>
+ 
 </x-frontend.layout.master>
+</section>
