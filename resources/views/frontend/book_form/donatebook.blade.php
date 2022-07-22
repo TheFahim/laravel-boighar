@@ -9,12 +9,14 @@
 
 
         <div class="container d-flex justify-content-center">
+            @if(isset($banner->image))
             <div class="card ">
                 <img src="{{ asset('/storage/banner/' . $banner->image) }}" alt="Banner"style="width:800px">
             </div>
+            @endif
         </div>
 
-	
+
 
 <div class="container mt-2 ">
     <div class="row justify-content-center">
