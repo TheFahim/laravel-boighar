@@ -5,9 +5,10 @@
 <div class="card mb-4 mt-3">
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
-        Book Category
-        <a href="{{ route('categories.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New Category</button></a>
-       <a class="btn btn-outline-info btn-sm text-black" href="{{route('categories.trash') }}">Trash</a>
+        Category Trash List
+        <a href="{{ route('categories.index') }}"> <button class=" btn-sm btn btn-outline-primary"><i class="fa-solid fa-backward"></i></button></a>
+     
+      
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">
@@ -34,17 +35,20 @@
                     <td>{{ $category->route }}</td>
                     <td>{{ $category->is_active ? 'Active' : 'In Active'  }}</td>
                     <td>
-                        <div class="d-flex">
-                            <x-backend.buttonlink.viewlink  href="{{ route('categories.show', ['category' => $category->id]) }}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('categories.edit', ['category' => $category->id]) }}"/>
-                           
-                            <form method="post" action="{{ route('categories.destroy', ['category' => $category->id]) }}" style="display:inline">
+                    <div class="d-flex">
+                    <form method="post" action="{{ route('categories.restore', ['id' => $category->id]) }}"  style="display:inline">
+                                @csrf
+                                @method('patch')
+
+                                <x-backend.buttonlink.restorelink color="warning" onclick="return confirm('Are you sure want to restore?')" text="Restore" />
+                    </form>
+                    
+                    <form method="post" action="{{ route('categories.delete', ['id' => $category->id]) }}"  style="display:inline">
                                 @csrf
                                 @method('delete')
-                                <x-backend.buttonlink.deletelink color="danger" onclick="return confirm('Are you sure want to delete?')" text="Delete" />
-                            </form>
-
-                        </div>
+                                <x-backend.buttonlink.deletelink color="danger" onclick="return confirm('Are you sure want to delete permanently?')" text="Delete" />
+                    </form>
+                   </div>
                         
                 
                         

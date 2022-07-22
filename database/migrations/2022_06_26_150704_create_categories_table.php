@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->string('route')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
+            $table->softDeletes();
             
 
             
