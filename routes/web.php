@@ -91,15 +91,21 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 Route::middleware('auth')->group(function(){
     Route::resource('sellbooks', SellbookController::class);
     Route::resource('donatebooks', DonatebookController::class);
-    Route::resource('requestbooks', RequestbookController::class);
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
     
     Route::resource('getdonates', Getdonatecontoller::class);
+
     Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
     Route::patch('/categories/trash/{id}', [CategoryController::class,'restore'])->name('categories.restore');
     Route::delete('/categories/trash/{id}', [CategoryController::class,'delete'])->name('categories.delete');
     Route::resource('categories', CategoryController::class);
+
+    Route::get('/requestbooks/trash', [RequestbookController::class,'trash'])->name('requestbooks.trash');
+    Route::patch('/requestbooks/trash/{id}', [RequestbookController::class,'restore'])->name('requestbooks.restore');
+    Route::delete('/requestbooks/trash/{id}', [RequestbookController::class,'delete'])->name('requestbooks.delete');
+    Route::resource('requestbooks', RequestbookController::class);
+
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
     Route::resource('banners', BannerController::class);
