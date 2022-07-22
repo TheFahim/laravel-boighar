@@ -12,7 +12,8 @@
             <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add
                     Product</button></a>
 
-            <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-info">Add Book</button></a>
+            <a href="{{ route('donatebooks.trash') }}"> <button
+                    class="btn btn-outline-info btn-sm text-black">Trash</button></a>
 
         </div>
         <x-backend.alertmessage.alertmessage type="success" />
@@ -28,7 +29,7 @@
                         <th>Book Title</th>
                         <th>Book Author</th>
                         <th>Book Edition</th>
-                        <th>Quantity</th>bookquantity
+                        <th>Quantity</th>
                         <th>Book Image</th>
                         <th>Status</th>
                         <th>Approve</th>
@@ -54,18 +55,21 @@
                                     style="width:50px;height:50px"></td>
                             <td>{{ $donatebook->status }}</td>
                             <td>
-                                <a  class="btn  d-flex btn btn-outline-success btn-sm "href="{{route('approved',$donatebook->id)}}"><i class="fa-regular fa-circle-check"></i></a>
+                                <a
+                                    class="btn  d-flex btn btn-outline-success btn-sm "href="{{ route('approved', $donatebook->id) }}"><i
+                                        class="fa-regular fa-circle-check"></i></a>
                             </td>
 
                             <td>
-                                <a class="btn  d-flex btn btn-outline-danger btn-sm"href="{{route('cancle',$donatebook->id)}}"><i class="fa-solid fa-xmark"></i></a>
+                                <a
+                                    class="btn  d-flex btn btn-outline-danger btn-sm"href="{{ route('cancle', $donatebook->id) }}"><i
+                                        class="fa-solid fa-xmark"></i></a>
                             </td>
 
                             <td>
                                 <div class="d-flex">
-                                    {{-- <x-backend.buttonlink.viewlink root="donatebook.show" id="{{ $donatebooklist->id }}" idname="donatebook"/>
-                            <x-backend.buttonlink.editlink root="donatebook.edit" id="{{ $donatebooklist->id }}" idname="donatebook"/>
-                            <x-backend.buttonlink.deletelink root="donatebook.destroy" id="{{ $donatebooklist->id }}" idname="donatebook"/> --}}
+
+
 
                                     <x-backend.buttonlink.viewlink
                                         href="{{ route('donatebooks.show', ['donatebook' => $donatebook->id]) }}" />
@@ -75,18 +79,6 @@
                                         action="{{ route('donatebooks.destroy', ['donatebook' => $donatebook->id]) }}" />
                                 </div>
 
-                                {{-- <a href="{{ route('sellbook.show',[
-                            'sellbook'=>$sellbooklist->id
-                         ]) }}">
-                            <i class="fa-solid fa-pencil text-success"style="margin-left:20px"></i>
-                        </a> --}}
-                                {{-- <form action="{{ route('sellbook.destroy',['sellbook'=>$sellbooklist->id] )}}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn text-danger d-inline" onclick="confirm('Are you Sure?')"><i class="fa-solid fa-trash-can"></i></button>
-
-
-                     </form> --}}
 
 
                             </td>

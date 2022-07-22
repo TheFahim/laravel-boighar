@@ -92,5 +92,44 @@ public function destroy($requestbook)
       return redirect()->route('requestbooks.index')->withMessage('Successfully Data Deleted');
 }
 
+public function trash()
+{
+    $requestbooks= requestbook::onlyTrashed()->paginate(2);
+    return view('backend.adminrequestbook.trash', compact('requestbooks'));
+
+}
+
+public function restore( $id)
+{
+    try {
+        $requestbook= requestbook::onlyTrashed()->whereId($id)->firstOrFail();
+        $requestbook->restore();
+        return redirect()->back()->withMessage('Successfully Restored!');
+        
+    } catch (QueryException $e) {
+        Log::error($e->getMessage());
+        return redirect()->back()->withErrors($e->getMessage());
+        
+    }
+}
+public function delete($id)
+{
+      
+    try {
+
+        $requestbook = requestbook::onlyTrashed()->whereId($id)->firstOrFail();
+        $requestbook->forceDelete();
+        return redirect()->route('requestbooks.index')->withMessage('Successfully Deleted!');
+    } catch (QueryException $e) {
+        Log::error($e->getMessage());
+        return redirect()->back()->withErrors($e->getMessage());
+   
+        
+
+    }
+
+}
+
+
 
 }
