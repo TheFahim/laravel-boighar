@@ -26,7 +26,8 @@ class FaqRequest extends FormRequest
         return [
             'name' => 'required|max:255|',
             'email' => 'required|email',
-            'comment' => 'required|max:255|'
+            'comment' => 'required|max:255|',
+            
         ];
     }
 }

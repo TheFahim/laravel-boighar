@@ -33,10 +33,18 @@
               <tbody>
               </tbody>
             </table>
-
-          <div class="cart-footer bg-info">
           
-          </div>
+            <form class="row g-3" method="POST" action="{{route('faqs.update',['faq'=>$faq->id])}}">
+              @csrf
+              @method('patch')
+              <x-frontend.forms.textarea name="answer" type="text" id="answer" :value="old('answer')"/>
+              <x-frontend.form.input name="name" type="hidden" :value="old('name',$faq->name)"/>
+              <x-frontend.form.input name="email" type="hidden" :value="old('email',$faq->email)"/>
+              <x-frontend.form.input name="comment" type="hidden" :value="old('comment',$faq->comment)"/>
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+          </form>
           </div>
     </div>
      

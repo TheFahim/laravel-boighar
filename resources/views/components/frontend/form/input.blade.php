@@ -1,4 +1,4 @@
-@props(['name','text'])
+@props(['name','text'=>''])
 <div class="form-group">
     <div class="col-sm-11">
 

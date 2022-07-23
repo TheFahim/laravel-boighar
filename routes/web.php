@@ -89,17 +89,35 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 });
 
 Route::middleware('auth')->group(function(){
-    Route::resource('sellbooks', SellbookController::class);
-    Route::resource('donatebooks', DonatebookController::class);
-    Route::resource('requestbooks', RequestbookController::class);
+    
+    
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
     
     Route::resource('getdonates', Getdonatecontoller::class);
+    //category route
     Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
     Route::patch('/categories/trash/{id}', [CategoryController::class,'restore'])->name('categories.restore');
     Route::delete('/categories/trash/{id}', [CategoryController::class,'delete'])->name('categories.delete');
     Route::resource('categories', CategoryController::class);
+    //requestbook route
+    Route::get('/requestbooks/trash', [RequestbookController::class,'trash'])->name('requestbooks.trash');
+    Route::patch('/requestbooks/trash/{id}', [RequestbookController::class,'restore'])->name('requestbooks.restore');
+    Route::delete('/requestbooks/trash/{id}', [RequestbookController::class,'delete'])->name('requestbooks.delete');
+    Route::resource('requestbooks', RequestbookController::class);
+    //sellbook route
+    Route::get('/sellbooks/trash', [SellbookController::class,'trash'])->name('sellbooks.trash');
+    Route::patch('/sellbooks/trash/{id}', [SellbookController::class,'restore'])->name('sellbooks.restore');
+    Route::delete('/sellbooks/trash/{id}', [SellbookController::class,'delete'])->name('sellbooks.delete');
+    Route::resource('sellbooks', SellbookController::class); 
+
+    //Donate-book route
+    Route::get('/donatebooks/trash', [DonatebookController::class,'trash'])->name('donatebooks.trash');
+    Route::patch('/donatebooks/trash/{id}', [DonatebookController::class,'restore'])->name('donatebooks.restore');
+    Route::delete('/donatebooks/trash/{id}', [DonatebookController::class,'delete'])->name('donatebooks.delete');
+    Route::resource('donatebooks', DonatebookController::class);
+
+
     Route::get('/user',[UserController::class,'user'])->name('user.register');
     Route::resource('faqs',FaqController::class);  
     Route::resource('banners', BannerController::class);

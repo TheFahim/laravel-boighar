@@ -18,6 +18,7 @@ class CreateFaqsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('comment');
+            $table->string('answer')->nullable();
             $table->timestamps();
         });
     }

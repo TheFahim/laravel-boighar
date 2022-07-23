@@ -103,4 +103,44 @@ class DonatebookController extends Controller
           return redirect()->route('donatebooks.index')->withMessage('Successfully Data Deleted');
     }
 
+    public function trash()
+{
+    $donatebooks= donatebook::onlyTrashed()->paginate(2);
+    return view('backend.admindonatebook.trash', compact('donatebooks'));
+
+}
+
+public function restore( $id)
+{
+    try {
+        $donatebook= donatebook::onlyTrashed()->whereId($id)->firstOrFail();
+        $donatebook->restore();
+        return redirect()->back()->withMessage('Successfully Restored!');
+        
+    } catch (QueryException $e) {
+        Log::error($e->getMessage());
+        return redirect()->back()->withErrors($e->getMessage());
+        
+    }
+}
+public function delete($id)
+{
+      
+    try {
+
+        $donatebook = donatebook::onlyTrashed()->whereId($id)->firstOrFail();
+        $donatebook->forceDelete();
+        return redirect()->route('donatebooks.index')->withMessage('Successfully Deleted!');
+    } catch (QueryException $e) {
+        Log::error($e->getMessage());
+        return redirect()->back()->withErrors($e->getMessage());
+   
+        
+
+    }
+
+}
+
+
+
 }

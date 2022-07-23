@@ -16,6 +16,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Comment</th>
+            <th scope="col">Answer Active</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -26,6 +27,7 @@
             <td>{{$faq->name}}</td>
             <td>{{$faq->email}}</td>
             <td>{{$faq->comment}}</td>
+            <td>{{ $faq->answer ? 'Active' : 'In Active' }}</td>
             <td>
               <div class="d-flex ">
                   

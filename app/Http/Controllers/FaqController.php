@@ -90,7 +90,8 @@ class FaqController extends Controller
             $faq->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'comment' => $request->comment
+                'comment' => $request->comment,
+                'answer' => $request->answer,
             ]);
 
             return redirect()->route('faqs.index')->withMessage('Successfully Updated');

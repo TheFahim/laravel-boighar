@@ -23,6 +23,7 @@ class CreateRequestbookTable extends Migration
             $table->string('address')->default('nadim');
             $table->string('bookimage')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

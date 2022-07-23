@@ -14,17 +14,21 @@
  <div class="card w-75 mx-auto mb-5">
     <div class="accordion accordion-flush" id="accordionFlushExample">
         @foreach ($faqs as $faq)
-
-        <div class="accordion-item">
+         @if (@isset($faq->answer))
+             
+         
+         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingOne">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
              {{ $faq->comment }}
             </button>
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+            <div class="accordion-body">{{ $faq->answer }}</div>
           </div>
         </div>  
+         @endif
+       
         @endforeach    
  </div>
 </div>
@@ -42,7 +46,7 @@
                     </div>
                     <br>
                     <div class="col-12">
-                        <x-frontend.forms.textarea name="question" type="text" id="comment" :value="old('comment')"/>
+                        <x-frontend.forms.textarea name="comment" type="text" id="comment" :value="old('comment')"/>
                     </div>
                    
                     </div>
