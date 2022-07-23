@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\Banner;
+
 use App\Models\requestbook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
 use App\Http\Requests\RequestbookRequest;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,6 +33,7 @@ public function store(RequestbookRequest $request){
           'mobile'=>$request->mobile,
           'address'=>$request->address,
           'bookimage'=>$filename??"",
+          'status'=>'In progress'
 
    ]
    );
@@ -43,8 +47,6 @@ public function store(RequestbookRequest $request){
 
 public function index()
 {
-
-
 
     $requestbooks=requestbook::all();
     return view('backend.adminrequestbook.index',compact('requestbooks'));
@@ -105,16 +107,16 @@ public function restore( $id)
         $requestbook= requestbook::onlyTrashed()->whereId($id)->firstOrFail();
         $requestbook->restore();
         return redirect()->back()->withMessage('Successfully Restored!');
-        
+
     } catch (QueryException $e) {
         Log::error($e->getMessage());
         return redirect()->back()->withErrors($e->getMessage());
-        
+
     }
 }
 public function delete($id)
 {
-      
+
     try {
 
         $requestbook = requestbook::onlyTrashed()->whereId($id)->firstOrFail();
@@ -123,12 +125,30 @@ public function delete($id)
     } catch (QueryException $e) {
         Log::error($e->getMessage());
         return redirect()->back()->withErrors($e->getMessage());
-   
-        
+
+
 
     }
 
 }
+
+public function approved ($id)
+    {
+
+        $data = requestbook::findOrFail($id);
+        $data->status='Approved';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function cancle ($id)
+    {
+
+        $data = requestbook::findOrFail($id);
+        $data->status='Cancled';
+        $data->save();
+        return redirect()->back();
+    }
 
 
 

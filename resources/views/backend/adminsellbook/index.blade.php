@@ -8,7 +8,7 @@
         Sell Book
        <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
        <a href="{{ route('sellbooks.trash') }}"> <button class="btn btn-outline-info btn-sm text-black">Trash</button></a>
-   
+
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">
@@ -23,14 +23,17 @@
                     <th>Price</th>
                     <th>Mobile</th>
                     <th>Book Image</th>
+                    <th>Status</th>
+                        <th>Approve</th>
+                        <th>Cancled</th>
                     <th>Action</th>
                 </tr>
             </thead>
-         
+
             <tbody>
                 @foreach ($sellbooks as $sellbook)
-                    
-               
+
+
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $sellbook->booktitle }}</td>
@@ -40,6 +43,18 @@
                     <td>{{ $sellbook->price }}</td>
                     <td>{{ $sellbook->mobile }}</td>
                     <td class="text-center"><img src="{{asset('/storage/sellbooks/'.$sellbook->bookimage)}}" alt="" style="width:50px;height:50px"></td>
+                    <td>{{ $sellbook->status }}</td>
+                    <td>
+                        <a
+                            class="btn  d-flex btn btn-outline-success btn-sm "href="{{ route('sellapproved', $sellbook->id) }}"><i
+                                class="fa-regular fa-circle-check"></i></a>
+                    </td>
+
+                    <td>
+                        <a
+                            class="btn  d-flex btn btn-outline-danger btn-sm"href="{{ route('sellcancle', $sellbook->id) }}"><i
+                                class="fa-solid fa-xmark"></i></a>
+                    </td>
                     <td>
                         <div class="d-flex ">
                             <x-backend.buttonlink.viewlink  action="{{ route('sellbooks.show',['sellbook'=>$sellbook->id ])}}"/>
@@ -51,8 +66,8 @@
                 @endforeach
             </tbody>
         </table>
-       
+
     </div>
 </div>
- 
+
 </x-backend.layout.master>

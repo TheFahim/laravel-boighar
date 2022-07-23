@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\donatebook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
 use App\Http\Requests\DonatebookRequest;
 
 class DonatebookController extends Controller
@@ -30,6 +32,7 @@ class DonatebookController extends Controller
         'bookedition'=>$request->bookedition ,
         'bookquantity'=>$request->bookquantity,
         'bookimage'=>$filename,
+        'status'=>'In progres'
        ]
        );
        return redirect()->route('donatebooks.create')->withMessage('Successfully submitted');
@@ -44,7 +47,7 @@ class DonatebookController extends Controller
     {
 
         $donatebooks=donatebook::all();
-        
+
         return view('backend.admindonatebook.index',compact('donatebooks'));
     }
 
@@ -116,16 +119,16 @@ public function restore( $id)
         $donatebook= donatebook::onlyTrashed()->whereId($id)->firstOrFail();
         $donatebook->restore();
         return redirect()->back()->withMessage('Successfully Restored!');
-        
+
     } catch (QueryException $e) {
         Log::error($e->getMessage());
         return redirect()->back()->withErrors($e->getMessage());
-        
+
     }
 }
 public function delete($id)
 {
-      
+
     try {
 
         $donatebook = donatebook::onlyTrashed()->whereId($id)->firstOrFail();
@@ -134,8 +137,8 @@ public function delete($id)
     } catch (QueryException $e) {
         Log::error($e->getMessage());
         return redirect()->back()->withErrors($e->getMessage());
-   
-        
+
+
 
     }
 

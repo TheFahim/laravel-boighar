@@ -15,11 +15,11 @@ class PublicProductController extends Controller
        return view('frontend.product_page.new_collectionbook');
    }
    public function oldbook(){
-       $sellbooks=sellbook::all();
+       $sellbooks=sellbook::where('status','Approved')->get();
        return view('frontend.product_page.oldbook',compact('sellbooks'));
    }
    public function getdonate(){
-       $donatebooks=donatebook::all();
+       $donatebooks=donatebook::where('status','Approved')->get();
        return view('frontend.product_page.getdonate',compact('donatebooks'));
    }
    public function earnpoint(){

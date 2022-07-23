@@ -21,14 +21,15 @@
                     <th>Book Title</th>
                     <th>Book Author</th>
                     <th>Book Edition</th>
+                    <th>Description</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
-         
+
             <tbody>
                 @foreach ($getdonate as $sellbook)
-                    
-               
+
+
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $sellbook->fullname }}</td>
@@ -38,19 +39,19 @@
                     <td>{{ $sellbook->booktitle }}</td>
                     <td>{{ $sellbook->bookauthor }}</td>
                     <td>{{ $sellbook->bookedition }}</td>
-                     
+                    <td>{{ $sellbook->describe }}</td>
                     <td>
                         <div class="d-flex ">
                             <x-backend.buttonlink.viewlink  href=""/>
-                             
+
                         </div>
-                    </td> 
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-       
+
     </div>
 </div>
- 
+
 </x-backend.layout.master>

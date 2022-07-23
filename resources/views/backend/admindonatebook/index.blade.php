@@ -1,5 +1,6 @@
 <x-backend.layout.master>
     @slot('title')
+ 
     Donate Book
     @endslot
 <div class="card mb-4">
@@ -57,7 +58,7 @@
                 @endforeach
             </tbody>
         </table>
+ 
     </div>
 </div>
-
 </x-backend.layout.master>

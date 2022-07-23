@@ -10,6 +10,5 @@ class donatebook extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table='donatebooks';
-    protected $fillable=['fullname','email','address','mobile','booktitle','bookauthor','bookedition','bookquantity','bookimage'];
+    protected $fillable=['fullname','email','address','mobile','booktitle','bookauthor','bookedition','bookquantity','bookimage','status'];
 }
-    

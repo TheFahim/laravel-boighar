@@ -21,6 +21,7 @@ class SellbookFactory extends Factory
             'bookquantity'=>$this->faker->randomDigitNot(2),
             'price'=>$this->faker->randomNumber(5, false),
             'mobile'=>$this->faker->e164PhoneNumber() ,
+            'status'=>'In progress',
             'bookimage'=>$this->faker->imageUrl(640, 480, 'animals', true),
             'user_id'=>1
         ];

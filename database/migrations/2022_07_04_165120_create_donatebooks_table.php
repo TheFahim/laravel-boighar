@@ -24,6 +24,7 @@ class CreateDonatebooksTable extends Migration
             $table->string('bookedition',100)->nullable();
             $table->integer('bookquantity')->nullable();
             $table->string('bookimage',100);
+            $table->string('status',100);
             $table->timestamps();
             $table->softDeletes();
         });

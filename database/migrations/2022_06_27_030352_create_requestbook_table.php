@@ -20,6 +20,7 @@ class CreateRequestbookTable extends Migration
             $table->string('bookedition',100)->nullable();
             $table->integer('bookquantity');
             $table->string('mobile');
+            $table->string('status');
             $table->string('address')->default('nadim');
             $table->string('bookimage')->nullable();
             $table->timestamps();

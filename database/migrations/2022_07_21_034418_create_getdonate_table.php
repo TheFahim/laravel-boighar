@@ -19,9 +19,10 @@ class CreateGetdonateTable extends Migration
             $table->string('email',100);
             $table->string('address');
             $table->string('mobile');
+            $table->string('describe')->nullable();
             $table->string('booktitle',100);
-            $table->string('bookauthor',100)->nullable();
-            $table->string('bookedition',100)->nullable();
+            $table->string('bookauthor',100);
+            $table->string('bookedition',100);
             $table->timestamps();
         });
     }

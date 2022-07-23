@@ -24,47 +24,50 @@
                      <p>2. Give Clear Information</p>
 
 
-                     <div class="btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                          <input type="checkbox" checked autocomplete="off"> SELL YOUR BOOKS
-                        </label>
-                      </div>
+                     <button type="button" class="btn btn-primary" data-bs-toggle="modal tooltip"  title="Here you can see video how to sell your book" data-bs-target="#myModal">
+                        See Video
+                      </button>
+                     
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="mx-auto card w-50  rounded mb-3">
-   <x-frontend.form.card_header text="Sell your book"/>
+<div class="mx-auto card w-75 rounded mb-5">
+   <x-frontend.form.card_header text="Sell your book" class="text-white rounded"/>
    <div class="card-body">
-    <form class="form-horizontal" role="form" action="{{ route('sellbooks.store') }}" method="post" enctype="multipart/form-data">
+    <form class="row g-3" role="form" action="{{ route('sellbooks.store') }}" method="post" enctype="multipart/form-data">
 
         @csrf
         @method('post')
             
             <br>
             <x-backend.alertmessage.alertmessage type="success"/>
+            <div class="col-md-6">
+                <x-frontend.form.input name="booktitle" text="Book Title" type="text" :value="old('booktitle')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="bookauthor" text="Book Author" type="text" :value="old('bookauthor')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="bookedition" text="Book Edition" type="text" :value="old('bookedition')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="bookquantity" text="Book Quantity" type="number" :value="old('bookquantity')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="price" text="Sell Price" type="text"  :value="old('price')"/>
+            </div>
+            <div class="col-md-12">
+                <x-frontend.form.input name="bookimage" text="Book Image" type="file" />
+            </div>
 
-            <x-frontend.form.input name="booktitle" text="Book Title" type="text" :value="old('booktitle')"/>
-
-            <x-frontend.form.input name="bookauthor" text="Book Author" type="text" :value="old('bookauthor')"/>
-
-            <x-frontend.form.input name="bookedition" text="Book Edition" type="text" :value="old('bookedition')"/>
-
-            <x-frontend.form.input name="bookquantity" text="Book Quantity" type="text" :value="old('bookquantity')"/>
-
-            <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
-
-            <x-frontend.form.input name="price" text="Sell Price" type="text"  :value="old('price')"/>
-
-            <x-frontend.form.input name="bookimage" text="Book Image" type="file" />
-
-
-
-            <div class="form-group" style="padding-left: 20px; color: gray;">
-                <button type="submit"class="btn btn-info" name="submit">Submit</button>
-              </div>
+            <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">Submit</button>
+             
 
             </div>
         </form>   
@@ -72,6 +75,29 @@
     
 </div>
 
- 
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Request Book video</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item w-100 " src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+              </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
 </x-frontend.layout.master>
 </section>

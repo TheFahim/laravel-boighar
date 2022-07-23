@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Donet;
+
 use App\Models\donatebook;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,24 @@ class DonetController extends Controller
         return view('frontend.book_form.donaterequest',compact('donet'));
     }
 
-    
+    public function approved ($id)
+    {
+
+        $data = donatebook::findOrFail($id);
+        $data->status='Approved';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function cancle ($id)
+    {
+
+        $data = donatebook::findOrFail($id);
+        $data->status='Cancled';
+        $data->save();
+        return redirect()->back();
+    }
+
 
 
 

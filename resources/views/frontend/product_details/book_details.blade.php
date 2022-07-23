@@ -14,6 +14,7 @@
                 <div class="row">
                     <h5><b>Book Title: </b>{{ $bookdetail->booktitle }}</h5>
                 </div>
+                
                 <div class="row">
                     <h5> <b>Price: </b>{{ $bookdetail->price }}&#2547;</h5>
                     <h5> <b>Book Author: </b>{{ $bookdetail->bookauthor }}</h5>

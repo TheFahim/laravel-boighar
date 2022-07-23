@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\sellbook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\SellbookRequest;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 
 class SellbookController extends Controller
 {
- 
+
 
 
 
@@ -32,6 +34,7 @@ public function store(SellbookRequest $request){
     'bookquantity'=>$request->bookquantity,
     'mobile'=>$request->mobile,
     'price'=>$request->price,
+    'status'=>'In progress',
     'bookimage'=>$filename??'',
    ]
    );
@@ -57,7 +60,7 @@ public function index()
     {
 
      $sellbookshow=sellbook::findOrFail($sellbook);
-     return view('backend.adminsellbook.show',compact('sellbookshow'));    
+     return view('backend.adminsellbook.show',compact('sellbookshow'));
 
 
 
@@ -117,16 +120,16 @@ public function restore( $id)
         $sellbook= sellbook::onlyTrashed()->whereId($id)->firstOrFail();
         $sellbook->restore();
         return redirect()->back()->withMessage('Successfully Restored!');
-        
+
     } catch (QueryException $e) {
         Log::error($e->getMessage());
         return redirect()->back()->withErrors($e->getMessage());
-        
+
     }
 }
 public function delete($id)
 {
-      
+
     try {
 
         $sellbook = sellbook::onlyTrashed()->whereId($id)->firstOrFail();
@@ -135,12 +138,28 @@ public function delete($id)
     } catch (QueryException $e) {
         Log::error($e->getMessage());
         return redirect()->back()->withErrors($e->getMessage());
-   
-        
+
+
 
     }
 }
+public function approved ($id)
+    {
 
+        $data = sellbook::findOrFail($id);
+        $data->status='Approved';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function cancle ($id)
+    {
+
+        $data = sellbook::findOrFail($id);
+        $data->status='Cancled';
+        $data->save();
+        return redirect()->back();
+    }
 
 
 }

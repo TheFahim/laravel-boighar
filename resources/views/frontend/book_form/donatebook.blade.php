@@ -31,39 +31,82 @@
                      <p>2. Give Clear Information</p>
 
 
-                     <div class="btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                          <input type="checkbox" checked autocomplete="off"> Donate Your Book
-                        </label>
-                      </div>
+  
+                     <button type="button" class="btn btn-primary" data-bs-toggle="modal tooltip"  title="Here you can see video how to donate your book" data-bs-target="#myModal">
+                        See Video
+                      </button>
+                        
+                       
             </div>
         </div>
     </div>
 </div>
+ 
 
-
-<div class="card w-50 mx-auto mb-3">
-<x-frontend.form.card_header text="Donate Your Book"/> 
+<div class="card w-75 mx-auto mb-5 rounded">
+<x-frontend.form.card_header text="Donate Your Book" class="text-white rounded"/> 
  <div class="card-body">
-    <form class="form-horizontal" role="form" action="{{ route('donatebooks.store') }}" method="post" enctype="multipart/form-data">
+    <form  class="row g-3" role="form" action="{{ route('donatebooks.store') }}" method="post" enctype="multipart/form-data">
         @csrf
             <x-backend.alertmessage.alertmessage type="success"/>
-            <x-frontend.form.input name="fullname" text="Full Name" type="text" :value=" old('fullname')" />
-            <x-frontend.form.input name="email" text="Email" type="text" :value="old('email')"/>
-            <x-frontend.form.input name="address" text="Address" type="text" :value="old('address')"/>
-            <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
-            <x-frontend.form.input name="booktitle" text="Book Title" type="text" :value="old('booktitle')"/>
-            <x-frontend.form.input name="bookauthor" text="Book Author" type="text" :value="old('bookauthor')"/>
-            <x-frontend.form.input name="bookedition" text="Book Edition" type="text" :value="old('bookedition')"/>
-            <x-frontend.form.input name="bookquantity" text="Book Quantity" type="number" :value="old('bookquantity')"/>
-            <x-frontend.form.input name="bookimage" text="Book Image" type="file"/>
-    
-              <div class="form-group" style="padding-left: 20px; color: gray;">
-                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-              </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="fullname" text="Full Name" type="text" :value=" old('fullname')" />
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="email" text="Email" type="text" :value="old('email')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="address" text="Address" type="text" :value="old('address')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="booktitle" text="Book Title" type="text" :value="old('booktitle')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="bookauthor" text="Book Author" type="text" :value="old('bookauthor')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="bookedition" text="Book Edition" type="text" :value="old('bookedition')"/>
+            </div>
+            <div class="col-md-6">
+                <x-frontend.form.input name="bookquantity" text="Book Quantity" type="number" :value="old('bookquantity')"/>
+            </div>
+            <div class="col-md-12">
+                <x-frontend.form.input name="bookimage" text="Book Image" type="file"/>
+            </div>
+           
+              
+            <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">Submit</button>
+             
     
     </form> 
  </div>
 </div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Donate Book video</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item w-100 " src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+              </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
 </x-frontend.layout.master>
 </section>

@@ -27,12 +27,7 @@ class Getdonatecontoller extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
 
@@ -41,12 +36,13 @@ class Getdonatecontoller extends Controller
     'email'=> $request->email,
     'address'=> $request->address,
     'mobile'=> $request->mobile,
+    'describe'=>$request->describe,
     'booktitle'=>$request->booktitle ,
     'bookauthor'=> $request->bookauthor,
     'bookedition'=>$request->bookedition,
    ]
    );
-   return redirect()->back()->withMessage('Successfully submitted');
+   return redirect()->back()->withMessage('Successfully submitted Request. If your Request is approved Authority will send mail with in two days');
 
     }
 
