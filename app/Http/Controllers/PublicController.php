@@ -13,6 +13,16 @@ class PublicController extends Controller
         return view('frontend.home',compact('carousels'));
     }
   
+    //logout user
+    public function logout(Request $request){
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('homepage')->with('message','You have been logged Out');
+    }
+
     
     
 }
