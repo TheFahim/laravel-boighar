@@ -52,7 +52,7 @@ require __DIR__.'/auth.php';
 //This is frontend route
 Route::controller(PublicController::class)->group(function(){
     Route::get('/','home')->name('homepage');
-
+    Route::post('/logout',[PublicController::class,'logout'])->name('logout')->middleware('auth');
 });
 
 Route::controller(PublicProductController::class)->group(function(){
@@ -87,8 +87,16 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 
 
 });
+    Route::get('sellbooks/create',[SellbookController::class,'create'])->name('sellbooks.create');
+    Route::post('sellbooks/store',[SellbookController::class,'store'])->name('sellbooks.store');
 
-Route::middleware('auth')->group(function(){
+    Route::get('requestbooks/create',[RequestbookController::class,'create'])->name('requestbooks.create');
+    Route::post('requestbooks/store',[RequestbookController::class,'store'])->name('requestbooks.store');
+
+    Route::get('donatebooks/create',[DonatebookController::class,'create'])->name('donatebooks.create');
+    Route::post('donatebooks/store',[DonatebookController::class,'store'])->name('donatebooks.store');
+
+Route::middleware('auth','isAdmin')->group(function(){
 
 
     Route::resource('users', UserController::class);
@@ -106,20 +114,20 @@ Route::middleware('auth')->group(function(){
     Route::get('/requestbooks/trash', [RequestbookController::class,'trash'])->name('requestbooks.trash');
     Route::patch('/requestbooks/trash/{id}', [RequestbookController::class,'restore'])->name('requestbooks.restore');
     Route::delete('/requestbooks/trash/{id}', [RequestbookController::class,'delete'])->name('requestbooks.delete');
-    Route::resource('requestbooks', RequestbookController::class);
+    Route::resource('requestbooks', RequestbookController::class)->except('create','store');
     //sellbook route
     Route::get('/sellapproved/{id}',[SellbookController::class,'approved'])->name('sellapproved');
     Route::get('/sellcancle/{id}',[SellbookController::class,'cancle'])->name('sellcancle');
     Route::get('/sellbooks/trash', [SellbookController::class,'trash'])->name('sellbooks.trash');
     Route::patch('/sellbooks/trash/{id}', [SellbookController::class,'restore'])->name('sellbooks.restore');
     Route::delete('/sellbooks/trash/{id}', [SellbookController::class,'delete'])->name('sellbooks.delete');
-    Route::resource('sellbooks', SellbookController::class);
+    Route::resource('sellbooks', SellbookController::class)->except('create','store');
 
     //Donate-book route
     Route::get('/donatebooks/trash', [DonatebookController::class,'trash'])->name('donatebooks.trash');
     Route::patch('/donatebooks/trash/{id}', [DonatebookController::class,'restore'])->name('donatebooks.restore');
     Route::delete('/donatebooks/trash/{id}', [DonatebookController::class,'delete'])->name('donatebooks.delete');
-    Route::resource('donatebooks', DonatebookController::class);
+    Route::resource('donatebooks', DonatebookController::class)->except('create','store');
 
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
@@ -127,16 +135,20 @@ Route::middleware('auth')->group(function(){
     Route::resource('banners', BannerController::class);
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
+    Route::resource('faqs',FaqController::class);
+
 });
 
  
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
+ 
     Route::resource('faqs',FaqController::class);
+ 
  
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
-    Route::middleware('auth')->controller(AdminController::class)->prefix('admin')->group(function(){
+    Route::middleware('auth','isAdmin')->controller(AdminController::class)->prefix('admin')->group(function(){
         Route::get('/dashboard','dashboard')->name('admin.dashboard');
         Route::get('/productlist','productlist')->name('admin.productlist');
     });

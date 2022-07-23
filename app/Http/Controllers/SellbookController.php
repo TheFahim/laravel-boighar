@@ -13,30 +13,28 @@ class SellbookController extends Controller
 {
 
 
-
-
-
     public function create(){
         $banner=Banner::where('is_active',true)->where('option','sell book')->latest()->first();
         return view('frontend.book_form.sellbook',compact('banner'));
-}
-public function store(SellbookRequest $request){
+    }
+
+    public function store(SellbookRequest $request){
 
     if($file=$request->file('bookimage')){
         $filename=date('dmY').time().'.'.$file->getClientOriginalExtension();
         $file->move(storage_path('app/public/sellbooks'),$filename);
     }
 
-   sellbook::create([
-    'booktitle'=>$request->booktitle,
-    'bookauthor'=>$request->bookauthor,
-    'bookedition'=>$request->bookedition,
-    'bookquantity'=>$request->bookquantity,
-    'mobile'=>$request->mobile,
-    'price'=>$request->price,
-    'status'=>'In progress',
-    'bookimage'=>$filename??'',
-   ]
+    sellbook::create([
+        'booktitle'=>$request->booktitle,
+        'bookauthor'=>$request->bookauthor,
+        'bookedition'=>$request->bookedition,
+        'bookquantity'=>$request->bookquantity,
+        'mobile'=>$request->mobile,
+        'price'=>$request->price,
+        'status'=>'In progress',
+        'bookimage'=>$filename??'',
+    ]
    );
    return redirect()->route('sellbooks.create')->withMessage('Successfully submitted');
 }

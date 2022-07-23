@@ -122,6 +122,15 @@
              <ul class="dropdown-menu" aria-labelledby="dropdown03">
 
                  <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                 <li><form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <a class="dropdown-item" href="route('logout')"
+                          onclick="event.preventDefault();
+                                      this.closest('form').submit();">
+                       {{ __('Log Out') }}
+                  </a>
+                </form>
+                </li>
                  <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
                  <li><a class="dropdown-item" href="{{ route('contactus') }}">Profile Setting</a></li>
             
