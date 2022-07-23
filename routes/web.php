@@ -20,7 +20,7 @@ use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
 use App\Http\Controllers\CategoryController;
-
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +87,8 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 
 
 });
+
+Route::middleware('auth')->group(function(){
     Route::get('sellbooks/create',[SellbookController::class,'create'])->name('sellbooks.create');
     Route::post('sellbooks/store',[SellbookController::class,'store'])->name('sellbooks.store');
 
@@ -95,6 +97,8 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 
     Route::get('donatebooks/create',[DonatebookController::class,'create'])->name('donatebooks.create');
     Route::post('donatebooks/store',[DonatebookController::class,'store'])->name('donatebooks.store');
+});
+
 
 Route::middleware('auth','isAdmin')->group(function(){
 
