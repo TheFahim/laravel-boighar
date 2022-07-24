@@ -6,10 +6,11 @@
     @slot('bottomheader')
    Carousel 
     @endslot
-    <div class="card-header">
+    <div class="card-header"style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
        Carousel
-       <a href="{{ route('carousels.create') }}"> <button class="btn btn-success">Add Carousel</button></a>
+       
+       <a href="{{ route('carousels.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
     </div>
   
 
@@ -38,8 +39,8 @@
                     <td>
                         <div class="d-flex">
                              
-                            <x-backend.buttonlink.viewlink href="{{ route('carousels.show',['carousel'=>$carousel->id ])}}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('carousels.edit',['carousel'=>$carousel->id ])}}"/>
+                            <x-backend.buttonlink.viewlink action="{{ route('carousels.show',['carousel'=>$carousel->id ])}}"/>
+                            <x-backend.buttonlink.editlink action="{{ route('carousels.edit',['carousel'=>$carousel->id ])}}"/>
                             <x-backend.buttonlink.deletelink action="{{ route('carousels.destroy',['carousel'=>$carousel->id ])}}"/>
                         </div>
                  

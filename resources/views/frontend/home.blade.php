@@ -4,8 +4,10 @@
 <marquee behavior="" direction="" style="background-color: yellow; width:100%;color: black;"> Welcome to our University Boighar</marquee>
 <x-frontend.layout.partials.carousel :carousels="$carousels"/> 
  
+<div class="mx-auto mt-2" style="width:300px">
+	<x-frontend.watch.watch/>
+</div>
  
- <x-frontend.watch.watch/>
 
  
 <section class="gray-bg ">

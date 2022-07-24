@@ -9,7 +9,7 @@ class CarouselController extends Controller
 {
     
     public function create(){
-        return view('backend.carousel.addcarousel');
+        return view('backend.carousel.create');
     }
     
     public function store(CarouselRequest $request){
@@ -37,7 +37,7 @@ class CarouselController extends Controller
     {
   
         $carousels=carousel::all();
-        return view('backend.carousel.carousel',compact('carousels'));
+        return view('backend.carousel.index',compact('carousels'));
     }
     
     
@@ -54,8 +54,8 @@ class CarouselController extends Controller
         public function edit($carousel)
     {
         
-          $carouseldit=carousel::findOrFail($carousel);
-          return view('backend.carousel.edit',compact('carouseledit'));  
+          $carousels=carousel::findOrFail($carousel);
+          return view('backend.carousel.edit',compact('carousels'));  
     }
      
         public function update(CarouselRequest $request,$carousel)

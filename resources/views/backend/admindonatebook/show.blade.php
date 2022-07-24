@@ -3,16 +3,16 @@
         @slot('title')
         Requested Book Details
         @endslot
-    <div class="card mb-4 mt-4">
+    <div class="card mb-4">
        
-        <div class="card-header ">
+        <div class="card-header " style="background-color: #defffe">
             <i class="fas fa-table me-1"></i>
             Requested Book Details
            <a href="{{ route('donatebooks.index') }}"> <button class=" btn-sm btn btn-outline-primary"><i class="fa-solid fa-backward"></i></button></a>
         </div>
      
         <div class="card w-75 mx-auto mt-4 mb-4" style="background-color: #f3fcf2">
-            <div class="card-header text-center shadow-sm" style="background-color: #58ed85">
+            <div class="card-header text-center shadow-sm bg-primary text-white">
              <h4> <b>  Requested Book Details</b></h4>
             </div>
             <td><img src="{{asset('/storage/donatebook/'.$donatebookshow->bookimage)}}" alt="No image submitted" style="width:400px;height:200px" class="mx-auto m-2"></td>
@@ -63,12 +63,11 @@
               <tbody>
               </tbody>
             </table>
-
-          <div class="cart-footer bg-info">
-          
-          </div>
+            <div class="card-footer">
+              <x-backend.buttonlink.editlink action="{{ route('donatebooks.edit',['donatebook'=>$donatebookshow->id ])}}"/>
+            </div>
     </div>
-
+  </div>
     </x-backend.layout.master>
 
 

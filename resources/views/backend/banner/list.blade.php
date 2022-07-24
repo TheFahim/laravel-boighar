@@ -6,10 +6,11 @@
     @slot('bottomheader')
    Banner
     @endslot
-    <div class="card-header">
+    <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
        Carousel
-       <a href="{{ route('banners.create') }}"> <button class="btn btn-success">Add Banner</button></a>
+       
+       <a href="{{ route('banners.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
     </div>
 
 

@@ -38,7 +38,9 @@
                    <ul class="top-bar-info list-inline-item pl-0 mb-0">
                        <li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@uboighar.com</a></li>
                        <li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address DHAKA Bangladesh </li>
+                      
                    </ul>
+                  
                 
                </div>
                <div class="col-lg-6">
@@ -70,7 +72,8 @@
              <a class="navbar-brand" href="{{ route('homepage') }}">
                  <img src="{{ asset('ui/frontend/images/logo/uboighar.png') }}" alt="" class="img-fluid">
              </a>
-
+            
+             
              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
            <span class="icofont-navigation-menu"></span>
          </button>

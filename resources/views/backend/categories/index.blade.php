@@ -2,7 +2,7 @@
     @slot('title')
     Sellbook
     @endslot
-<div class="card mb-4 mt-3">
+<div class="card mb-4 ">
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Book Category
@@ -35,8 +35,8 @@
                     <td>{{ $category->is_active ? 'Active' : 'In Active'  }}</td>
                     <td>
                         <div class="d-flex">
-                            <x-backend.buttonlink.viewlink  href="{{ route('categories.show', ['category' => $category->id]) }}"/>
-                            <x-backend.buttonlink.editlink href="{{ route('categories.edit', ['category' => $category->id]) }}"/>
+       
+                            <x-backend.buttonlink.editlink action="{{ route('categories.edit', ['category' => $category->id]) }}"/>
                            
                             <form method="post" action="{{ route('categories.destroy', ['category' => $category->id]) }}" style="display:inline">
                                 @csrf

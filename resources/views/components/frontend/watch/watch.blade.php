@@ -1,6 +1,9 @@
  <!--digital Clock start-->
  <div class="col-md-12 mb-5" id="digital-clock-body">
     <div class="" id="clock">
+      {{-- <a class="navbar-brand mx-auto" href="{{ route('homepage') }}">
+        <img src="{{ asset('ui/frontend/images/logo/uboighar.png') }}" alt="" class="img-fluid">
+      </a> --}}
       <h2>THE TIME IS NOW</h2>
       <div class="" id="time">
         <div><span id="hour">00</span><span>Hours</span></div>

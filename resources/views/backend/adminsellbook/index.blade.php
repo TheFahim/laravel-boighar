@@ -3,7 +3,7 @@
     Sellbook
     @endslot
 <div class="card mb-4">
-    <div class="card-header" style="background-color: #defffe">
+    <div class="card-header " style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Sell Book
        <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
