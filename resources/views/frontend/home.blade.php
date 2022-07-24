@@ -5,7 +5,7 @@
 <x-frontend.layout.partials.carousel :carousels="$carousels"/> 
  
  
-
+ <x-frontend.watch.watch/>
 
  
 <section class="gray-bg ">
