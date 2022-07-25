@@ -29,7 +29,9 @@ class AuthServiceProvider extends ServiceProvider
     Gate::define('sellbook',[SellbookPolicy::class,'viewAny'] ) ;
     Gate::define('sellbook_update',[SellbookPolicy::class,'update'] ) ;
     
-
+    Gate::define('admin-link', function (User $user) {
+        return $user->role_id === 1;
+    });
          
     }
 }
