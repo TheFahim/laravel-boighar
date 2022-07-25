@@ -20,6 +20,7 @@ use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProfileController;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -143,7 +144,7 @@ Route::middleware('auth','isAdmin')->group(function(){
 
 });
 
- 
+    Route::resource('profile',ProfileController::class)->middleware('auth');
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
  
     Route::resource('faqs',FaqController::class);

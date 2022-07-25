@@ -133,7 +133,7 @@
                   </a>
                 </form>
                 </li>
-                <li><a class="dropdown-item" href="{{ route('contactus') }}">Profile Setting</a></li>
+                <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile Setting</a></li>
                 @else
                  <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
                  <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
