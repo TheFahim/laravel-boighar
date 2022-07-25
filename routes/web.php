@@ -145,6 +145,7 @@ Route::middleware('auth','isAdmin')->group(function(){
 });
 
     Route::resource('profile',ProfileController::class)->middleware('auth');
+    
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
  
     Route::resource('faqs',FaqController::class);
@@ -158,12 +159,9 @@ Route::middleware('auth','isAdmin')->group(function(){
         Route::get('/productlist','productlist')->name('admin.productlist');
     });
 
-
-
-
- Route::get('donets/{donet}',[DonetController::class,'Drequest'])->name('donets.create');
- Route::get('/approved/{id}',[DonetController::class,'approved'])->name('approved');
- Route::get('/cancle/{id}',[DonetController::class,'cancle'])->name('cancle');
+    Route::get('donets/{donet}',[DonetController::class,'Drequest'])->name('donets.create');
+    Route::get('/approved/{id}',[DonetController::class,'approved'])->name('approved');
+    Route::get('/cancle/{id}',[DonetController::class,'cancle'])->name('cancle');
 
 
 
