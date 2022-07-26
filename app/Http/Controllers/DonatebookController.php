@@ -92,6 +92,7 @@ class DonatebookController extends Controller
             'bookauthor'=> $request->bookauthor,
             'bookedition'=>$request->bookedition ,
             'bookquantity'=>$request->bookquantity ??"" ,
+            'status'=>'In progress',
             'bookimage'=>$filename,
 
            ]

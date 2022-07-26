@@ -9,7 +9,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DonetController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\PublicController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Getdonatecontoller;
 use App\Http\Controllers\SellbookController;
 use App\Http\Controllers\AdminAuthController;
@@ -17,10 +20,9 @@ use App\Http\Controllers\DonatebookController;
 use App\Http\Controllers\PublicAuthController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\RequestbookController;
+use App\Http\Controllers\DonetCommentController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
-use App\Http\Controllers\CategoryController;
-use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,9 +80,7 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 
     Route::get('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
 
-    Route::post('/donetbookdetails/{donetbookdetail}','donetbookdetails')->name('donetbookdetails');
-
-
+    Route::get('/donetbookdetails/{donetbookdetail}', 'donetbookdetails')->name('donetbookdetails');
 
     Route::get('/cart/{cart}','cart')->name('cart');
     Route::get('/payment/{pay}','payment')->name('payment');
@@ -89,6 +89,7 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 });
 
 Route::middleware('auth')->group(function(){
+
     Route::get('sellbooks/create',[SellbookController::class,'create'])->name('sellbooks.create');
     Route::post('sellbooks/store',[SellbookController::class,'store'])->name('sellbooks.store');
 
@@ -97,6 +98,9 @@ Route::middleware('auth')->group(function(){
 
     Route::get('donatebooks/create',[DonatebookController::class,'create'])->name('donatebooks.create');
     Route::post('donatebooks/store',[DonatebookController::class,'store'])->name('donatebooks.store');
+    Route::resource('donatebooks.comments',DonetCommentController::class)->shallow();
+    Route::resource('sellbooks.comments', CommentController::class)->shallow();
+
 });
 
 
@@ -135,7 +139,7 @@ Route::middleware('auth','isAdmin')->group(function(){
 
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
-    Route::resource('faqs',FaqController::class);  
+    Route::resource('faqs',FaqController::class);
     Route::resource('banners', BannerController::class);
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
@@ -143,12 +147,12 @@ Route::middleware('auth','isAdmin')->group(function(){
 
 });
 
- 
+
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
- 
+
     Route::resource('faqs',FaqController::class);
- 
- 
+
+
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
