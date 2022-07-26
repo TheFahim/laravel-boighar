@@ -20,7 +20,11 @@ use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
 use App\Http\Controllers\CategoryController;
+<<<<<<< HEAD
 use App\Http\Controllers\EventController;
+=======
+use App\Http\Controllers\ProfileController;
+>>>>>>> fahim3
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -151,7 +155,8 @@ Route::middleware('auth','isAdmin')->group(function(){
 
 });
 
- 
+    Route::resource('profile',ProfileController::class)->middleware('auth');
+    
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
  
     Route::resource('faqs',FaqController::class);
@@ -165,12 +170,9 @@ Route::middleware('auth','isAdmin')->group(function(){
         Route::get('/productlist','productlist')->name('admin.productlist');
     });
 
-
-
-
- Route::get('donets/{donet}',[DonetController::class,'Drequest'])->name('donets.create');
- Route::get('/approved/{id}',[DonetController::class,'approved'])->name('approved');
- Route::get('/cancle/{id}',[DonetController::class,'cancle'])->name('cancle');
+    Route::get('donets/{donet}',[DonetController::class,'Drequest'])->name('donets.create');
+    Route::get('/approved/{id}',[DonetController::class,'approved'])->name('approved');
+    Route::get('/cancle/{id}',[DonetController::class,'cancle'])->name('cancle');
 
 
 
