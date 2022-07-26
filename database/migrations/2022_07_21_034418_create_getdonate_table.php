@@ -15,6 +15,8 @@ class CreateGetdonateTable extends Migration
     {
         Schema::create('getdonate', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('book_id')->nullable();
             $table->string('fullname',100);
             $table->string('email',100);
             $table->string('address');
@@ -24,6 +26,8 @@ class CreateGetdonateTable extends Migration
             $table->string('bookauthor',100);
             $table->string('bookedition',100);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('book_id')->references('id')->on('donatebooks');
         });
     }
 

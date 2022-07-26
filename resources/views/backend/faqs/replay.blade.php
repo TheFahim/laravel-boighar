@@ -12,7 +12,7 @@
         </div>
       
         <div class="card w-75 mx-auto mt-4 mb-4" style="background-color: #f3fcf2">
-            <div class="card-header text-center shadow-sm" style="background-color: #58ed85">
+            <div class="card-header text-center shadow-sm bg-primary text-white">
              <h4> <b>Give FAQ Answer</b></h4>
             </div>
             
@@ -41,9 +41,9 @@
               <x-frontend.form.input name="name" type="hidden" :value="old('name',$faq->name)"/>
               <x-frontend.form.input name="email" type="hidden" :value="old('email',$faq->email)"/>
               <x-frontend.form.input name="comment" type="hidden" :value="old('comment',$faq->comment)"/>
-              <div class="col-6">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
+             
+                <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">Submit</button>
+             
           </form>
           </div>
     </div>

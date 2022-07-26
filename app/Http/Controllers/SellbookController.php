@@ -60,8 +60,6 @@ public function index()
      $sellbookshow=sellbook::findOrFail($sellbook);
      return view('backend.adminsellbook.show',compact('sellbookshow'));
 
-
-
      $sellbookshow=sellbook::findOrFail($sellbook);
      return view('backend.adminsellbook.show',compact('sellbookshow'));
 

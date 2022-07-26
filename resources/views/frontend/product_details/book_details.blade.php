@@ -16,11 +16,21 @@
                 </div>
                 
                 <div class="row">
+                   <form name="addToCartForm">
                     <h5> <b>Price: </b>{{ $bookdetail->price }}&#2547;</h5>
                     <h5> <b>Book Author: </b>{{ $bookdetail->bookauthor }}</h5>
                     <h5><b>Book Edition: </b>{{ $bookdetail->bookedition }}</h5>
-                    <h5><label for="number"><b>Quantity: </b> {{ $bookdetail->bookquantity }}</label></h5>
+                    {{-- <h5><label for="number"><b>Quantity: </b> {{ $bookdetail->bookquantity }}</label></h5> --}}
+                    <input type="number" name="quantity" value={{ $bookdetail->bookquantity }}>
                     <h3><b>Mobile Number: </b>{{ $bookdetail->mobile }}</h3>
+
+
+             
+                   
+                    <button id="addToCartBtn" type="submit" class="btn btn-primary">Add To Cart</button>
+                 
+                   </form>
+                    
                 </div>
                 {{-- <div class="row">
                     <h3 class="text-warning"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
@@ -44,8 +54,8 @@
 
                 {{-- <p style="font-size: 20px"> &nbsp; <i class="fa fa-map-marker" aria-hidden="true"></i> Delivery by23
                     Jul, Tuesday | &nbsp; <span class="text-success">FREE</span> </p> --}}
-                <a class="btn btn-danger text-light"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</a>
-                <br /><br />
+                {{-- <a class="btn btn-danger text-light" href="{{ route('carts',['cart',$bookdetail->id]) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</a> --}}
+                
             </div>
         </div>
     </div>
@@ -113,4 +123,78 @@
         </div>
     </div>
 </section>
+
+
+
+
+{{-- 
+@push('js')
+<script>
+    const form = document.forms['addToCartForm'];
+
+    const apiUrl = '/products/{{$product->id}}/cart';
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const qtyInput = document.querySelector('input[name=qty]').value;
+        const reqBody = JSON.stringify({
+            qty: qtyInput
+        })
+
+        fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: reqBody
+            })
+            .then(res => {
+                console.log(res);
+                if (res.status) {
+                    document.querySelector('#addToCartBtn').setAttribute('disabled', 'disabled')
+                }
+                console.log(res)
+            })
+    });
+</script> --}}
+
+{{-- @endpush --}}
+
+@push('js')
+   
+<script>
+    const form = document.forms['addToCartForm'];
+    const apiUrl = '/products/{{$bookdetail->id}}/cart';
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const qtyInput = document.querySelector('input[name=quantity]').value;
+
+            const reqBody = JSON.stringify({
+                quantity: qtyInput
+            })
+
+
+            fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        quantify:qtyInput
+                    })
+                })
+               .then(res =>{
+                console.log(res)
+               })
+                
+        });
+</script>
+@endpush
+
 </x-frontend.layout.master>

@@ -14,7 +14,8 @@ class CreateRequestbookTable extends Migration
     public function up()
     {
         Schema::create('requestbook', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('booktitle',100);
             $table->string('bookauthor',100);
             $table->string('bookedition',100)->nullable();
@@ -25,6 +26,7 @@ class CreateRequestbookTable extends Migration
             $table->string('bookimage')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

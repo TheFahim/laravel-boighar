@@ -32,8 +32,9 @@
 
 
   
-                     <button type="button" class="btn btn-primary" data-bs-toggle="modal tooltip"  title="Here you can see video how to donate your book" data-bs-target="#myModal">
-                        See Video
+                     
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Open modal
                       </button>
                         
                        
@@ -85,19 +86,22 @@
  </div>
 </div>
 <div class="modal" id="myModal">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
       <div class="modal-content">
+  
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Donate Book video</h4>
+          <h4 class="modal-title">Modal Heading</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
+  
         <!-- Modal body -->
         <div class="modal-body">
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item w-100 " src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
               </div>
         </div>
+  
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -106,7 +110,7 @@
       </div>
     </div>
   </div>
-
+   
 
 </x-frontend.layout.master>
 </section>

@@ -23,6 +23,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Banner
                 </a>
+                <a class="nav-link" href="{{ route('products.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Products
+                </a>
                 <a class="nav-link" href="{{ route('getdonates.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Requested Donate Book

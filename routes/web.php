@@ -20,6 +20,7 @@ use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -77,13 +78,12 @@ Route::middleware('auth')->controller(PublicPageController::class)->group(functi
 Route::middleware('auth')->controller(PublicProductDetailsController::class)->group(function(){
 
     Route::get('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
-
     Route::post('/donetbookdetails/{donetbookdetail}','donetbookdetails')->name('donetbookdetails');
-
-
-
-    Route::get('/cart/{cart}','cart')->name('cart');
+    // Route::get('/carts/{cart}','cartproduct')->name('carts');
     Route::get('/payment/{pay}','payment')->name('payment');
+    // Route::post('products/{product}/cart','store')
+    //  ->name('carts.store');
+ 
 
 
 });
@@ -105,7 +105,9 @@ Route::middleware('auth','isAdmin')->group(function(){
 
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
-
+    
+    Route::resource('products', ProductController::class);
+    
     Route::resource('getdonates', Getdonatecontoller::class);
     //category route
     Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
@@ -164,7 +166,9 @@ Route::middleware('auth','isAdmin')->group(function(){
  Route::get('/approved/{id}',[DonetController::class,'approved'])->name('approved');
  Route::get('/cancle/{id}',[DonetController::class,'cancle'])->name('cancle');
 
-
+ Route::post('products/{product}/cart', [CartController::class, 'store'])
+ ->name('carts.store')
+ ->middleware('auth');
 
 
 

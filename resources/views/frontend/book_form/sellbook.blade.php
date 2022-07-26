@@ -24,7 +24,7 @@
                      <p>2. Give Clear Information</p>
 
 
-                     <button type="button" class="btn btn-primary" data-bs-toggle="modal tooltip"  title="Here you can see video how to sell your book" data-bs-target="#myModal">
+                     <button type="button" class="btn btn-primary" data-bs-toggle="modal tooltip"  title="Here you can see video how to sell your book" data-bs-target="#myModal1">
                         See Video
                       </button>
                      
@@ -75,7 +75,7 @@
     
 </div>
 
-<div class="modal" id="myModal">
+<div class="modal" id="myModal1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <!-- Modal Header -->

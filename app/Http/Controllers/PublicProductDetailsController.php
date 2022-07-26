@@ -25,10 +25,10 @@ class PublicProductDetailsController extends Controller
 
 
 
-    public function cart($cart)
+    public function cartproduct($cart)
     {
-        $cart = sellbook::findOrFail($cart);
-        return view('frontend.product_details.cart', compact('cart'));
+        // $cart = sellbook::findOrFail($cart);
+        return view('frontend.product_details.cart');
     }
     public function payment($pay)
     {
