@@ -4,11 +4,11 @@
         <h1 class="text-center" style="margin-bottom: 100px;">{{ $title }}</h1>
         <div class="row">
             @foreach ($data as $sellbook)
-                <div class="col-lg-3 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3">
+                <div class="col-lg-3 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3 ">
                     <form method="post" action="{{ route('bookdetails', ['bookdetail' => $sellbook->id]) }}"
                         enctype="multipart/form-data">
                         @csrf
-                        <div class="card">
+                        <div class="card " >
                             <a href="{{ route('bookdetails', ['bookdetail' => $sellbook->id]) }}"><img name="newbook_img"
                                     class="card-img-top img-fluid"
                                     src="{{ asset('storage/' . $imagefile . '/' . $sellbook->bookimage) }}" alt=""
