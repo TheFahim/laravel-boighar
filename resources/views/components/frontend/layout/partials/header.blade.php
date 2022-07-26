@@ -109,9 +109,15 @@
                        <li><a class="dropdown-item" href="{{ route('aboutus') }}">ABOUT US</a></li>
                        <li><a class="dropdown-item" href="{{ route('contactus') }}">CONTACT US</a></li>
                        <li><a class="dropdown-item" href="{{ route('donatebooks.create') }}">DONATE BOOKS</a></li>
-                       <li><a class="dropdown-item" href="{{ route('events') }}">EVENTS</a></li>
+
+                       <li><a class="dropdown-item" href="{{ route('upcomingEvent') }}">Upcoming Events</a></li>
+                       
+                <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
+
+                       <li><a class="dropdown-item" href="{{ route('upcomingEvent') }}">EVENTS</a></li>
                        <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
                        @can('admin-link')
+
                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a></li>
                        @endcan
                    </ul>
@@ -133,7 +139,7 @@
                   </a>
                 </form>
                 </li>
-                <li><a class="dropdown-item" href="{{ route('contactus') }}">Profile Setting</a></li>
+                <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile Setting</a></li>
                 @else
                  <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
                  <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
