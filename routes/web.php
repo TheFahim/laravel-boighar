@@ -20,7 +20,11 @@ use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
 use App\Http\Controllers\CategoryController;
+ 
 use App\Http\Controllers\ProductController;
+ 
+use App\Http\Controllers\EventController;
+ 
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -70,7 +74,8 @@ Route::middleware('auth')->controller(PublicPageController::class)->group(functi
     Route::get('/aboutus','aboutus')->name('aboutus');
     Route::get('/contactus','contactus')->name('contactus');
     Route::get('/faq','faq')->name('faq');
-    Route::get('/events','events')->name('events');
+    Route::get('/upcomingEvent','upcomingEvent')->name('upcomingEvent');
+   
 
 });
 
@@ -106,8 +111,11 @@ Route::middleware('auth','isAdmin')->group(function(){
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
     
+ 
     Route::resource('products', ProductController::class);
     
+ 
+ 
     Route::resource('getdonates', Getdonatecontoller::class);
     //category route
     Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
@@ -134,6 +142,12 @@ Route::middleware('auth','isAdmin')->group(function(){
     Route::patch('/donatebooks/trash/{id}', [DonatebookController::class,'restore'])->name('donatebooks.restore');
     Route::delete('/donatebooks/trash/{id}', [DonatebookController::class,'delete'])->name('donatebooks.delete');
     Route::resource('donatebooks', DonatebookController::class)->except('create','store');
+    //Event route
+    Route::get('/events/trash', [EventController::class,'trash'])->name('events.trash');
+    Route::patch('/events/trash/{id}', [EventController::class,'restore'])->name('events.restore');
+    Route::delete('/events/trash/{id}', [EventController::class,'delete'])->name('events.delete');
+   
+    Route::resource('events', EventController::class);
 
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');

@@ -48,7 +48,7 @@
                   </div>
                       
                <div class="form-check">
-                <input name="is_active" class="form-check-input" type="checkbox" value="{{ $productedit->status }}" id="isActiveInput" {{ $productedit->status ? 'checked' : '' }} >
+                <input name="is_active" class="form-check-input" type="checkbox" value="1" id="isActiveInput" {{ $productedit->status ? 'checked' : '' }} >
                     
                
                 <label class="form-check-label" for="isActiveInput">

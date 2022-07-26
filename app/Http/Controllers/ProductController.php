@@ -104,7 +104,7 @@ class ProductController extends Controller
             'bookedition'=>$request->bookedition,
             'bookquantity'=>$request->bookquantity,
             'price'=>$request->price,
-            'is_active' => $request->is_active ?? false,
+            'status' => $request->is_active ?? false,
             'bookimage'=>$filename??'',
             'category_id'=>$request->category??'2',
          ]

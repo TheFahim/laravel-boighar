@@ -108,12 +108,18 @@
 
                        <li><a class="dropdown-item" href="{{ route('aboutus') }}">ABOUT US</a></li>
                        <li><a class="dropdown-item" href="{{ route('contactus') }}">CONTACT US</a></li>
-                       <li><a class="dropdown-item" href="{{ route('donatebooks.create') }}">DONATE BOOKS</a></li>
-                       <li><a class="dropdown-item" href="{{ route('events') }}">EVENTS</a></li>
-                       <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
+                       {{-- <li><a class="dropdown-item" href="{{ route('donatebooks.create') }}">DONATE BOOKS</a></li> --}}
+
+                       <li><a class="dropdown-item" href="{{ route('upcomingEvent') }}">Events</a></li>
+                       
+                <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
+
+                       {{-- <li><a class="dropdown-item" href="{{ route('upcomingEvent') }}">EVENTS</a></li> --}}
+                       
+                       @can('admin-link')
+
                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a></li>
-                        
-                        
+                       @endcan
                    </ul>
                  </li>
            </li>
@@ -121,10 +127,9 @@
             <a href="cart.php"> <i class="fa-solid fa-cart-plus" style="margin-top:15px;color: #000000;"></i></a>
          </li>
            <li class="nav-item dropdown">
-             <a class="nav-link" href="{{ route('homepage') }}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p class=" fas fa-user fa-fw"></p></a>
+             <a class="nav-link" href="{{ route('homepage') }}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p class=" fas fa-user fa-fw"></p>@auth{{auth()->user()->name}}@endauth</a>
              <ul class="dropdown-menu" aria-labelledby="dropdown03">
-
-                 <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                  @auth
                  <li><form method="POST" action="{{ route('logout') }}">
                   @csrf
                   <a class="dropdown-item" href="route('logout')"
@@ -134,11 +139,12 @@
                   </a>
                 </form>
                 </li>
+                <li><a class="dropdown-item" href="{{ route('contactus') }}">Profile Setting</a></li>
+                @else
                  <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
-                 <li><a class="dropdown-item" href="{{ route('contactus') }}">Profile Setting</a></li>
-            
-                  
-                  
+                 <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+
+                  @endauth
              </ul>
            </li>
 

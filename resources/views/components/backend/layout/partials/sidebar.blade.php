@@ -46,6 +46,10 @@
                         <a class="nav-link" href="{{ route('requestbooks.index') }}">Request Book</a>
                     </nav>
                 </div>
+                <a class="nav-link" href="{{ route('events.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas  fa-book"></i></div>
+                    Events
+                </a>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     Pages
