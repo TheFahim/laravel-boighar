@@ -109,8 +109,9 @@
                        <li><a class="dropdown-item" href="{{ route('aboutus') }}">ABOUT US</a></li>
                        <li><a class="dropdown-item" href="{{ route('contactus') }}">CONTACT US</a></li>
                        <li><a class="dropdown-item" href="{{ route('donatebooks.create') }}">DONATE BOOKS</a></li>
-                       <li><a class="dropdown-item" href="{{ route('events') }}">EVENTS</a></li>
-                       <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
+                       <li><a class="dropdown-item" href="{{ route('upcomingEvent') }}">Upcoming Events</a></li>
+                       
+                <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a></li>
                         
                         
