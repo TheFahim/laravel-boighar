@@ -23,16 +23,14 @@ use App\Http\Controllers\RequestbookController;
 use App\Http\Controllers\DonetCommentController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\CategoryController;
-<<<<<<< HEAD
+
+
 use App\Http\Controllers\EventController;
-=======
+
 use App\Http\Controllers\ProfileController;
->>>>>>> fahim3
-use PHPUnit\TextUI\XmlConfiguration\Group;
->>>>>>> 6fa1a4e645e00f346ed6d8e0210c5b3c772d1634
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -82,7 +80,7 @@ Route::middleware('auth')->controller(PublicPageController::class)->group(functi
     Route::get('/contactus','contactus')->name('contactus');
     Route::get('/faq','faq')->name('faq');
     Route::get('/upcomingEvent','upcomingEvent')->name('upcomingEvent');
-   
+
 
 });
 
@@ -120,7 +118,7 @@ Route::middleware('auth','isAdmin')->group(function(){
 
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
-    
+
     Route::resource('getdonates', Getdonatecontoller::class);
     //category route
     Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
@@ -151,7 +149,7 @@ Route::middleware('auth','isAdmin')->group(function(){
     Route::get('/events/trash', [EventController::class,'trash'])->name('events.trash');
     Route::patch('/events/trash/{id}', [EventController::class,'restore'])->name('events.restore');
     Route::delete('/events/trash/{id}', [EventController::class,'delete'])->name('events.delete');
-   
+
     Route::resource('events', EventController::class);
 
 
@@ -164,12 +162,12 @@ Route::middleware('auth','isAdmin')->group(function(){
 
 });
 
-<<<<<<< HEAD
 
-=======
+
+
     Route::resource('profile',ProfileController::class)->middleware('auth');
-    
->>>>>>> 6fa1a4e645e00f346ed6d8e0210c5b3c772d1634
+
+
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
 
     Route::resource('faqs',FaqController::class);

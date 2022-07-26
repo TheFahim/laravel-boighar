@@ -39,7 +39,6 @@
                     <form action="{{ route('donatebooks.comments.store', ['donatebook' => $bookdetail->id]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-@method('post')
                         <x-frontend.forms.textarea name="comment" text="comment" type="text" :value="old('comment')" />
                         <button type="submit" class="btn btn-success" name="submit">Submit</button>
 
