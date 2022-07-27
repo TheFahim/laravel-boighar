@@ -1,4 +1,7 @@
 <x-frontend.layout.master>
+
+ 
+ 
     <x-slot name="title">SellBook_Form</x-slot>
     <div class="container d-flex justify-content-center">
         @if(isset($banner->image))
@@ -57,8 +60,10 @@
                 <x-frontend.form.input name="bookquantity" text="Book Quantity" type="number" :value="old('bookquantity')"/>
             </div>
             <div class="col-md-6">
-                <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
+                <x-frontend.form.input name="mobile" text="Mobile" type="tel" :value="old('mobile')"/>
+               
             </div>
+           
             <div class="col-md-6">
                 <x-frontend.form.input name="price" text="Sell Price" type="text"  :value="old('price')"/>
             </div>
@@ -98,6 +103,11 @@
     </div>
   </div>
 
-
+  <script>
+    mask("input");
+  </script>
+ 
+ 
+  
 </x-frontend.layout.master>
 </section>

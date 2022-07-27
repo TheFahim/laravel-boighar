@@ -90,7 +90,9 @@
       </div>
     </div>
   </div>
-
+  <script>
+    mask("input");
+  </script>
 </x-frontend.layout.master>
 
 </section>

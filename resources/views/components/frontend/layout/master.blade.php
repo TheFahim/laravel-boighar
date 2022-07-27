@@ -32,6 +32,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="{{ asset('ui/frontend/js/mask.js') }}"></script>
+    <script src="{{ asset('ui/frontend/js/mask_list.js') }}"></script>
 </head>
 <body>
  
@@ -49,7 +51,9 @@
 </div>
 
 @stack('nadim')
-@stack('js')
+@stack('mask')
+@stack('profile')
+ 
 
  
  <!-- jQuery -->
@@ -67,6 +71,7 @@
  <script src="{{ asset('ui/frontend') }}/js/Chart.bundle.min.js"></script>
  <script src="{{ asset('ui/frontend') }}/js/utils.js"></script>
  <script src="{{ asset('ui/frontend') }}/js/analyser.js"></script>
+  
  <!-- nice scrollbar -->
  <script src="{{ asset('ui/frontend') }}/js/perfect-scrollbar.min.js"></script>
  <script>

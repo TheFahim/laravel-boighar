@@ -9,7 +9,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DonetController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\PublicController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Getdonatecontoller;
 use App\Http\Controllers\SellbookController;
 use App\Http\Controllers\AdminAuthController;
@@ -17,14 +20,26 @@ use App\Http\Controllers\DonatebookController;
 use App\Http\Controllers\PublicAuthController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\RequestbookController;
+use App\Http\Controllers\DonetCommentController;
 use App\Http\Controllers\PublicProductController;
 use App\Http\Controllers\PublicProductDetailsController;
-use App\Http\Controllers\CategoryController;
+ 
+ 
 use App\Http\Controllers\ProductController; 
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ProfileController;
+ 
 use App\Http\Controllers\EarnpointController;
-use PHPUnit\TextUI\XmlConfiguration\Group;
+ 
+ 
+
+
+ 
+
+use App\Http\Controllers\ProfileController;
+
+
+
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -76,8 +91,12 @@ Route::controller(PublicPageController::class)->group(function(){
     Route::get('/contactus','contactus')->name('contactus');
     Route::get('/faq','faq')->name('faq');
     Route::get('/upcomingEvent','upcomingEvent')->name('upcomingEvent');
+ 
     
    
+ 
+
+ 
 
 });
 
@@ -85,8 +104,15 @@ Route::controller(PublicPageController::class)->group(function(){
 Route::middleware('auth')->controller(PublicProductDetailsController::class)->group(function(){
 
     Route::get('/bookdetails/{bookdetail}','bookdetails')->name('bookdetails');
+ 
     Route::post('/donetbookdetails/{donetbookdetail}','donetbookdetails')->name('donetbookdetails');
     // Route::get('/carts/{cart}','cartproduct')->name('carts');
+ 
+
+    // Route::get('/donetbookdetails/{donetbookdetail}', 'donetbookdetails')->name('donetbookdetails');
+
+    Route::get('/cart/{cart}','cart')->name('cart');
+ 
     Route::get('/payment/{pay}','payment')->name('payment');
     // Route::post('products/{product}/cart','store')
     //  ->name('carts.store');
@@ -96,6 +122,7 @@ Route::middleware('auth')->controller(PublicProductDetailsController::class)->gr
 });
 
 Route::middleware('auth')->group(function(){
+
     Route::get('sellbooks/create',[SellbookController::class,'create'])->name('sellbooks.create');
     Route::post('sellbooks/store',[SellbookController::class,'store'])->name('sellbooks.store');
 
@@ -104,6 +131,9 @@ Route::middleware('auth')->group(function(){
 
     Route::get('donatebooks/create',[DonatebookController::class,'create'])->name('donatebooks.create');
     Route::post('donatebooks/store',[DonatebookController::class,'store'])->name('donatebooks.store');
+    Route::resource('donatebooks.comments',DonetCommentController::class)->shallow();
+    Route::resource('sellbooks.comments', CommentController::class)->shallow();
+
 });
 
 
@@ -112,11 +142,15 @@ Route::middleware('auth','isAdmin')->group(function(){
 
     Route::resource('users', UserController::class);
     Route::resource('carousels', CarouselController::class);
+ 
     
     Route::resource('products', ProductController::class);
 
     Route::resource('earnorders', EarnpointController::class);
     
+ 
+
+ 
     Route::resource('getdonates', Getdonatecontoller::class);
     //category route
     Route::get('/categories/trash', [CategoryController::class,'trash'])->name('categories.trash');
@@ -147,12 +181,12 @@ Route::middleware('auth','isAdmin')->group(function(){
     Route::get('/events/trash', [EventController::class,'trash'])->name('events.trash');
     Route::patch('/events/trash/{id}', [EventController::class,'restore'])->name('events.restore');
     Route::delete('/events/trash/{id}', [EventController::class,'delete'])->name('events.delete');
-   
+
     Route::resource('events', EventController::class);
 
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
-    Route::resource('faqs',FaqController::class);  
+    Route::resource('faqs',FaqController::class);
     Route::resource('banners', BannerController::class);
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
@@ -160,13 +194,17 @@ Route::middleware('auth','isAdmin')->group(function(){
 
 });
 
+
+
+
     Route::resource('profile',ProfileController::class)->middleware('auth');
-    
+
+
     Route::post('/faq',[FaqController::class,'store'])->name('faq.store');
- 
+
     Route::resource('faqs',FaqController::class);
- 
- 
+
+
 
     Route::get('/user',[UserController::class,'user'])->name('user.register');
 
