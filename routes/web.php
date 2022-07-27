@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,6 +23,7 @@ use App\Http\Controllers\PublicProductDetailsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\ContactUsController;
 
 use App\Http\Controllers\ProfileController;
 
@@ -185,6 +187,8 @@ Route::middleware('auth','isAdmin')->group(function(){
     Route::get('/cancle/{id}',[DonetController::class,'cancle'])->name('cancle');
 
 
-
+ Route::resource('contacts', ContactUsController::class);
+ Route::resource('abouts', AboutController::class);
+ Route::get('/aboutus',[AboutController::class,'aboutus'])->name('aboutus');
 
 
