@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class donatebook extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table='donatebooks';
     protected $fillable=['fullname','email','address','mobile','booktitle','bookauthor','bookedition','bookquantity','bookimage','status'];
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

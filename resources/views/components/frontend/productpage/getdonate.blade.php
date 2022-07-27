@@ -7,9 +7,7 @@
         <div class="row">
             @foreach ($data as $sellbook)
                 <div class="col-lg-3 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3">
-                    <form method="post" action="{{ route('donetbookdetails', ['donetbookdetail' => $sellbook->id]) }}"
-                        enctype="multipart/form-data">
-                        @csrf
+
                         <div class="card">
                             <a href="">
 
@@ -26,14 +24,12 @@
                                 <input type="hidden" name="hidden_title" value="{{ $sellbook->booktitle }}" />
                                 <input type="hidden" name="hidden_price" value="{{ $sellbook->price }}" />
                                 <input type="hidden" name="hidden_author" value="{{ $sellbook->bookauthor }}" />
+                                <a class="btn btn-success" href="{{ route('donetbookdetails', ['donetbookdetail' => $sellbook->id]) }}" role="button">View Detail</a>
 
-                                <input type="submit" name="add_to_cart"
-                                    style="margin-top:5px;background:#009933;color:#fff;"
-                                    class="btn btn-success w-100 rounded" value="View Details" />
 
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
             @endforeach
         </div>

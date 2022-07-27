@@ -5,9 +5,7 @@
         <div class="row">
             @foreach ($data as $sellbook)
                 <div class="col-lg-3 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3">
-                    <form method="post" action="{{ route('bookdetails', ['bookdetail' => $sellbook->id]) }}"
-                        enctype="multipart/form-data">
-                        @csrf
+
                         <div class="card">
                             <a href="{{ route('bookdetails', ['bookdetail' => $sellbook->id]) }}"><img name="newbook_img"
                                     class="card-img-top img-fluid"
@@ -31,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
             @endforeach
         </div>

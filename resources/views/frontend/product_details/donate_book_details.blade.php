@@ -18,31 +18,51 @@
                     <h4><b>Book Edition: </b>{{ $bookdetail->bookedition }}</h4>
                     <h5><b>Donar Name: </b>{{ $bookdetail->fullname }}</h5>
                 </div>
-                <a class="btn btn-primary text-light" href="{{route('donets.create', $bookdetail->id)}}" role="button">Request book</a>
+                <a class="btn btn-primary text-light" href="{{ route('donets.create', $bookdetail->id) }}"
+                    role="button">Request book</a>
 
             </div>
         </div>
     </div>
+
 
     <div class="container mt-5 mb-5">
         <div class="row">
-            <h2>Ratings & Reviews</h2>
+            <h2>Comments & Reviews</h2>
         </div>
 
         <div class="row mt-5 mb-5">
-            <div class="media">
+            <div class="media ">
                 <img src="{{ asset('storage/donatebook/' . $bookdetail->bookimage) }}" width="250" height="150"
-                    alt="">
-                <div class="media-body">
-                    <h5 class="mt-0"> Very nice product. <span class="text-warning"><i class="fa fa-star"
-                                aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i
-                                class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o"
-                                aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span></h5>
-                    Cras sit amet nibh libero, in gravida nulla.
+                    alt="sellbooks">
+                <div class="media-body col-4">
+                    <form action="{{ route('donatebooks.comments.store', ['donatebook' => $bookdetail->id]) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <x-frontend.forms.textarea name="comment" text="comment" type="text" :value="old('comment')" />
+                        <button type="submit" class="btn btn-success" name="submit">Submit</button>
+
+                    </form>
                 </div>
+                <div class="media-body col-4">
+                    <h3>comments:</h3>
+                    <ul>
+                        @foreach ($bookdetail->comments as $comment)
+                            <li>
+                                <strong>{{ $comment->commentBy->name }}</strong> At
+                                {{ $comment->created_at->diffForHumans() }}
+                                <p>{{ $comment->body }}</p>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
             </div>
         </div>
+
     </div>
+
+
 
     <div class="container">
         <div class="row mt-5">
@@ -58,8 +78,8 @@
                             <a href="">
 
                                 <img name="newbook_img" class="card-img-top img-fluid"
-                                    src="{{ asset('storage/donatebook/' . $sellbook->bookimage) }}"
-                                    alt="" class="w-75 mx-auto p-3" style="height:200px ">
+                                    src="{{ asset('storage/donatebook/' . $sellbook->bookimage) }}" alt=""
+                                    class="w-75 mx-auto p-3" style="height:200px ">
                             </a>
                             <div class="card-body">
                                 <h5 name=""><b>{{ $sellbook->booktitle }}</b></h5>
