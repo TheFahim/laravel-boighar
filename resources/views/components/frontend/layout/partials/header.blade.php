@@ -92,7 +92,7 @@
                 <li><a class="dropdown-item" href="">{{ $option->title }}</a></li>
                 @endforeach --}}
                 @foreach ($categories as $category)
-                <li><a class="dropdown-item" href="#">{{$category->title}}</a></li>
+                <li><a class="dropdown-item" href="">{{$category->title}}</a></li>
                 @endforeach
 
                        {{-- <li><a class="dropdown-item" href="{{ route('bestbook') }}">BEST SELL BOOK</a></li>

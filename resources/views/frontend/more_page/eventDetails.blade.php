@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <div class="container">
     <!-- start event block -->
-    @foreach ($events as $event)
     <div class="row align-items-center event-block no-gutters margin-40px-bottom">
         <div class="col-lg-5 col-sm-12">
             <div class="position-relative">
@@ -26,10 +25,11 @@
                 </ul>
                    
             <p>
-              {{ substr(strip_tags($event->details), 0, 100) }}
-            @if (strlen(strip_tags($event->details)) > 100)
-               <a href="{{route('eventDetails', ['id' => $event->id])}}" class=" btn btn-outline-dark btn-sm">Read More</a>
-            @endif
+             {{ $event->details}}
+              
+              
+               <a href="{{route('upcomingEvent')}}" class=" btn btn-outline-dark btn-sm">Read Less</a>
+           
 
             </p>
 
@@ -39,7 +39,6 @@
         </div>
     </div>
     <hr>
-    @endforeach
     <!-- end event block -->
 
    

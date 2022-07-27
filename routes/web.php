@@ -78,6 +78,8 @@ Route::middleware('auth')->controller(PublicPageController::class)->group(functi
     Route::get('/contactus','contactus')->name('contactus');
     Route::get('/faq','faq')->name('faq');
     Route::get('/upcomingEvent','upcomingEvent')->name('upcomingEvent');
+    Route::get('/eventDetails/{id}','eventDetails')->name('eventDetails');
+  
    
 
 });

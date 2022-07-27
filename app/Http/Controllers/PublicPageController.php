@@ -26,4 +26,9 @@ class PublicPageController extends Controller
         $events=Event::all();
         return view('frontend.more_page.upcomingEvent',compact('events'));
     }
+    public function eventDetails($id)
+    { 
+        $event=Event::findOrFail($id);
+        return view('frontend.more_page.eventDetails',compact('event'));
+    }
 }
