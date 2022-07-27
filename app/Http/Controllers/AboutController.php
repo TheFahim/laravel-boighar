@@ -50,7 +50,7 @@ class AboutController extends Controller
     public function show($aboutId)
     {  
      $abouts=About::findOrFail($aboutId);
-     return view('frontend.more_page.aboutus',compact('abouts'));  
+     return view('backend.abouts.show',compact('abouts'));  
     }
 
     public function edit($aboutId) {

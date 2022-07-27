@@ -15,15 +15,15 @@
           <table class="table tm-table-small tm-product-table" id="datatablesSimple">
               <tr>
                   <th class="tm-product-name">Title</th>
-                  <th class="tm-product-name">{{$about->title}}</th>
+                  <th class="tm-product-name">{{$abouts->title}}</th>
               </tr>
               <tr>
                   <th class="tm-product-name">Description</th>
-                  <th class="tm-product-name">{{$about->description}}</th>
+                  <th class="tm-product-name">{{$abouts->description}}</th>
               </tr>
               <tr>
                   <th class="tm-product-name">Image</th>
-                  <th><img src="{{asset('/storage/donatebook/'.$about->image)}}" alt="No image submitted" style="width:400px;height:200px" class="mx-auto m-2"></th>
+                  <th><img src="{{asset('/storage/aboutus/'.$abouts->image)}}" alt="No image submitted" style="width:400px;height:200px" class="mx-auto m-2"></th>
               </tr>
           </table>
         
