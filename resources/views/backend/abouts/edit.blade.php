@@ -26,7 +26,7 @@
                 </div>
                  @endif
 
-                <form action="{{ route('abouts.update',['about'=>$about->id])}}" method="Post" class="tm-edit-product-form">
+                <form action="{{ route('abouts.update',['about'=>$about->id])}}" method="Post" class="tm-edit-product-form" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="mb-3">

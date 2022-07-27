@@ -62,13 +62,13 @@ class AboutController extends Controller
         
         if($file=$request->file('image')){
             $filename=date('dmY').time().'.'.$file->getClientOriginalExtension();
-            $file->move(storage_path('app/public/abouts'),$filename);
+            $file->move(storage_path('app/public/aboutus'),$filename);
         }
         $about = About::findOrFail($aboutId);
         $about->update([
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $filename?? $about->image
+            'image' => $filename ?? $about->image
         ]);
         return redirect()->route('abouts.index')->withMessage('Successfully Updated');
     }
