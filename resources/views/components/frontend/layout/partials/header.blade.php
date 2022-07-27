@@ -120,9 +120,7 @@
 
                 <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
 
-                       <li><a class="dropdown-item" href="{{ route('upcomingEvent') }}">EVENTS</a></li>
-                       <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
-                       @can('admin-link')
+                         @can('admin-link')
 
                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a></li>
                        @endcan

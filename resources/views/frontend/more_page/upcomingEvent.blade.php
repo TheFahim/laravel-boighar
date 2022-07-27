@@ -20,7 +20,7 @@
                     <li><i class="fas fa-calendar-days margin-5px-right"></i> Date : {{$event->date}}</li>
                       <li><i class="far fa-clock margin-10px-right"></i> {{$event->time}}</li>
                     <li><i class="fas fa-user margin-5px-right"></i> Speaker : {{$event->cheif_guest}}</li>
-                    <li><i class="fas fa-location-dot margin-5px-right"></i> Speaker : {{$event->venue}}</li>
+                    <li><i class="fas fa-location-dot margin-5px-right"></i> Location : {{$event->venue}}</li>
 					 
 					
                 </ul>
