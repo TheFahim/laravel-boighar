@@ -22,9 +22,9 @@
                      <p>1. Fill the below form with valid data</p>
                      <p>2. Give Clear Information</p>
 
-                     <button type="button" class="btn btn-primary" data-bs-toggle="modal tooltip"  title="Here you can see video how to request your book" data-bs-target="#myModal">
-                        See Video
-                      </button>
+                    
+                    
+                    <x-frontend.modal.modal id="requestbook" name="See Vedio" title="Requestbook Vedio" url="https://www.youtube.com/embed/tgbNymZ7vqY"/>
                      
             </div>
         </div>
@@ -54,7 +54,7 @@
                     <x-frontend.form.input name="bookquantity" text="Book Quantity" type="number" :value="old('bookquantity')"/>
                 </div>
                 <div class="col-md-6">
-                    <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
+                    <x-frontend.form.input name="mobile" text="Mobile" type="tel"  :value="old('mobile')"/>
                 </div>
                 <div class="col-md-6">
                     <x-frontend.form.input name="address" text="Address*" type="text" :value="old('address')"/>
@@ -62,34 +62,17 @@
                 <div class="col-md-12">
                     <x-frontend.form.input name="bookimage" text="Book Image" type="file" />
                 </div>
+                  <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                 <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">Submit</button>
             </form>
     </div>
 
 </div>
-<div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+
+
+
+
   
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        </div>
-  
-      </div>
-    </div>
-  </div>
   <script>
     mask("input");
   </script>

@@ -27,9 +27,7 @@
                      <p>2. Give Clear Information</p>
 
 
-                     <button type="button" class="btn btn-primary" data-bs-toggle="modal tooltip"  title="Here you can see video how to sell your book" data-bs-target="#myModal1">
-                        See Video
-                      </button>
+                     <x-frontend.modal.modal id="sellbook" name="See Vedio" title="Sell Book Vedio" url="https://www.youtube.com/embed/tgbNymZ7vqY"/>
                      
             </div>
         </div>
@@ -70,7 +68,7 @@
             <div class="col-md-12">
                 <x-frontend.form.input name="bookimage" text="Book Image" type="file" />
             </div>
-
+             <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
             <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">Submit</button>
              
 
@@ -80,29 +78,7 @@
     
 </div>
 
-<div class="modal" id="myModal1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Request Book video</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <!-- Modal body -->
-        <div class="modal-body">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item w-100 " src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-              </div>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-
+ 
   <script>
     mask("input");
   </script>

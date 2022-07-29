@@ -25,6 +25,7 @@ public function store(RequestbookRequest $request){
     }
 
    requestbook::create([
+          'user_id'=>$request->user_id,
           'booktitle'=>$request->booktitle,
           'bookauthor'=>$request->bookauthor,
           'bookedition'=>$request->bookedition,
@@ -33,7 +34,7 @@ public function store(RequestbookRequest $request){
           'mobile'=>$request->mobile,
           'address'=>$request->address,
           'bookimage'=>$filename??"",
-          'status'=>'In progress'
+          'status'=>0
 
    ]
    );
@@ -75,7 +76,8 @@ public function index()
 {
       $requestbookupdate=requestbook::findOrFail($requestbook);
       $requestbookupdate->update([
-        'booktitle'=>$request->booktitle,
+           
+           'booktitle'=>$request->booktitle,
           'bookauthor'=>$request->bookauthor,
           'bookedition'=>$request->bookedition,
           'bookquantity'=>$request->bookquantity,

@@ -22,7 +22,7 @@ class DonatebookController extends Controller
             $file->move(storage_path('app/public/donatebook'),$filename);
         }
        donatebook::create([
-
+        'user_id'=>$request->user_id,
         'fullname'=>$request->fullname,
         'email'=> $request->email,
         'address'=> $request->address,

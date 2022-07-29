@@ -41,6 +41,7 @@
                     <td>{{ $earn_order->users->name }}</td>
                     <td>{{ $earn_order->delivery_date }}</td>
                     <td>{{ $earn_order->message }}</td>
+                    <td>{{ $earn_order->status?'Active':'InActive' }}</td>
                      
                     
 

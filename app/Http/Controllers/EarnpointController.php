@@ -58,7 +58,8 @@ class EarnpointController extends Controller
      */
     public function edit($id)
     {
-        //
+        $earnorder=Earnpoint::findOrFail($id);
+        return view('backend.earn_order_list.edit',compact('earnorder'));
     }
 
     /**
@@ -70,7 +71,23 @@ class EarnpointController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $earnorderupdate=Earnpoint::findOrFail($id);
+        $earnorderupdate->update([
+  
+            'delivery_date'=>$request->delivery_date??$earnorderupdate->delivery_date,
+            'message'=>$request->message??$earnorderupdate->message,
+            'user_id'=>$request->user_id??$earnorderupdate->user_id,
+            'book_id'=>$request->book_id??$earnorderupdate->book_id,
+            'status'=>$request->status ?? false,
+         ]
+         );
+         $earnorderupdate->requestbooks()->update([
+            'status' => $request->status ?? false,
+             
+            
+             
+        ]);
+         return redirect()->route('earnorders.index')->withMessage('Successfully updated');
     }
 
     /**

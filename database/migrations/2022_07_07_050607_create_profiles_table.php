@@ -17,11 +17,11 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('mobile')->nullable();
-            $table->string('permanent_address')->nullable();
-            $table->string('permanent_address')->nullable();
-            $table->string('postcode')->nullable();
-            $table->string('division')->nullable();
-            $table->string('District')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('address')->nullable();
+            $table->string('facebook_url')->nullable();
+            $table->string('linkedin_url')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
 

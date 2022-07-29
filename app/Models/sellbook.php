@@ -11,11 +11,15 @@ class sellbook extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table='sellbook';
-    protected $fillable=['status','booktitle','bookauthor','bookedition','bookquantity','mobile','price','bookimage'];
+    protected $fillable=['status','user_id','booktitle','bookauthor','bookedition','bookquantity','mobile','price','bookimage'];
 
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }
 

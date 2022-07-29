@@ -41,7 +41,7 @@
     @endphp
     @foreach ($carousels as $carousel)
     <div class="carousel-item {{ $active }}">
-      <img src="{{ asset('storage/carousel/'.$carousel->carouselimage) }}" alt="Los Angeles" class="d-block" style="width:100%">
+      <img src="{{ asset('storage/carousel/'.$carousel->carouselimage) }}" alt="Los Angeles" class="d-block" style="width:100%;height:400px">
     </div>
     @php
     $active="";

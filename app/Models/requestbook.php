@@ -10,10 +10,15 @@ class requestbook extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table='requestbook';
-    protected $fillable=['status','booktitle','bookauthor','bookedition','bookquantity','mobile','address','bookimage'];
+    protected $fillable=['status','user_id','booktitle','bookauthor','bookedition','bookquantity','mobile','address','bookimage'];
 
     public function earnpoint()
     {
-        return $this->hasOne(Earnpoint::class,);
+        return $this->hasMany(Earnpoint::class);
+    }
+    
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

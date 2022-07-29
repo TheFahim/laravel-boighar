@@ -41,8 +41,8 @@
                      
                      <td>
                         <div class="d-flex">
-                        <x-backend.buttonlink.viewlink href="{{ route('users.show',['user'=>$user->id ])}}"/>
-                        <x-backend.buttonlink.editlink href="{{ route('users.edit',['user'=>$user->id ])}}"/>
+                        <x-backend.buttonlink.viewlink action="{{ route('users.show',['user'=>$user->id ])}}"/>
+                        <x-backend.buttonlink.editlink action="{{ route('users.edit',['user'=>$user->id ])}}"/>
                
                         <x-backend.buttonlink.deletelink action="{{ route('users.destroy',['user'=>$user->id ])}}"/>
                         </div>

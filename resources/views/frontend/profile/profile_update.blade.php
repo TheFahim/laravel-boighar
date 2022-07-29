@@ -1,78 +1,110 @@
 <x-frontend.layout.master>
+    @push('profile')
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>">
+    <link rel="stylesheet" href="{{ asset('ui/frontend/css/profile.css') }}">
+    @endpush
     @slot('title')
         User Profile
     @endslot
-    <section class="section gray-bg ">
-        <div class="container rounded bg-white">
-            <div class="row">
-                <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">{{ auth()->user()->name }}</span><span class="text-black-50">{{ auth()->user()->email }}</span><span>
-                    </span>
-                    </div>
-                </div>
-                <div class="col border-right">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Update Profile Info</h4>
-                        </div>
-                        {{-- <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Name</label>
-                                <input type="text" class="form-control" placeholder="Name" value="">
-                            </div>
-
-                        </div> --}}
-                        <div class="row mt-3">
-                            
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="name" text="Full Name" type="text" :value="old('name')"/>
-                            </div>
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="mobile" text="Mobile Number" type="tel" :value="old('mobile')"/>
-                            </div>
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="email" text="Email" type="email" :value="old('email')"/>
-                            </div>
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="paddress" text="Parmanent Address" type="text" :value="old('booktitle')"/>
-                            </div>
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="booktitle" text="Present Address" type="text" :value="old('booktitle')"/>
-                            </div>
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="booktitle" text="Post Code" type="text" :value="old('booktitle')"/>
-                            </div>
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="booktitle" text="Division" type="text" :value="old('booktitle')"/>
-                            </div>
-                            <div class="col-md-6">
-                                <x-frontend.form.input name="booktitle" text="District" type="text" :value="old('booktitle')"/>
-                            </div>
-
-
-                             
-                           
-                            {{-- <div class="col-md-12">
-                                <label class="labels">Email</label><input type="email" class="form-control" placeholder="enter email id" value="">
-                            </div> --}}
-                            {{-- <div class="col-md-12">
-                                <label class="labels">Enter New Password</label><input type="text" class="form-control" placeholder="enter address line 2" value="">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Re-type New Password</label><input type="text" class="form-control" placeholder="enter address line 2" value="">
-                            </div> --}}
-
-                        </div>
-
-                        <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="button">
-                            Save Profile
-                            </button>
-                        </div>
+{{-- profile start --}}
+<div class="card emp-profile w-75 mx-auto">
+    <form  role="form" action="{{ route('profiles.update',['profile'=>$profile->id]) }}" method="post" enctype="multipart/form-data">
+      
+        @csrf
+        @method('patch')
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{asset('/storage/profiles/'.$profile->image)}}" alt="profile"/>
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="image" />
+                       
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h5>
+                                {{auth()->user()->name}}
+                            </h5>
+                            <h6>
+                                <p>{{ $profile->profession }}</p>
+                            </h6>
+                            
+
+
+                            
+      
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" data-bs-toggle="tab" href="#home">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#menu2">Other Information</a>
+                        </li>
+                      
+                      </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ route('profiles.show',['profile'=>auth()->user()->id]) }}" class="border p-2">Profile</a>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>WORK LINK</p>
+                    <a href="">Website Link</a><br/>
+                    <a href="">Bootsnipp Profile</a><br/>
+                    <a href="">Bootply Profile</a>
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br/>
+                    <a href="">Web Developer</a><br/>
+                    <a href="">WordPress</a><br/>
+                    <a href="">WooCommerce</a><br/>
+                    <a href="">PHP, .Net</a><br/>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                
+                        <x-backend.alertmessage.alertmessage type="success"/>
+                                    <div class="col-md-12">
+                                            <x-frontend.form.input name="name"  type="text" text="Name"   :value="old('name',auth()->user()->name )" />
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-md-12">
+                                         
+                                        <x-frontend.form.input name="email"  type="text" text="Email"   :value="old('email',auth()->user()->email )" />
+                                      
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <x-frontend.form.input name="profession" type="text" text="Profession"   :value="old('profession',$profile->profession)" />
+                                </div>
+                                    <div class="col-md-12">
+                                        <x-frontend.form.input name="mobile" type="tel" text="Mobile"   :value="old('mobile',$profile->mobile)" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <x-frontend.form.input name="address" type="text" text="Address"   :value="old('address',$profile->address)" />
+                                    </div>
+                                </div>
+                                 <button class="btn btn-info">Update</button>
+                                    
+                                </div>
+                    </div>
+
+                    
+                </div>
+            </div>
         </div>
-        </div>
-    </section>
+    </form>           
+</div>
+{{-- profile end --}}
 </x-frontend.layout.master>

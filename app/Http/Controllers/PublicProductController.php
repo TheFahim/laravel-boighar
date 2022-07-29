@@ -26,8 +26,10 @@ class PublicProductController extends Controller
    }
    public function earnpoint(){
 
+    //    $requestbook=requestbook::with('earnpoint','earnpoint_accept')->get();
        $requestbooks=requestbook::all();
        $earn_orders=Earnpoint::all();
+       
        return view('frontend.product_page.earnpoint',compact('requestbooks','earn_orders'));
    }
    public function store(Request $request){
@@ -43,4 +45,11 @@ class PublicProductController extends Controller
    return redirect()->route('earnpoint')->withMessage('Successfully submitted your order after varication we confirm you please wait');
  
    }
+   
+public function destroy($id)
+{
+      $earnpoint=Earnpoint::findOrFail($id)->delete();
+      return redirect()->back()->withMessage('Your Order deleted');
+    
+}
 }

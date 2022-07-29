@@ -70,6 +70,9 @@ EarnPoint
     </thead>
     <tbody>
       @foreach ($requestbooks as $requestbook)
+     
+        
+      
       <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $requestbook->booktitle }}</td>
@@ -78,6 +81,7 @@ EarnPoint
                     <td>{{ $requestbook->bookquantity}}</td>
                     <td>{{ $requestbook->address }}</td>
                     <td>{{ $requestbook->mobile }}</td>
+                    {{-- <td>{{ $requestbook->earnpoint->message }}</td> --}}
                     <td><img src="{{asset('/storage/requestbooks/'.$requestbook->bookimage)}}" alt="no image" style="width:50px;height:50px"></td>
                     {{-- <td><button type="button" class="btn btn-outline-success btn-sm">Accept</button></td> --}}
                     <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ $requestbook->id }}">
@@ -131,6 +135,7 @@ EarnPoint
           </div>
         </div>
       </div>
+     
       @endforeach
     </tbody>
   </table>
@@ -142,7 +147,7 @@ EarnPoint
     <div id="menu1" class="container tab-pane fade"><br>
       <h3>Menu 1</h3>
       <div class="container mt-3">
-        <x-backend.alertmessage.alertmessage type="success"/>
+        {{-- <x-backend.alertmessage.alertmessage type="success"/> --}}
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -158,8 +163,13 @@ EarnPoint
             </tr>
           </thead>
           <tbody>
+
             @foreach ($earn_orders as $earn_order)
-            @if (auth()->user()->id==$earn_order->user_id)
+           @if ($earn_order->status==1)
+             
+          
+            
+         
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $earn_order->requestbooks->booktitle }}</td>
@@ -170,9 +180,12 @@ EarnPoint
               <td>{{ $earn_order->requestbooks->mobile }}</td>
               <td>{{ $earn_order->delivery_date }}</td>
               
-              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{  $earn_order->id }}">
+              <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{  $earn_order->id }}">
                 Confirm
-              </button></td>
+              </button>
+              <x-backend.buttonlink.deletelink action="{{ route('earnpoints.destroy',['earnpoint'=> $earn_order->id  ])}}"/>
+            </td>
                
 </tr>
 <div class="modal" id="myModal{{ $earn_order->id }}">
@@ -193,7 +206,7 @@ EarnPoint
           @method('post')
               
               <br>
-              <x-backend.alertmessage.alertmessage type="success"/>
+              {{-- <x-backend.alertmessage.alertmessage type="success"/> --}}
               
           
               <div class="col-md-12">
@@ -221,10 +234,9 @@ EarnPoint
     </div>
   </div>
 </div>
-            @endif
 
-
-           
+@endif
+          
             @endforeach
           </tbody>
         </table>

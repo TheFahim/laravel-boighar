@@ -24,8 +24,17 @@
 					 
 					
                 </ul>
-                <p>{{$event->details}}</p>
-                <a class="butn small margin-10px-top md-no-margin-top" href="event-details.html">Read More <i class="fas fa-long-arrow-alt-right margin-10px-left"></i></a>
+                   
+            <p>
+              {{ substr(strip_tags($event->details), 0, 100) }}
+            @if (strlen(strip_tags($event->details)) > 100)
+               <a href="{{route('eventDetails', ['id' => $event->id])}}" class=" btn btn-outline-dark btn-sm">Read More</a>
+            @endif
+
+            </p>
+
+                <!--<p>$event->details</p>
+                <a class="butn small margin-10px-top md-no-margin-top" href="event-details.html">Read More <i class="fas fa-long-arrow-alt-right margin-10px-left"></i></a>-->
             </div>
         </div>
     </div>

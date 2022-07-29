@@ -56,4 +56,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Earnpoint::class);
     }
+    public function sellbooks()
+    {
+        return $this->hasMany(sellbook::class);
+    }
+    public function requestbooks()
+    {
+        return $this->hasMany(requestbook::class);
+    }
+    public function donatebooks()
+    {
+        return $this->hasMany(donatebook::class);
+    }
 }

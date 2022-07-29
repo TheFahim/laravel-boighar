@@ -33,9 +33,7 @@
 
   
                      
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                        See Vedio
-                      </button>
+                     <x-frontend.modal.modal id="donatebook" name="See Vedio" title="Donate Book Vedio" url="https://www.youtube.com/embed/tgbNymZ7vqY"/>
                         
                        
             </div>
@@ -60,7 +58,7 @@
                 <x-frontend.form.input name="address" text="Address" type="text" :value="old('address')"/>
             </div>
             <div class="col-md-6">
-                <x-frontend.form.input name="mobile" text="Mobile" type="tel" pattern="[0-9]{11}" :value="old('mobile')"/>
+                <x-frontend.form.input name="mobile" text="Mobile" type="tel" :value="old('mobile')"/>
             </div>
             <div class="col-md-6">
                 <x-frontend.form.input name="booktitle" text="Book Title" type="text" :value="old('booktitle')"/>
@@ -77,7 +75,7 @@
             <div class="col-md-12">
                 <x-frontend.form.input name="bookimage" text="Book Image" type="file"/>
             </div>
-           
+            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
               
             <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">Submit</button>
              
@@ -85,32 +83,7 @@
     </form> 
  </div>
 </div>
-<div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item w-100 " src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-              </div>
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-   
+ 
   <script>
     mask("input");
   </script>

@@ -26,6 +26,7 @@ class SellbookController extends Controller
     }
 
     sellbook::create([
+        'user_id'=>$request->user_id,
         'booktitle'=>$request->booktitle,
         'bookauthor'=>$request->bookauthor,
         'bookedition'=>$request->bookedition,

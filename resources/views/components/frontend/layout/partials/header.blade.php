@@ -92,7 +92,11 @@
                 <li><a class="dropdown-item" href="">{{ $option->title }}</a></li>
                 @endforeach --}}
                 @foreach ($categories as $category)
+ 
                 <li><a class="dropdown-item" href="{{ route('oldbook') }}"> {{$category->title}}</a></li>
+ 
+                {{-- <li><a class="dropdown-item" href="">{{$category->title}}</a></li> --}}
+ 
                 @endforeach
 
                        {{-- <li><a class="dropdown-item" href="{{ route('bestbook') }}">BEST SELL BOOK</a></li>
@@ -125,9 +129,13 @@
  
                 <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
 
+ 
                        {{-- <li><a class="dropdown-item" href="{{ route('upcomingEvent') }}">EVENTS</a></li> --}}
                        
-                       @can('admin-link')
+                         {{-- @can('admin-link') --}}
+ 
+                         @can('admin-link')
+ 
 
                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a></li>
                        @endcan
@@ -138,7 +146,24 @@
             <a href="cart.php"> <i class="fa-solid fa-cart-plus" style="margin-top:15px;color: #000000;"></i></a>
          </li>
            <li class="nav-item dropdown">
-             <a class="nav-link" href="{{ route('homepage') }}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p class=" fas fa-user fa-fw"></p>@auth{{auth()->user()->name}}@endauth</a>
+            {{-- <li  id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('/storage/profiles/'.auth()->user()->profile->image??'profile.jpg')}}" alt="profile"style="border-radius: 50%;width:40px;height:40px" class="border"/>
+              <p>{{ auth()->user()->name }}</li> --}}
+             <a class="nav-link p-0 ml-2 mt-1" href="{{ route('homepage') }}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              
+              @if (auth()->user())
+                 
+              @auth
+              <img src="{{asset('/storage/profiles/'.auth()->user()->profile->image)}}" alt="profile"style="border-radius: 50%;width:35px;height:35px;" class="border"/>
+              {{auth()->user()->name}}
+              @endauth
+              @else
+              <img src="{{asset('/storage/profiles/profile.jpg')}}" alt="profile"style="border-radius: 50%;width:35px;height:35px;" class="border"/>
+              @endif
+           
+              
+            
+           
+            </a>
              <ul class="dropdown-menu" aria-labelledby="dropdown03">
                   @auth
                  <li><form method="POST" action="{{ route('logout') }}">
@@ -150,7 +175,7 @@
                   </a>
                 </form>
                 </li>
-                <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile Setting</a></li>
+                <li><a class="dropdown-item" href="{{ route('profiles.show',['profile'=>auth()->user()->id]) }}">Profile Setting</a></li>
                 @else
                  <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
                  <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
