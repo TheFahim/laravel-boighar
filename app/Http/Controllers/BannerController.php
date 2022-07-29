@@ -23,9 +23,11 @@ class BannerController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        $validated = $request->validate([
+            'option' => 'required',
+            'image' => 'required'
         ]);
+
 
         if ($file = $request->file('image')) {
             $filename = date('dmY') . time() . '.' . $file->getClientOriginalExtension();
@@ -53,8 +55,9 @@ class BannerController extends Controller
 
     public function update(Request $request, Banner $banner)
     {
-        $request->validate([
-            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        $validated = $request->validate([
+            'option' => 'required',
+            'image' => 'required'
         ]);
         if ($file = $request->file('image')) {
             $filename = date('dmY') . time() . '.' . $file->getClientOriginalExtension();

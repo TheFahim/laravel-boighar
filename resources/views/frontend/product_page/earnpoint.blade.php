@@ -1,12 +1,18 @@
- 
+
  <x-frontend.layout.master>
 <!-- Slider Start -->
 @slot('title')
-EarnPoint   
+EarnPoint
 @endslot
-<section class="">
-	<img src="{{ asset('ui.frontend') }}/images/form_banner/earnmoney.jpg" alt="" style="width: 100%;">
-</section>
+
+	<div class="container d-flex justify-content-center">
+        @if(isset($banner->image))
+        <div class="card ">
+            <img src="{{ asset('/storage/banner/' . $banner->image) }}" alt="Banner"style="width:100%">
+        </div>
+        @endif
+    </div>
+
 <div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-lg-7">
@@ -19,7 +25,7 @@ EarnPoint
                      <p>Sell needs to fill up some requirements as like:</p>
                      <p>1. Fill the below form with valid data</p>
                      <p>2. Give Clear Information</p>
-                     
+
 
                      <div class="btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
@@ -31,9 +37,9 @@ EarnPoint
     </div>
 </div>
 
-  
+
 <div class="container mt-3">
-  
+
   <br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -51,9 +57,9 @@ EarnPoint
   <!-- Tab panes -->
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
-      
+
 <div class="container mt-3">
-   
+
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -80,7 +86,7 @@ EarnPoint
                     <td>{{ $requestbook->mobile }}</td>
                     <td><img src="{{asset('/storage/requestbooks/'.$requestbook->bookimage)}}" alt="no image" style="width:50px;height:50px"></td>
                     <td><button type="button" class="btn btn-outline-success btn-sm">Accept</button></td>
-                     
+
       </tr>
       @endforeach
     </tbody>
@@ -97,14 +103,13 @@ EarnPoint
     </div>
   </div>
 </div>
- 
-</x-frontend.layout.master>			 
-			 
-			 
- 
-   
- 
 
-    
-     
-   
+</x-frontend.layout.master>
+
+
+
+
+
+
+
+

@@ -3,6 +3,16 @@
     Events
     @endslot
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+
+    <div class="container d-flex justify-content-center">
+        @if(isset($banner->image))
+        <div class="card ">
+            <img src="{{ asset('/storage/banner/' . $banner->image) }}" alt="Banner"style="width:100%">
+        </div>
+        @endif
+    </div>
+
 <div class="container">
     <!-- start event block -->
     @foreach ($events as $event)
@@ -10,7 +20,7 @@
         <div class="col-lg-5 col-sm-12">
             <div class="position-relative">
                 <img src="{{asset('/storage/events/'.$event->image)}}" alt="" style="width:500px;height:250px">
-            
+
             </div>
         </div>
         <div class="col-lg-7 col-sm-12">
@@ -21,10 +31,10 @@
                       <li><i class="far fa-clock margin-10px-right"></i> {{$event->time}}</li>
                     <li><i class="fas fa-user margin-5px-right"></i> Speaker : {{$event->cheif_guest}}</li>
                     <li><i class="fas fa-location-dot margin-5px-right"></i> Location : {{$event->venue}}</li>
-					 
-					
+
+
                 </ul>
-                   
+
             <p>
               {{ substr(strip_tags($event->details), 0, 100) }}
             @if (strlen(strip_tags($event->details)) > 100)
@@ -42,9 +52,8 @@
     @endforeach
     <!-- end event block -->
 
-   
-    
+
+
 </div>
- 
+
 </x-frontend.layout.master>
-   

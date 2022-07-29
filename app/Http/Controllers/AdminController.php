@@ -17,8 +17,6 @@ class AdminController extends Controller
     public function register(){
         return view('auth.register');
     }
-    
-    // public function table(){
-    //     return view('admin.table');
-    // }
+
+   
 }

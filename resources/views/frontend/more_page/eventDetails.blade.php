@@ -3,13 +3,14 @@
     Events
     @endslot
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
 <div class="container">
     <!-- start event block -->
     <div class="row align-items-center event-block no-gutters margin-40px-bottom">
         <div class="col-lg-5 col-sm-12">
             <div class="position-relative">
                 <img src="{{asset('/storage/events/'.$event->image)}}" alt="" style="width:500px;height:250px">
-            
+
             </div>
         </div>
         <div class="col-lg-7 col-sm-12">
@@ -20,16 +21,16 @@
                       <li><i class="far fa-clock margin-10px-right"></i> {{$event->time}}</li>
                     <li><i class="fas fa-user margin-5px-right"></i> Speaker : {{$event->cheif_guest}}</li>
                     <li><i class="fas fa-location-dot margin-5px-right"></i> Location : {{$event->venue}}</li>
-					 
-					
+
+
                 </ul>
-                   
+
             <p>
              {{ $event->details}}
-              
-              
+
+
                <a href="{{route('upcomingEvent')}}" class=" btn btn-outline-dark btn-sm">Read Less</a>
-           
+
 
             </p>
 
@@ -41,9 +42,8 @@
     <hr>
     <!-- end event block -->
 
-   
-    
+
+
 </div>
- 
+
 </x-frontend.layout.master>
-   

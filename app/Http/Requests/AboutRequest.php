@@ -25,9 +25,9 @@ class AboutRequest extends FormRequest
     {
         return [
             'title'=>'required|max:255',
-            'description'=>'required|',
-            'image'=>'required|',
-            
+            'description'=>'required',
+            'image'=>'required'
+
         ];
     }
 }

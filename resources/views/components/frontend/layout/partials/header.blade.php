@@ -88,17 +88,15 @@
              <li class="nav-item dropdown">
                <a class="nav-link" href="{{ url('/') }}" id="dropdown02" data-toggle="">BUY BOOK <i class="icofont-thin-down"></i></a>
                <ul class="dropdown-menu">
-                {{-- @foreach ($options as $option)
-                <li><a class="dropdown-item" href="">{{ $option->title }}</a></li>
-                @endforeach --}}
-                @foreach ($categories as $category)
+                
+                {{-- @foreach ($categories as $category)
                 <li><a class="dropdown-item" href="">{{$category->title}}</a></li>
-                @endforeach
+                @endforeach --}}
 
-                       {{-- <li><a class="dropdown-item" href="{{ route('bestbook') }}">BEST SELL BOOK</a></li>
+                       <li><a class="dropdown-item" href="{{ route('bestbook') }}">BEST SELL BOOK</a></li>
                     <li><a class="dropdown-item" href="{{ route('newcollection') }}">NEW COLLECTION</a></li>
                    <li><a class="dropdown-item" href="{{ route('oldbook') }}">OLD BOOK</a></li>
-                   <li><a class="dropdown-item" href="{{ route('getdonate') }}">GET DONATE BOOK</a></li> --}}
+                   <li><a class="dropdown-item" href="{{ route('getdonate') }}">GET DONATE BOOK</a></li>
                </ul>
              </li>
               <li class="nav-item"><a class="nav-link" href="{{ route('sellbooks.create') }}">SELL BOOK</a></li>

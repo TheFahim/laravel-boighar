@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Banner;
 use App\Models\sellbook;
-use App\Models\requestbook;
 use App\Models\donatebook;
+use App\Models\requestbook;
+use Illuminate\Http\Request;
+
 class PublicProductController extends Controller
 {
    public function bestbook(){
@@ -24,6 +26,8 @@ class PublicProductController extends Controller
    }
    public function earnpoint(){
        $requestbooks=requestbook::all();
-       return view('frontend.product_page.earnpoint',compact('requestbooks'));
+       $banner=Banner::where('is_active',true)->where('option','Earn point')->latest()->first();
+       return view('frontend.product_page.earnpoint',compact('requestbooks','banner'));
    }
 }
+
