@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Banner;
 use App\Models\sellbook;
+ 
 use App\Models\Earnpoint;
  
 use App\Models\requestbook;
+ 
+ 
 use App\Models\donatebook;
+ 
+use Illuminate\Http\Request;
+
 class PublicProductController extends Controller
 {
    public function bestbook(){
@@ -28,9 +34,14 @@ class PublicProductController extends Controller
 
     //    $requestbook=requestbook::with('earnpoint','earnpoint_accept')->get();
        $requestbooks=requestbook::all();
+ 
        $earn_orders=Earnpoint::all();
        
        return view('frontend.product_page.earnpoint',compact('requestbooks','earn_orders'));
+ 
+       $banner=Banner::where('is_active',true)->where('option','Earn point')->latest()->first();
+       return view('frontend.product_page.earnpoint',compact('requestbooks','banner'));
+ 
    }
    public function store(Request $request){
 
@@ -53,3 +64,4 @@ public function destroy($id)
     
 }
 }
+

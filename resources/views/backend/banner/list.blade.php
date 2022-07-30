@@ -8,9 +8,9 @@
     @endslot
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
-       Carousel
-       
-       <a href="{{ route('banners.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
+        Banner
+
+       <a href="{{ route('banners.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Banner</button></a>
     </div>
 
 
@@ -38,7 +38,7 @@
                         <div class="d-flex">
 
 
-                            <x-backend.buttonlink.editlink href="{{ route('banners.edit',['banner'=>$banner->id ])}}"/>
+                            <x-backend.buttonlink.editlink action="{{ route('banners.edit',['banner'=>$banner->id ])}}"/>
                             <x-backend.buttonlink.deletelink action="{{ route('banners.destroy',['banner'=>$banner->id ])}}"/>
                         </div>
 

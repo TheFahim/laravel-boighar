@@ -1,42 +1,52 @@
+
 <x-backend.layout.master>
     @slot('title')
     Banner
     @endslot
-<div class="card mb-4">
-    @slot('bottomheader')
-   Add Banner
-    @endslot
-    <div class="card-header">
+<div class="card mb-4 mt-4 ">
+
+    <div class="card-header ">
         <i class="fas fa-table me-1"></i>
-       Add Banner
-       <a href="{{ route('banners.index') }}"> <button class="btn btn-info"> Banner List</button></a>
+        Create Banner
+       <a href="{{ route('banners.index') }}"> <button class=" btn-sm btn btn-outline-primary"><i class="fa-solid fa-backward"></i></button></a>
     </div>
 
-    <div class="container card w-50 ">
-        <form class="form-horizontal" role="form" action="{{ route('banners.store') }}" method="post" enctype="multipart/form-data">
-           @csrf
-            <br>
-           <x-backend.alertmessage.alertmessage type="success"/> <br><br>
+<div class="mx-auto card w-75 rounded mb-5 mt-5">
+<x-frontend.form.card_header text="Banners" class="text-white rounded"/>
+<div class="card-body">
+ <form class="row g-3" role="form" action="{{ route('banners.store') }}" method="post" enctype="multipart/form-data">
 
-           <label for="cars">Choose a type:</label>
+     @csrf
+        <x-backend.alertmessage.alertmessage type="success"/> <br><br>
+        <div class="col-md-12">
+        <label for="Bnnner">Choose a type:</label>
+        <select name="option" id="option">
+         <option >select on</option>
+          <option value="sell book">sell book</option>
+          <option value="Donate book">Donate book</option>
+          <option value="Request book">Request book</option>
+          <option value="Earn point">Earn point</option>
+          <option value="About us">About us</option>
+          <option value="Contact us">Contact us</option>
+          <option value="Faq">Faq</option>
+          <option value="Events">Events</option>
+        </select>
+    </div>
+        <div class="col-md-12">
+         <x-frontend.form.input name="image" text="Banner Image" type="file" />
+        </div>
+        <div>
+        <input type="checkbox" id="is_active" name="is_active" value="1">
+            <label for="is_active"> Active Status</label><br>
+        </div>
+         <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">Submit</button>
 
-           <select name="option" id="option">
-            <option >select on</option>
-             <option value="sell book">sell book</option>
-             <option value="Donate book">Donate book</option>
-             <option value="Request book">Request book</option>
-           </select>
-<br><br>
-            <x-frontend.form.input name="image" text="Banner Image" type="file" />
-<br>
-            <input type="checkbox" id="is_active" name="is_active" value="1">
-            <label for="vehicle1"> Active Status</label><br>
+     </form>
+</div>
 
+</div>
 
-            <button type="submit" class="btn btn-success d-flex">Submit</button>
-
-        </form>
-
-      </div>
-
+</div>
 </x-backend.layout.master>
+
+

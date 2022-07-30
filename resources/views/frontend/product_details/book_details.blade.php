@@ -166,8 +166,7 @@
                                     <input type="hidden" name="hidden_title" value="{{ $sellbook->booktitle }}" />
                                     <input type="hidden" name="hidden_price" value="{{ $sellbook->price }}" />
                                     <input type="hidden" name="hidden_author" value="{{ $sellbook->bookauthor }}" />
-                                    <input type="number" min="1" max="100" name="quantity" value="1"
-                                        class="d-flex justify-content-start" />
+                                   
                                     <div class="d-flex justify-content-between mt-2">
                                         <a class="btn btn-danger text-light " href="#" role="button"><i
                                                 class="fa fa-cart-plus"></i>CART</a>
@@ -188,41 +187,7 @@
 
 
 
-
-{{-- 
-@push('js')
-<script>
-    const form = document.forms['addToCartForm'];
-
-    const apiUrl = '/products/{{$product->id}}/cart';
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const qtyInput = document.querySelector('input[name=qty]').value;
-        const reqBody = JSON.stringify({
-            qty: qtyInput
-        })
-
-        fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: reqBody
-            })
-            .then(res => {
-                console.log(res);
-                if (res.status) {
-                    document.querySelector('#addToCartBtn').setAttribute('disabled', 'disabled')
-                }
-                console.log(res)
-            })
-    });
-</script> --}}
-
-{{-- @endpush --}}
+ 
 
 @push('js')
    

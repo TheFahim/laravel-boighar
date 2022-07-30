@@ -44,7 +44,7 @@
 
 
 <div class="mx-auto mt-2" style="width:300px">
-	<x-frontend.watch.watch/>
+	{{-- <x-frontend.watch.watch/> --}}
 </div>
 <x-frontend.layout.partials.footer/> 
 </div>
