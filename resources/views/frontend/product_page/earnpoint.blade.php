@@ -93,12 +93,12 @@ EarnPoint
                     <td><img src="{{asset('/storage/requestbooks/'.$requestbook->bookimage)}}" alt="no image" style="width:50px;height:50px"></td>
  
                     {{-- <td><button type="button" class="btn btn-outline-success btn-sm">Accept</button></td> --}}
-                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ $requestbook->id }}">
+                    <td><button type="button" class="btn  btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#myModal{{ $requestbook->id }}">
                       Accept
                     </button></td>
                      
  
-                    <td><button type="button" class="btn btn-outline-success btn-sm">Accept</button></td>
+                  
  
       </tr>
       <div class="modal" id="myModal{{ $requestbook->id }}">
