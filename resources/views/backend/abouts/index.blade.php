@@ -35,7 +35,7 @@
                 <td><img src="{{asset('/storage/aboutus/'.$about->image)}}" alt="" style="width:50px;height:50px"></td>
                 <td>
                 <div class="d-flex ">
-                            <x-backend.buttonlink.viewlink  action="{{ route('abouts.show', ['about'=>$about->id]) }}"/>
+                            
                             <x-backend.buttonlink.editlink action="{{ route('abouts.edit', ['about'=>$about->id])}}"/>
                             <x-backend.buttonlink.deletelink action="{{ route('abouts.destroy',['about'=>$about->id]) }}"/>
                 </div>

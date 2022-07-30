@@ -39,8 +39,8 @@
                         <td>
                         <div class="d-flex ">
                        
-                        <x-backend.buttonlink.editlink action="" style="display:inline"/>
-                        <x-backend.buttonlink.deletelink action="" />
+                        <x-backend.buttonlink.editlink action="{{ route('contacts.edit',['contact'=>$contact->id ])}}" style="display:inline"/>
+                        <x-backend.buttonlink.deletelink action="{{route('contacts.destroy',['contact'=>$contact->id ])}}" />
 
                         </div>
                         </td>

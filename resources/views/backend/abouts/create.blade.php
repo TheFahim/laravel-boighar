@@ -1,67 +1,52 @@
-<x-backend.layout.master>
-  @slot('title')
-  About Us
-  @endslot
-  <div class="container tm-mt-big tm-mb-big">
-    <div class="row">
-      <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
-        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-          <div class="row">
-            <div class="col-12">
-              <h2 class="tm-block-title d-inline-block">Add About</h2>
-              <a class="btn btn_sm btn-primary" href="{{ route('abouts.index') }}">List</a>
-            </div>
-          </div>
-          <div class="row tm-edit-product-row">
-            <div class="col-xl-6 col-lg-6 col-md-12">
-
-              @if ($errors->any())
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              </div>
-              @endif
-
-              <form action="{{ route('abouts.store')  }}" method="POST" class="tm-edit-product-form" enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" id="title">
-                  @error('title')
-                  <div class="form-text text-danger">{{ $message }}</div>
-                  @enderror
-
-                </div>
-                <div class="mb-3">
-                  <label for="description" class="form-label">Description</label>
-                  <textarea class="form-control validate @error('title') is-invalid @enderror" id="description" rows="3" name="description">
-                  {{ old('description') }}
-                  </textarea>
-                  @error('description')
-                  <div class="form-text text-danger">{{ $message }}</div>
-                  @enderror
-                </div>
-                <div class="mb-3">
-                  <x-frontend.form.input name="image" text="About Image" type="file" />
-                </div>
-
-
-
-
-            </div>
-
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-block text-uppercase">
-                Submit About
-              </button>
-            </div>
-            </form>
-          </div>
+ 
+    <x-backend.layout.master>
+        @slot('title')
+        About Us
+        @endslot
+    <div class="card mb-4" >
+       
+        <div class="card-header " style="background-color: #defffe">
+            <i class="fas fa-table me-1"></i>
+            About Us
+           <a href="{{ route('abouts.index') }}"> <button class=" btn-sm btn btn-outline-primary"><i class="fa-solid fa-backward"></i></button></a>
         </div>
-      </div>
+      
+           
+<div class="mx-auto card w-75 rounded mb-5 mt-5">
+    <x-frontend.form.card_header text="Add" class="text-white rounded"/>
+    <div class="card-body">
+     <form class="row g-3" role="form" action="{{ route('abouts.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                
+                 
+                 <br>
+
+                 <x-backend.alertmessage.alertmessage type="success"/> 
+                <div class="col-md-12">
+                <x-frontend.form.input name="title" text=" Title" type="text" :value="old('title')"/>
+               </div>
+               <div class="col-md-12">
+                <x-frontend.form.input name="description" text="Details" type="textarea" :value="old('description')"/>
+               </div>
+               <div class="col-md-12">
+                <x-frontend.form.input name="image" text="Image" type="file" />
+               </div>
+                
+              
+              
+               
+             <div class="card-footer bg-white">
+                <div class="d-grid gap-2 col-6 mx-auto d-flex">
+                    <button type="submit" class="btn btn-success w-50" type="button"><strong>Submit</strong></button>
+                     
+                  </div>
+          </div> 
+        </form> 
+         
     </div>
-  </div>
-</x-backend.layout.master>
+</div>
+</div>
+    </x-backend.layout.master>
+ 
+ 
+ 

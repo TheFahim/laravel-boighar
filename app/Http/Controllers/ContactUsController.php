@@ -12,7 +12,7 @@ class ContactUsController extends Controller
     {
       
         $contacts=contactus::all();
-        return view('backend.contacts.contacts',compact('contacts'));
+        return view('backend.contacts.index',compact('contacts'));
     }
     
     public function create(){
@@ -34,19 +34,31 @@ class ContactUsController extends Controller
        return redirect()->route('contacts.create')->withMessage('Successfully submitted');
     }
 
+    public function edit($contact)
+    {
+        $contact = ContactUs::findOrFail($contact);
+        return view('backend.contacts.edit', compact('contact'));
+    }
+
+    public function update(ContactusRequest $request, $contact)
+    {
+
+        
+        $contact = ContactUs::findOrFail($contact);
+        $contact->update([
+        'fullname'=>$request->fullname,
+        'email'=> $request->email,
+        'mobile'=> $request->mobile,
+        'message'=>$request->message,
+        ]);
+        return redirect()->route('contacts.index')->withMessage('Successfully Updated');
+    }
+
+   
+
+    public function destroy(ContactUs $contact)
+    {     $contact->delete();
+          return redirect()->route('contacts.index')->withMessage('Successfully Deleted');       
+    }
     
-
-    public function show($contactus)
-    {
-          
-         $contactusshow=contactus::findOrFail($contactus);
-         return view('backend.contacts.show',compact('contactsshow'));
-             
-    }
-
-    public function destroy(Request $request)
-    {
-          $contactusshow=contactus::findOrFail($request->contactus)->delete();
-          return redirect()->route('backend.contacts.index')->withMessage('Successfully Data Deleted');       
-    }
 }

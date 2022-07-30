@@ -65,6 +65,8 @@
       </div>
     </section>
 
+
+
     <div class="container text-center mb-5" style="margin-top: 120px;">
       <div class="row">
         <h2 class="mt-5">About Us</h2>
@@ -76,7 +78,7 @@
         <div class="col-3 card ml-1 mt-5">
 
           @if(isset($about->image))
-          <img src="{{asset('/storage/aboutus/'.$about->image)}}" alt="" style="height:300px;" class="img-fluid">
+          <img src="{{asset('/storage/aboutus/'.$about->image)}}" alt="" style="width:500px;height:250px" class="img-fluid">
           @endif
           <h4>{{$about->title}}</h4>
           <p>{{$about->description}}</p>
