@@ -10,7 +10,7 @@
         <i class="fas fa-table me-1"></i>
         Banner
 
-       <a href="{{ route('banners.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Banner</button></a>
+       <a href="{{ route('banners.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New Banner</button></a>
     </div>
 
 

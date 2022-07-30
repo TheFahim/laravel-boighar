@@ -6,7 +6,7 @@
     <div class="card-header " style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Sell Book
-       <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
+       <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New Sellbook</button></a>
        <a href="{{ route('sellbooks.trash') }}"> <button class="btn btn-outline-info btn-sm text-black">Trash</button></a>
 
     </div>

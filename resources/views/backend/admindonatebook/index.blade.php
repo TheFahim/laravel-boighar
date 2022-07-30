@@ -7,7 +7,7 @@
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Donate Book
-       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
+       <a href="{{ route('donatebooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New Donatebook</button></a>
 
 
        <a href="{{ route('donatebooks.trash') }}"> <button class="btn btn-outline-info btn-sm text-black">Trash</button></a>

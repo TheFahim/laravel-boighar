@@ -19,13 +19,8 @@
     <div class="row align-items-center event-block no-gutters margin-40px-bottom">
         <div class="col-lg-5 col-sm-12">
             <div class="position-relative">
-<<<<<<< HEAD
-                <img src="{{asset('/storage/events/'.$event->image)}}" alt="" style="width:400px;height:250px">
-            
-=======
                 <img src="{{asset('/storage/events/'.$event->image)}}" alt="" style="width:500px;height:250px">
 
->>>>>>> ec0ca2649d53e9a2c5303f18dc7396b477face43
             </div>
         </div>
         <div class="col-lg-7 col-sm-12">

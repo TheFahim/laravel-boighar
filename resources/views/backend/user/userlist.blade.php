@@ -3,14 +3,13 @@
      User List
     @endslot
 <div class="card mb-4">
-    @slot('bottomheader')
-  User List
-    @endslot
-    <div class="card-header">
+<div class="card-header " style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         UserList
-       <a href="{{ route('user.register') }}"> <button class="btn btn-info">Add User</button></a>
+        <a href="{{ route('user.register') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New User</button></a>
+
     </div>
+   
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">
         <table id="datatablesSimple">

@@ -6,10 +6,10 @@
         @slot('bottomheader')
         Contact
         @endslot
-        <div class="card-header">
+        <div class="card-header"  style="background-color: #defffe">
             <i class="fas fa-table me-1"></i>
             Contact
-            <a href="{{ route('contacts.create') }}"> <button class="btn btn-info">Add</button></a>
+            <a href="{{ route('contacts.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Contact</button></a>
         </div>
         <x-backend.alertmessage.alertmessage type="success" />
         <div class="card-body">
@@ -37,10 +37,11 @@
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->message }}</td>
                         <td>
-                        <div>
-                            <button type="button" class="btn btn-success">Show</button>
-                            <button type="button" class="btn btn-info">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                        <div class="d-flex ">
+                       
+                        <x-backend.buttonlink.editlink action="" style="display:inline"/>
+                        <x-backend.buttonlink.deletelink action="" />
+
                         </div>
                         </td>
                     </tr>

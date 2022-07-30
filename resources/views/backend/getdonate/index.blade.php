@@ -6,7 +6,7 @@
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
         Get Donate
-       <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
+       <a href="{{ route('sellbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Request for Donate</button></a>
     </div>
    <x-backend.alertmessage.alertmessage type="success"/>
     <div class="card-body">

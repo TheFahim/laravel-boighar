@@ -2,14 +2,15 @@
   @slot('title')
   About Us
   @endslot
-  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
-    <div class="tm-bg-primary-dark tm-block tm-block-product-abouts">
-        <h2 class="tm-block-title">About Us</h2>
-      <!-- <div>
-        <i class="fas fa-table tm-bg-primary-dark my-5"></i>
-        Categoty List
-      </div> -->
-         
+  
+  <div class="card mb-4">
+    <div class="card-header " style="background-color: #defffe">
+    <i class="fas fa-table me-1"></i>
+    About Us
+    <a href="{{ route('abouts.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New contact</button></a>
+
+      
+    </div>   
       <div class="tm-product-table-container">
 
           <x-backend.alerts.message type="success" :message="session('message')"/> 
@@ -32,15 +33,14 @@
                 <td class="tm-product-name">{{$about->title}}</td>
                 <td class="tm-product-name">{{$about->description}}</td>
                 <td><img src="{{asset('/storage/aboutus/'.$about->image)}}" alt="" style="width:50px;height:50px"></td>
-                <td class="text-left">
-                  <x-backend.utilities.showlink href="{{ route('abouts.show', ['about'=>$about->id]) }}" text="View"/>
-                  <x-backend.utilities.editlink href="{{ route('abouts.edit', ['about'=>$about->id]) }}" text="Edit"/>
-                  <form action="{{ route('abouts.destroy', ['about'=>$about->id]) }}" method="post" style="display:inline">
-                  @csrf
-                  @method('delete')  
-                    <x-backend.forms.button color="danger" onclick="return confirm('Are You Sure')" href="{{ route('abouts.show', ['about'=>$about->id]) }}" text="Delete"/>
-                  </form>
-                </td>
+                <td>
+                <div class="d-flex ">
+                            <x-backend.buttonlink.viewlink  action="{{ route('abouts.show', ['about'=>$about->id]) }}"/>
+                            <x-backend.buttonlink.editlink action="{{ route('abouts.edit', ['about'=>$about->id])}}"/>
+                            <x-backend.buttonlink.deletelink action="{{ route('abouts.destroy',['about'=>$about->id]) }}"/>
+                </div>
+               </td>
+                  
                     
               </tr>
               @endforeach
@@ -48,9 +48,7 @@
           </table>
         
             <!-- table container -->
-        <button class="btn btn-primary btn-block text-uppercase mb-3">
-          <a class="" style="color:white;" href="{{ route('abouts.create') }}">Add new about</a>
-        </button>
+       
       </div> 
   </div> 
      

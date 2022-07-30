@@ -10,7 +10,7 @@
         <i class="fas fa-table me-1"></i>
        Carousel
        
-       <a href="{{ route('carousels.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
+       <a href="{{ route('carousels.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New Carousel</button></a>
     </div>
   
 

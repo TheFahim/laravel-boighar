@@ -9,7 +9,7 @@
     <div class="card-header" style="background-color: #defffe">
         <i class="fas fa-table me-1"></i>
        Request Book
-       <a href="{{ route('requestbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add Product</button></a>
+       <a href="{{ route('requestbooks.create') }}"> <button class="btn btn-outline-info btn-sm text-black">Add New Request</button></a>
        <a href="{{ route('requestbooks.trash') }}"> <button class="btn btn-outline-info btn-sm text-black">Trash</button></a>
 
     </div>
